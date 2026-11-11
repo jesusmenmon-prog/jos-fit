@@ -9,9 +9,9 @@
 <meta name="apple-mobile-web-app-title" content="JOS Fit">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>JOS Fit v1.5 — Evaluación personal y coaching</title>
+<title>JOS Fit v1.6 — Coach adaptativo</title>
 <style>
-:root{color-scheme:dark;--bg:#080a0f;--surface:#12151c;--surface2:#1a1e27;--surface3:#222834;--line:#2b313d;--text:#f5f7fb;--muted:#9299a6;--blue:#168cff;--blue2:#0879e8;--green:#32d583;--orange:#ff9b45;--red:#ff647c;--yellow:#ffd166;--radius:22px;--shadow:0 12px 36px #0005}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.45}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:980px;margin:0 auto;min-height:100vh;padding-bottom:106px}.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#080a0fee;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10}.brand{display:flex;align-items:center;gap:11px}.brandmark{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#42a5ff,#0875e4);display:grid;place-items:center;font-weight:950;font-size:18px;box-shadow:0 6px 18px #168cff33}.brandname{font-weight:900;letter-spacing:.08em}.brandname span{color:var(--blue)}.brandmeta{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}.offline{font-size:10px;color:#b8c0cc;border:1px solid var(--line);padding:6px 9px;border-radius:99px}.main{padding:20px}.page{display:none;animation:fade .18s ease}.page.active{display:block}@keyframes fade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}.eyebrow{color:var(--blue);font-size:10px;font-weight:850;letter-spacing:.18em;text-transform:uppercase}.heading{font-size:clamp(27px,5vw,37px);font-weight:850;letter-spacing:-.045em;line-height:1.12;margin:7px 0}.sub{color:var(--muted);margin:5px 0 18px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:25px 0 12px}.section-title h2{font-size:19px;letter-spacing:-.025em;margin:0}.section-title .hint{font-size:11px;color:var(--muted)}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:17px;box-shadow:var(--shadow)}.card+.card{margin-top:12px}.grid{display:grid;gap:12px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr));margin:17px 0}.metric-label{color:var(--muted);font-size:11px}.metric{font-size:clamp(24px,5vw,31px);font-weight:850;letter-spacing:-.05em;margin:4px 0}.metric small{font-size:12px;color:var(--muted);font-weight:650;letter-spacing:0}.progress{height:7px;background:#303641;border-radius:99px;overflow:hidden;margin-top:10px}.progress span{height:100%;display:block;background:var(--blue);border-radius:99px}.macro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.macro{background:#0c0f15;border:1px solid #282e39;border-radius:15px;padding:11px}.macro-name{color:var(--muted);font-size:10px}.macro-value{font-size:19px;font-weight:800;margin-top:3px}.macro-track{height:5px;background:#303641;border-radius:99px;margin-top:8px;overflow:hidden}.macro-track span{display:block;height:100%;border-radius:99px;background:var(--blue)}.btn{border:0;border-radius:14px;padding:12px 15px;font-weight:800;background:var(--blue);color:white;box-shadow:0 7px 18px #168cff24}.btn:active{transform:scale(.985)}.btn.secondary{background:var(--surface3);border:1px solid var(--line);box-shadow:none;color:var(--text)}.btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none;color:var(--text)}.btn.danger{background:#401e29;color:#ffc2ce;box-shadow:none}.btn.small{padding:8px 11px;font-size:12px;border-radius:11px}.btn.block{width:100%}.btn:disabled{opacity:.45;cursor:not-allowed}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.row.wrap{flex-wrap:wrap}.muted{color:var(--muted)}.tiny{font-size:11px;color:var(--muted)}.badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:99px;padding:5px 9px;font-size:10px;color:#c5ccd7}.badge.blue{border-color:#145da2;background:#0b2d4c;color:#9bd0ff}.badge.green{border-color:#176342;background:#0d3325;color:#9cf0c5}.badge.orange{border-color:#7d4c20;background:#3c2917;color:#ffd3a3}.hero-card{background:linear-gradient(130deg,#101f32,#11151d 70%);border:1px solid #1b3b5d;border-radius:24px;padding:19px;position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#168cff12;right:-75px;top:-90px}.hero-title{font-size:25px;font-weight:850;letter-spacing:-.04em}.hero-card .btn{position:relative;z-index:1}.meal-list,.history-list{display:flex;flex-direction:column;gap:8px}.meal-row,.history-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#0c0f15;border:1px solid #272e38;border-radius:14px;padding:12px}.meal-row strong,.history-row strong{font-size:13px}.meal-row small,.history-row small{display:block;font-size:10px;color:var(--muted);margin-top:3px}.meal-row .right,.history-row .right{text-align:right;white-space:nowrap}.empty{padding:19px;text-align:center;border:1px dashed #3a414e;color:var(--muted);border-radius:15px;font-size:12px}.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 7px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{flex:0 0 auto;background:#121720;color:#9da5b1;border:1px solid var(--line);padding:10px 15px;border-radius:99px;font-size:12px;font-weight:800}.tab.active{background:#0c3154;border-color:#146eb7;color:#a8d8ff}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field.full{grid-column:1/-1}.field label{color:#b5bdc9;font-size:11px;font-weight:750}.field input,.field select,.field textarea{width:100%;min-width:0;background:#0b0e14;border:1px solid #343b47;border-radius:12px;padding:11px 12px;color:var(--text);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}.field textarea{min-height:75px;resize:vertical}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.routine-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.routine-card{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:14px;text-align:left;color:var(--text)}.routine-card.active{border-color:var(--blue);background:#0c2137;box-shadow:inset 0 0 0 1px #168cff35}.routine-name{font-size:17px;font-weight:850}.routine-groups{font-size:10px;color:var(--muted);margin-top:3px}.routine-stat{font-size:11px;margin-top:12px;color:#d1d7e0}.exercise-list{display:flex;flex-direction:column;gap:9px}.exercise-card{background:#0d1118;border:1px solid #29313d;border-radius:16px;padding:13px}.exercise-top{display:flex;align-items:center;justify-content:space-between;gap:9px}.exercise-name{font-size:14px;font-weight:850}.exercise-muscle{font-size:10px;color:var(--muted);margin-top:2px}.exercise-prescription{font-size:11px;color:#b8c2d1;margin-top:10px}.exercise-set-count{background:#202733;border-radius:99px;padding:5px 8px;font-size:10px;font-weight:800}.workout-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.timer{font-variant-numeric:tabular-nums;font-size:27px;font-weight:850;letter-spacing:.03em}.set-table{display:grid;grid-template-columns:35px 1fr 1fr 1fr 36px;gap:6px;align-items:center;margin-top:10px}.set-head{font-size:9px;color:var(--muted);text-align:center}.set-kind{display:grid;place-items:center;width:30px;height:32px;border-radius:10px;background:#202733;font-size:11px;font-weight:850}.set-kind.warm{color:var(--yellow);background:#3b301a}.set-input{width:100%;min-width:0;text-align:center;border:1px solid #353d49;background:#090c12;color:white;padding:9px 2px;border-radius:10px;font-size:13px}.set-done{width:34px;height:34px;border:1px solid #424a57;background:#202733;color:#9aa3af;border-radius:10px;font-size:15px;display:grid;place-items:center}.set-done.done{background:#165b38;border-color:#32d583;color:#b4ffd6}.exercise-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.rest-banner{background:#0c2b49;border:1px solid #14558b;border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0}.rest-banner strong{font-size:22px;font-variant-numeric:tabular-nums}.recovery-box{background:#392714;border:1px solid #75491d;color:#ffdfb5;padding:12px;border-radius:14px;font-size:11px;line-height:1.5;margin:12px 0}.chart-wrap{width:100%;overflow:hidden}.chart{width:100%;height:auto;display:block}.measurement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.measurement{background:#0d1118;border:1px solid #2b323e;border-radius:15px;padding:13px}.measurement strong{font-size:20px}.measurement small{display:block;color:var(--muted);font-size:10px}.check-row{display:flex;align-items:center;gap:9px;background:#0d1118;border:1px solid #29313d;padding:10px 12px;border-radius:12px}.check-row input[type=checkbox]{accent-color:var(--blue);width:18px;height:18px}.modal-backdrop{position:fixed;inset:0;z-index:100;background:#000a;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal-backdrop.open{display:flex}.modal{width:min(620px,100%);max-height:86vh;overflow:auto;background:#11151d;border:1px solid #394352;border-radius:24px 24px 18px 18px;padding:18px;box-shadow:var(--shadow)}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.modal-head h3{margin:0;font-size:18px}.food-search-result{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#0b0f15;border:1px solid #2c3440;border-radius:12px;padding:11px;width:100%;text-align:left;color:var(--text)}.food-search-result strong{font-size:12px}.food-search-result small{display:block;color:var(--muted);font-size:10px}.bottom-nav{position:fixed;z-index:50;left:0;right:0;bottom:0;background:#0b0d13f5;border-top:1px solid #29303b;backdrop-filter:blur(18px);padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}.nav-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;max-width:700px;margin:auto}.nav-btn{border:0;border-radius:13px;background:transparent;color:#8992a0;padding:6px 2px;font-size:9px;font-weight:750}.nav-btn .ico{display:block;font-size:19px;line-height:1.2;margin-bottom:3px}.nav-btn.active{background:#12263b;color:#58adff}.toast{position:fixed;z-index:120;bottom:94px;left:50%;transform:translateX(-50%);background:#f3f7fc;color:#121820;padding:11px 16px;border-radius:12px;font-size:12px;font-weight:800;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s;max-width:calc(100% - 32px);text-align:center}.toast.show{opacity:1}.hide{display:none!important}.footnote{font-size:10px;color:var(--muted);line-height:1.5;margin-top:10px}.divider{height:1px;background:var(--line);margin:14px 0}
+:root{color-scheme:dark;--bg:#080a0f;--surface:#12151c;--surface2:#1a1e27;--surface3:#222834;--line:#2b313d;--text:#f5f7fb;--muted:#9299a6;--blue:#168cff;--blue2:#0879e8;--green:#32d583;--orange:#ff9b45;--red:#ff647c;--yellow:#ffd166;--radius:22px;--shadow:0 12px 36px #0005}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.45}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:980px;margin:0 auto;min-height:100vh;padding-bottom:106px}.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#080a0fee;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10}.brand{display:flex;align-items:center;gap:11px}.brandmark{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#42a5ff,#0875e4);display:grid;place-items:center;font-weight:950;font-size:18px;box-shadow:0 6px 18px #168cff33}.brandname{font-weight:900;letter-spacing:.08em}.brandname span{color:var(--blue)}.brandmeta{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}.offline{font-size:10px;color:#b8c0cc;border:1px solid var(--line);padding:6px 9px;border-radius:99px}.main{padding:20px}.page{display:none;animation:fade .18s ease}.page.active{display:block}@keyframes fade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}.eyebrow{color:var(--blue);font-size:10px;font-weight:850;letter-spacing:.18em;text-transform:uppercase}.heading{font-size:clamp(27px,5vw,37px);font-weight:850;letter-spacing:-.045em;line-height:1.12;margin:7px 0}.sub{color:var(--muted);margin:5px 0 18px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:25px 0 12px}.section-title h2{font-size:19px;letter-spacing:-.025em;margin:0}.section-title .hint{font-size:11px;color:var(--muted)}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:17px;box-shadow:var(--shadow)}.card+.card{margin-top:12px}.grid{display:grid;gap:12px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr));margin:17px 0}.metric-label{color:var(--muted);font-size:11px}.metric{font-size:clamp(24px,5vw,31px);font-weight:850;letter-spacing:-.05em;margin:4px 0}.metric small{font-size:12px;color:var(--muted);font-weight:650;letter-spacing:0}.progress{height:7px;background:#303641;border-radius:99px;overflow:hidden;margin-top:10px}.progress span{height:100%;display:block;background:var(--blue);border-radius:99px}.macro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.macro{background:#0c0f15;border:1px solid #282e39;border-radius:15px;padding:11px}.macro-name{color:var(--muted);font-size:10px}.macro-value{font-size:19px;font-weight:800;margin-top:3px}.macro-track{height:5px;background:#303641;border-radius:99px;margin-top:8px;overflow:hidden}.macro-track span{display:block;height:100%;border-radius:99px;background:var(--blue)}.btn{border:0;border-radius:14px;padding:12px 15px;font-weight:800;background:var(--blue);color:white;box-shadow:0 7px 18px #168cff24}.btn:active{transform:scale(.985)}.btn.secondary{background:var(--surface3);border:1px solid var(--line);box-shadow:none;color:var(--text)}.btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none;color:var(--text)}.btn.danger{background:#401e29;color:#ffc2ce;box-shadow:none}.btn.small{padding:8px 11px;font-size:12px;border-radius:11px}.btn.block{width:100%}.btn:disabled{opacity:.45;cursor:not-allowed}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.row.wrap{flex-wrap:wrap}.muted{color:var(--muted)}.tiny{font-size:11px;color:var(--muted)}.badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:99px;padding:5px 9px;font-size:10px;color:#c5ccd7}.badge.blue{border-color:#145da2;background:#0b2d4c;color:#9bd0ff}.badge.green{border-color:#176342;background:#0d3325;color:#9cf0c5}.badge.orange{border-color:#7d4c20;background:#3c2917;color:#ffd3a3}.hero-card{background:linear-gradient(130deg,#101f32,#11151d 70%);border:1px solid #1b3b5d;border-radius:24px;padding:19px;position:relative;overflow:hidden}.hero-card:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#168cff12;right:-75px;top:-90px}.hero-title{font-size:25px;font-weight:850;letter-spacing:-.04em}.hero-card .btn{position:relative;z-index:1}.meal-list,.history-list{display:flex;flex-direction:column;gap:8px}.meal-row,.history-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#0c0f15;border:1px solid #272e38;border-radius:14px;padding:12px}.meal-row strong,.history-row strong{font-size:13px}.meal-row small,.history-row small{display:block;font-size:10px;color:var(--muted);margin-top:3px}.meal-row .right,.history-row .right{text-align:right;white-space:nowrap}.empty{padding:19px;text-align:center;border:1px dashed #3a414e;color:var(--muted);border-radius:15px;font-size:12px}.tabs{display:flex;gap:8px;overflow-x:auto;padding:2px 0 7px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{flex:0 0 auto;background:#121720;color:#9da5b1;border:1px solid var(--line);padding:10px 15px;border-radius:99px;font-size:12px;font-weight:800}.tab.active{background:#0c3154;border-color:#146eb7;color:#a8d8ff}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field.full{grid-column:1/-1}.field label{color:#b5bdc9;font-size:11px;font-weight:750}.field input,.field select,.field textarea{width:100%;min-width:0;background:#0b0e14;border:1px solid #343b47;border-radius:12px;padding:11px 12px;color:var(--text);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue)}.field textarea{min-height:75px;resize:vertical}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.routine-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.routine-card{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:14px;text-align:left;color:var(--text)}.routine-card.active{border-color:var(--blue);background:#0c2137;box-shadow:inset 0 0 0 1px #168cff35}.routine-name{font-size:17px;font-weight:850}.routine-groups{font-size:10px;color:var(--muted);margin-top:3px}.routine-stat{font-size:11px;margin-top:12px;color:#d1d7e0}.exercise-list{display:flex;flex-direction:column;gap:9px}.exercise-card{background:#0d1118;border:1px solid #29313d;border-radius:16px;padding:13px}.exercise-top{display:flex;align-items:center;justify-content:space-between;gap:9px}.exercise-name{font-size:14px;font-weight:850}.exercise-muscle{font-size:10px;color:var(--muted);margin-top:2px}.exercise-prescription{font-size:11px;color:#b8c2d1;margin-top:10px}.exercise-set-count{background:#202733;border-radius:99px;padding:5px 8px;font-size:10px;font-weight:800}.workout-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.timer{font-variant-numeric:tabular-nums;font-size:27px;font-weight:850;letter-spacing:.03em}.set-table{display:grid;grid-template-columns:35px 1fr 1fr 1fr 36px;gap:6px;align-items:center;margin-top:10px}.set-head{font-size:9px;color:var(--muted);text-align:center}.set-kind{display:grid;place-items:center;width:30px;height:32px;border-radius:10px;background:#202733;font-size:11px;font-weight:850}.set-kind.warm{color:var(--yellow);background:#3b301a}.set-input{width:100%;min-width:0;text-align:center;border:1px solid #353d49;background:#090c12;color:white;padding:9px 2px;border-radius:10px;font-size:13px}.set-done{width:34px;height:34px;border:1px solid #424a57;background:#202733;color:#9aa3af;border-radius:10px;font-size:15px;display:grid;place-items:center}.set-done.done{background:#165b38;border-color:#32d583;color:#b4ffd6}.exercise-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.rest-banner{background:#0c2b49;border:1px solid #14558b;border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0}.rest-banner strong{font-size:22px;font-variant-numeric:tabular-nums}.recovery-box{background:#392714;border:1px solid #75491d;color:#ffdfb5;padding:12px;border-radius:14px;font-size:11px;line-height:1.5;margin:12px 0}.chart-wrap{width:100%;overflow:hidden}.chart{width:100%;height:auto;display:block}.measurement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.measurement{background:#0d1118;border:1px solid #2b323e;border-radius:15px;padding:13px}.measurement strong{font-size:20px}.measurement small{display:block;color:var(--muted);font-size:10px}.check-row{display:flex;align-items:center;gap:9px;background:#0d1118;border:1px solid #29313d;padding:10px 12px;border-radius:12px}.check-row input[type=checkbox]{accent-color:var(--blue);width:18px;height:18px}.modal-backdrop{position:fixed;inset:0;z-index:100;background:#000a;display:none;align-items:flex-end;justify-content:center;padding:12px}.modal-backdrop.open{display:flex}.modal{width:min(620px,100%);max-height:86vh;overflow:auto;background:#11151d;border:1px solid #394352;border-radius:24px 24px 18px 18px;padding:18px;box-shadow:var(--shadow)}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.modal-head h3{margin:0;font-size:18px}.historic-set-remove{width:32px;height:32px;border:1px solid #63303b;background:#351b24;color:#ffc2ce;border-radius:9px;font-weight:900}.volume-row{margin:13px 0}.volume-track{height:8px;background:#2b313d;border-radius:99px;overflow:hidden;margin-top:7px}.volume-track span{display:block;height:100%;background:linear-gradient(90deg,#168cff,#32d583);border-radius:99px}.volume-meta{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:11px}.volume-change{font-weight:800}.volume-change.up{color:#69daa1}.volume-change.down{color:#ff9b9b}.volume-change.flat{color:#b7c0ce}.tdee-callout{border:1px solid #263e59;background:#0d1b2b;border-radius:15px;padding:14px}.tdee-callout strong{font-size:13px}.tdee-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.tdee-stat{background:#09111b;border:1px solid #233345;border-radius:12px;padding:10px}.tdee-stat small{display:block;color:var(--muted);font-size:10px}.tdee-stat b{font-size:17px}.cache-label{font-size:10px;color:var(--muted);margin:3px 0 7px}.food-search-result{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#0b0f15;border:1px solid #2c3440;border-radius:12px;padding:11px;width:100%;text-align:left;color:var(--text)}.food-search-result strong{font-size:12px}.food-search-result small{display:block;color:var(--muted);font-size:10px}.bottom-nav{position:fixed;z-index:50;left:0;right:0;bottom:0;background:#0b0d13f5;border-top:1px solid #29303b;backdrop-filter:blur(18px);padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}.nav-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;max-width:700px;margin:auto}.nav-btn{border:0;border-radius:13px;background:transparent;color:#8992a0;padding:6px 2px;font-size:9px;font-weight:750}.nav-btn .ico{display:block;font-size:19px;line-height:1.2;margin-bottom:3px}.nav-btn.active{background:#12263b;color:#58adff}.toast{position:fixed;z-index:120;bottom:94px;left:50%;transform:translateX(-50%);background:#f3f7fc;color:#121820;padding:11px 16px;border-radius:12px;font-size:12px;font-weight:800;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s;max-width:calc(100% - 32px);text-align:center}.toast.show{opacity:1}.hide{display:none!important}.footnote{font-size:10px;color:var(--muted);line-height:1.5;margin-top:10px}.divider{height:1px;background:var(--line);margin:14px 0}
 @media(min-width:760px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.routine-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.hero-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:12px}.main{padding:26px}.bottom-nav{left:50%;right:auto;transform:translateX(-50%);width:min(720px,calc(100% - 28px));bottom:12px;border:1px solid #343b47;border-radius:20px;padding:8px;box-shadow:var(--shadow)}.app{padding-bottom:120px}}
 @media(max-width:420px){.main{padding:15px}.topbar{padding:12px 15px}.card{padding:14px}.formgrid{grid-template-columns:1fr}.set-table{grid-template-columns:30px 1fr 1fr 1fr 34px;gap:4px}.set-input{font-size:12px}.routine-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.offline{display:none}}
 
@@ -101,9 +101,11 @@
   <div class="eyebrow">TENDENCIAS · RENDIMIENTO</div><h1 class="heading">Tu progreso</h1><p class="sub">Compara tendencias semanales y rendimiento.</p>
   <div class="measurement-grid"><div class="measurement"><small>Peso promedio · 7 días</small><strong id="progressAvg">— kg</strong><small id="progressWeightCount">Sin registros esta semana</small></div><div class="measurement"><small>Última cintura</small><strong id="progressWaist">— cm</strong><small>Medición semanal</small></div></div>
   <div class="section-title"><h2>Informe semanal</h2><span class="hint">Actualizado con tus registros</span></div><div class="card" id="weeklyReport"><div class="empty">El informe aparecerá cuando registres peso, comidas y entrenamientos.</div></div>
+  <div class="section-title"><h2>Calibración energética</h2><span class="hint">Tendencia real · 14 días</span></div><div class="card" id="tdeeNotice"><div class="empty">Registra peso y alimentación para calibrar tu gasto energético.</div></div>
   <div class="section-title"><h2>Evolución de peso</h2><span class="hint">Últimos registros</span></div><div class="card"><div id="weightChart" class="chart-wrap"><div class="empty">Registra al menos dos pesos para ver la gráfica.</div></div></div>
   <div class="section-title"><h2>Medición semanal</h2><span class="hint">Idealmente el mismo día</span></div><div class="card"><div class="formgrid"><div class="field"><label>Cintura (cm)</label><input id="weeklyWaist" type="number" step="0.5" inputmode="decimal" placeholder="Ej. 82.0"></div><div class="field"><label>Promedio 7 días (kg)</label><input id="weeklyAvg" readonly placeholder="Se calcula con tus pesajes"></div><div class="field full"><label>Notas</label><textarea id="weeklyNotes" placeholder="Energía, hambre, rendimiento, partido de fútbol…"></textarea></div></div><div class="actions"><button class="btn block" onclick="saveWeeklyLog()">Guardar medición semanal</button></div></div><div class="section-title"><h2>Historial de mediciones</h2></div><div id="weeklyHistory" class="history-list"><div class="empty">Aún no hay mediciones semanales.</div></div>
   <div class="section-title"><h2>Volumen de entrenamiento</h2><span class="hint">Últimos 7 días</span></div><div id="volumeSummary" class="card"><div class="empty">Registra sesiones para ver tu volumen.</div></div>
+  <div class="section-title"><h2>Volumen por grupo muscular</h2><span class="hint">Semana actual vs. anterior</span></div><div id="muscleVolumeComparison" class="card"><div class="empty">Registra entrenamientos para comparar el volumen muscular.</div></div>
   <div class="section-title"><h2>Historial de check-ins</h2></div><div id="checkinHistory" class="history-list"><div class="empty">Aún no hay check-ins.</div></div>
 </section>
 
@@ -198,7 +200,7 @@ const TEMPLATES={
  Lower:{label:'LOWER',muscles:'Cuádriceps · Isquios · Glúteos · Pantorrillas',desc:'Pierna completa',exercises:['Sentadilla Smith','Peso muerto rumano','Prensa de piernas','Curl femoral','Extensión de cuádriceps','Elevación de pantorrilla','Crunch en polea']},
  Full:{label:'FULL BODY',muscles:'Cuerpo completo',desc:'Sesión global',exercises:['Sentadilla Smith','Press inclinado con mancuernas','Remo sentado en polea','Peso muerto rumano','Elevación lateral','Curl de bíceps','Extensión de tríceps en polea']}
 };
-const DEFAULTS={profile:{weight:71,calories:2300,protein:140,steps:9000,sleep:7.5,sessions:4,football:'Sábado',routine:'PPL + Upper',trainingDays:['Lunes','Martes','Jueves','Viernes'],phase:'Calibración',goalWeight:67,age:null,sex:'',heightCm:null,waistCm:null,activityFactor:1.55,goalMode:'loss',wakeTime:'06:30',workStart:'08:00',workEnd:'17:00',trainingTime:'18:30',bedTime:'23:00',onboardingComplete:false,onboardingDismissed:false,onboardingVersion:'',nickname:'',bodyFatPct:null,goalPriority:'general',trainingExperience:'',trainingPreference:'auto',trainingEnvironment:'gym',trainingDaysAvailable:[],weeklyPlanMap:{},recommendedSessions:0,sessionMinutes:60,limitations:'',workType:'desk',workDays:['Lunes','Martes','Miércoles','Jueves','Viernes'],stepsBand:'5-8k',footballDay:'none',footballMinutes:0,footballTime:'',otherActivities:'',otherActivityDays:0,otherActivityMinutes:0,averageSleep:7,sleepQuality:'normal',mealCount:4,dietaryPattern:'omnivore',foodRestrictions:'',breakfastTime:'',lunchTime:'',dinnerTime:'',mealPrep:'',workBreakTime:'',trainingRecommendation:''},days:{},workouts:[],checks:[],weeklyLogs:[],waist:null,customExercises:{},exerciseBaselines:[{name:'Press inclinado con mancuernas',sets:'34 kg · 7/8/6 reps',date:'2026-11-10'},{name:'Sentadilla Smith',sets:'100 kg · 8/10/12 reps',date:'2026-11-04'},{name:'Remo sentado en polea',sets:'73 kg · 8/8/10 reps',date:'2026-11-07'},{name:'Prensa de piernas',sets:'240 kg · 11 reps',date:'2026-11-04'}],templates:structuredClone(TEMPLATES),activeWorkout:null};
+const DEFAULTS={profile:{weight:71,calories:2300,protein:140,steps:9000,sleep:7.5,sessions:4,football:'Sábado',routine:'PPL + Upper',trainingDays:['Lunes','Martes','Jueves','Viernes'],phase:'Calibración',goalWeight:67,age:null,sex:'',heightCm:null,waistCm:null,activityFactor:1.55,goalMode:'loss',wakeTime:'06:30',workStart:'08:00',workEnd:'17:00',trainingTime:'18:30',bedTime:'23:00',onboardingComplete:false,onboardingDismissed:false,onboardingVersion:'',nickname:'',bodyFatPct:null,goalPriority:'general',trainingExperience:'',trainingPreference:'auto',trainingEnvironment:'gym',trainingDaysAvailable:[],weeklyPlanMap:{},recommendedSessions:0,sessionMinutes:60,limitations:'',workType:'desk',workDays:['Lunes','Martes','Miércoles','Jueves','Viernes'],stepsBand:'5-8k',footballDay:'none',footballMinutes:0,footballTime:'',otherActivities:'',otherActivityDays:0,otherActivityMinutes:0,averageSleep:7,sleepQuality:'normal',mealCount:4,dietaryPattern:'omnivore',foodRestrictions:'',breakfastTime:'',lunchTime:'',dinnerTime:'',mealPrep:'',workBreakTime:'',trainingRecommendation:'',lastTDEECalibrationKey:'',lastTDEEAdjustmentDate:''},days:{},workouts:[],checks:[],weeklyLogs:[],foodCache:[],waist:null,customExercises:{},exerciseBaselines:[{name:'Press inclinado con mancuernas',sets:'34 kg · 7/8/6 reps',date:'2026-11-10'},{name:'Sentadilla Smith',sets:'100 kg · 8/10/12 reps',date:'2026-11-04'},{name:'Remo sentado en polea',sets:'73 kg · 8/8/10 reps',date:'2026-11-07'},{name:'Prensa de piernas',sets:'240 kg · 11 reps',date:'2026-11-04'}],templates:structuredClone(TEMPLATES),activeWorkout:null};
 
 let hasSavedProfileRecord=false;
 function loadData(){
@@ -211,6 +213,7 @@ function loadData(){
     d.workouts=Array.isArray(saved.workouts)?saved.workouts:[];
     d.checks=Array.isArray(saved.checks)?saved.checks:[];
     d.weeklyLogs=Array.isArray(saved.weeklyLogs)?saved.weeklyLogs:[];
+    d.foodCache=Array.isArray(saved.foodCache)?saved.foodCache.slice(0,50):[];
     d.customExercises=saved.customExercises||{};
     d.templates={...structuredClone(TEMPLATES),...(saved.templates||{})};
     return d;
@@ -638,31 +641,66 @@ function cancelWorkout(){if(!active)return;if(!confirm('¿Cancelar esta sesión?
 function editWorkout(index){
   const w=data.workouts[index];if(!w)return;
   editingWorkoutIndex=index;
+  editingWorkoutDraft=structuredClone(w);
+  editingWorkoutDraft.exercises=Array.isArray(editingWorkoutDraft.exercises)?editingWorkoutDraft.exercises:[];
+  editingWorkoutDraft.exercises.forEach(ex=>{
+    if(!Array.isArray(ex.sets))ex.sets=[{type:'working',weight:ex.weight??'',reps:ex.reps??'',rir:ex.rir??'',done:true}];
+  });
+  renderWorkoutEditModal();
+  document.getElementById('workoutEditModal').classList.add('open');
+}
+let editingWorkoutDraft=null;
+function renderWorkoutEditModal(){
+  if(!editingWorkoutDraft)return;
+  const w=editingWorkoutDraft;
   document.getElementById('workoutEditTitle').textContent=`Editar ${w.split||w.name||'entrenamiento'} · ${w.date||''}`;
   const content=document.getElementById('workoutEditContent');
   content.innerHTML=(w.exercises||[]).map((ex,ei)=>{
     const sets=Array.isArray(ex.sets)?ex.sets:[];
-    return `<div class="exercise-card"><strong>${escapeHTML(ex.name||ex.exercise||`Ejercicio ${ei+1}`)}</strong><div class="tiny">${escapeHTML(ex.group||'')} · ${sets.length} series</div><div class="set-table"><span class="set-head">SERIE</span><span class="set-head">KG</span><span class="set-head">REPS</span><span class="set-head">RIR</span><span class="set-head">ESTADO</span></div>${sets.map((set,si)=>`<div class="set-table"><span class="set-kind ${set.type==='warmup'?'warm':''}">${set.type==='warmup'?'W':si+1}</span><input class="set-input edit-set-input" type="number" min="0" step="0.5" inputmode="decimal" aria-label="Peso kg" data-ex="${ei}" data-set="${si}" data-field="weight" placeholder="kg" value="${escapeHTML(set.weight??'')}"><input class="set-input edit-set-input" type="number" min="0" step="1" inputmode="numeric" aria-label="Repeticiones" data-ex="${ei}" data-set="${si}" data-field="reps" placeholder="reps" value="${escapeHTML(set.reps??'')}"><input class="set-input edit-set-input" type="number" min="0" max="10" step="0.5" inputmode="decimal" aria-label="RIR" data-ex="${ei}" data-set="${si}" data-field="rir" placeholder="RIR" value="${escapeHTML(set.rir??'')}"><span class="set-kind">${set.done?'✓':'—'}</span></div>`).join('')}</div>`;
-  }).join('')||'<div class="empty">Esta sesión no contiene detalle de series editable.</div>';
-  document.getElementById('workoutEditModal').classList.add('open');
+    return `<div class="exercise-card"><strong>${escapeHTML(ex.name||ex.exercise||`Ejercicio ${ei+1}`)}</strong><div class="tiny">${escapeHTML(ex.group||'')} · ${sets.length} series</div><div class="set-table"><span class="set-head">SERIE</span><span class="set-head">KG</span><span class="set-head">REPS</span><span class="set-head">RIR</span><span class="set-head">QUITAR</span></div>${sets.map((set,si)=>`<div class="set-table"><span class="set-kind ${set.type==='warmup'?'warm':''}">${set.type==='warmup'?'W':si+1}</span><input class="set-input edit-set-input" type="number" min="0" step="0.5" inputmode="decimal" aria-label="Peso kg" data-ex="${ei}" data-set="${si}" data-field="weight" placeholder="kg" value="${escapeHTML(set.weight??'')}"><input class="set-input edit-set-input" type="number" min="0" step="1" inputmode="numeric" aria-label="Repeticiones" data-ex="${ei}" data-set="${si}" data-field="reps" placeholder="reps" value="${escapeHTML(set.reps??'')}"><input class="set-input edit-set-input" type="number" min="0" max="10" step="0.5" inputmode="decimal" aria-label="RIR" data-ex="${ei}" data-set="${si}" data-field="rir" placeholder="RIR" value="${escapeHTML(set.rir??'')}"><button class="historic-set-remove" type="button" aria-label="Eliminar serie ${si+1}" onclick="removeSetFromHistoricExercise(${ei},${si})">×</button></div>`).join('')}<div class="actions"><button class="btn secondary small" type="button" onclick="addSetToHistoricExercise(${ei})">+ Añadir serie</button></div></div>`;
+  }).join('')||'<div class="empty">Esta sesión no contiene ejercicios editables.</div>';
 }
-function closeWorkoutEditor(){document.getElementById('workoutEditModal')?.classList.remove('open');editingWorkoutIndex=null}
-function saveWorkoutEdits(){
-  if(editingWorkoutIndex===null)return;
-  const w=data.workouts[editingWorkoutIndex];if(!w)return;
+function captureHistoricEditInputs(){
+  if(!editingWorkoutDraft)return false;
   const inputs=[...document.querySelectorAll('.edit-set-input')];
   for(const input of inputs){
     const field=input.dataset.field,raw=input.value.trim();
-    if(raw!==''&&!Number.isFinite(Number(raw))){toast('Hay un valor no válido');return}
-    if(raw!==''&&Number(raw)<0){toast('Peso, repeticiones y RIR no pueden ser negativos');return}
-    if(field==='rir'&&raw!==''&&Number(raw)>10){toast('El RIR debe estar entre 0 y 10');return}
+    if(raw!==''&&!Number.isFinite(Number(raw))){toast('Hay un valor no válido');return false}
+    if(raw!==''&&Number(raw)<0){toast('Peso, repeticiones y RIR no pueden ser negativos');return false}
+    if(field==='rir'&&raw!==''&&Number(raw)>10){toast('El RIR debe estar entre 0 y 10');return false}
   }
   inputs.forEach(input=>{
-    const ex=w.exercises[Number(input.dataset.ex)],set=ex?.sets?.[Number(input.dataset.set)];if(!set)return;
+    const ex=editingWorkoutDraft.exercises?.[Number(input.dataset.ex)],set=ex?.sets?.[Number(input.dataset.set)];if(!set)return;
     const raw=input.value.trim();set[input.dataset.field]=raw===''?'':num(raw);
   });
+  return true;
+}
+function addSetToHistoricExercise(exIndex){
+  if(editingWorkoutIndex===null||!editingWorkoutDraft)return;
+  if(!captureHistoricEditInputs())return;
+  const ex=editingWorkoutDraft.exercises?.[exIndex];if(!ex)return;
+  if(!Array.isArray(ex.sets))ex.sets=[];
+  const last=ex.sets[ex.sets.length-1]||{};
+  ex.sets.push({type:'working',weight:last.weight??'',reps:last.reps??'',rir:last.rir??'',done:true});
+  renderWorkoutEditModal();
+}
+function removeSetFromHistoricExercise(exIndex,setIndex){
+  if(editingWorkoutIndex===null||!editingWorkoutDraft)return;
+  if(!captureHistoricEditInputs())return;
+  const ex=editingWorkoutDraft.exercises?.[exIndex];if(!ex||!Array.isArray(ex.sets)||!ex.sets[setIndex])return;
+  if(ex.sets.length<=1){toast('El ejercicio debe conservar al menos una serie');return}
+  ex.sets.splice(setIndex,1);
+  renderWorkoutEditModal();
+}
+function closeWorkoutEditor(){document.getElementById('workoutEditModal')?.classList.remove('open');editingWorkoutIndex=null;editingWorkoutDraft=null}
+function saveWorkoutEdits(){
+  if(editingWorkoutIndex===null||!editingWorkoutDraft)return;
+  if(!captureHistoricEditInputs())return;
+  const w=editingWorkoutDraft;
+  if((w.exercises||[]).some(ex=>!Array.isArray(ex.sets)||ex.sets.length===0)){toast('Cada ejercicio debe conservar al menos una serie');return}
   w.editedAt=new Date().toISOString();
-  closeWorkoutEditor();save();toast('Entrenamiento corregido');
+  data.workouts[editingWorkoutIndex]=w;
+  closeWorkoutEditor();save();toast('Entrenamiento y estructura de series corregidos');
 }
 function deleteWorkout(id){if(!confirm('¿Eliminar esta sesión de entrenamiento?'))return;data.workouts=data.workouts.filter((w,idx)=>(w.id||w.start||String(idx))!==String(id));save();toast('Entrenamiento eliminado')}
 
@@ -682,47 +720,62 @@ function renderNutrition(){
   document.getElementById('nutritionMeals').innerHTML=meals.length?meals.map((m,i)=>`<div class="meal-row"><div><strong>${escapeHTML(m.name)}</strong><small>${escapeHTML(m.type)} · ${fmt(m.grams||100)} g · P ${fmt(m.p)} · C ${fmt(m.c)} · G ${fmt(m.f)}</small></div><div class="right"><strong>${Math.round(m.kcal)} kcal</strong><button class="btn danger small" style="margin-top:5px" onclick="deleteFood(${i})">Quitar</button></div></div>`).join(''):'<div class="empty">Todavía no hay alimentos registrados hoy.</div>';
 }
 
+function cacheFoodProduct(product,persist=true){
+  if(!product||!String(product.name||'').trim())return;
+  if(!Array.isArray(data.foodCache))data.foodCache=[];
+  const clean={name:String(product.name).trim(),brand:String(product.brand||''),kcal:Math.max(0,num(product.kcal)),p:Math.max(0,num(product.p)),c:Math.max(0,num(product.c)),f:Math.max(0,num(product.f)),updatedAt:today()};
+  const key=clean.name.toLocaleLowerCase('es-MX');
+  const idx=data.foodCache.findIndex(p=>String(p.name||'').trim().toLocaleLowerCase('es-MX')===key);
+  if(idx>=0)data.foodCache.splice(idx,1);
+  data.foodCache.unshift(clean);
+  if(data.foodCache.length>50)data.foodCache.length=50;
+  if(persist)save({render:false});
+}
+function renderSearchResults(products,box,label){
+  box.replaceChildren();
+  const caption=document.createElement('div');caption.className='cache-label';caption.textContent=label;box.append(caption);
+  if(!products.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='No hay coincidencias guardadas para esta búsqueda.';box.append(empty);return}
+  products.forEach(product=>{
+    const btn=document.createElement('button');btn.className='food-search-result';btn.type='button';
+    const left=document.createElement('span'),name=document.createElement('strong'),detail=document.createElement('small'),right=document.createElement('strong');
+    name.textContent=product.name;detail.textContent=`${product.brand||'Producto'} · 100 g · P ${fmt(product.p)} / C ${fmt(product.c)} / G ${fmt(product.f)}`;right.textContent=`${Math.round(num(product.kcal))} kcal`;
+    left.append(name,detail);btn.append(left,right);
+    btn.addEventListener('click',()=>selectOFFFood(product.name,product));box.append(btn);
+  });
+}
 async function searchFoodOFF(){
   const q=document.getElementById('foodSearch').value.trim();
   if(q.length<2){toast('Escribe al menos dos letras');return}
   if(Date.now()-foodSearchLock<1500){toast('Espera un momento antes de buscar');return}
   foodSearchLock=Date.now();
-  const box=document.getElementById('foodSearchResults');
-  box.classList.remove('hide');
+  const box=document.getElementById('foodSearchResults');box.classList.remove('hide');
+  const localMatches=(data.foodCache||[]).filter(p=>String(p.name||'').toLocaleLowerCase('es-MX').includes(q.toLocaleLowerCase('es-MX'))).slice(0,10);
+  if(!navigator.onLine){renderSearchResults(localMatches,box,'Guardados localmente · sin conexión');return}
   box.innerHTML='<div class="empty">Buscando alimentos…</div>';
   try{
-    const url=`https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(q)}&search_simple=1&action=process&json=1&page_size=6&fields=product_name,brands,nutriments,code`;
+    const url=`https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(q)}&search_simple=1&action=process&json=1&page_size=8&fields=product_name,brands,nutriments,code`;
     const response=await fetch(url,{headers:{Accept:'application/json'}});
     if(!response.ok)throw new Error('HTTP '+response.status);
     const result=await response.json();
-    const products=(result.products||[]).filter(p=>p.product_name&&p.nutriments);
-    if(!products.length){box.innerHTML='<div class="empty">No se encontraron productos.</div>';return}
-    box.replaceChildren();
-    products.forEach(p=>{
-      const nut=p.nutriments||{};
-      let kcal=Number(nut['energy-kcal_100g']);
-      if(!Number.isFinite(kcal)||kcal<0){const kj=Number(nut.energy_100g);kcal=kj>0?kj/4.184:0}
-      const values={kcal,p:Number(nut.proteins_100g)||0,c:Number(nut.carbohydrates_100g)||0,f:Number(nut.fat_100g)||0};
-      const btn=document.createElement('button');
-      btn.className='food-search-result';
-      const left=document.createElement('span');
-      const name=document.createElement('strong');
-      name.textContent=p.product_name;
-      const detail=document.createElement('small');
-      detail.textContent=`${p.brands||'Producto'} · 100 g · P ${fmt(values.p)} / C ${fmt(values.c)} / G ${fmt(values.f)}`;
-      left.append(name,detail);
-      const right=document.createElement('strong');
-      right.textContent=`${Math.round(values.kcal)} kcal`;
-      btn.append(left,right);
-      btn.addEventListener('click',()=>selectOFFFood(p.product_name,values));
-      box.append(btn);
-    })
+    const products=(result.products||[]).filter(p=>p.product_name&&p.nutriments).map(p=>{
+      const nut=p.nutriments||{};let kcal=Number(nut['energy-kcal_100g']);
+      if(!Number.isFinite(kcal)||kcal<0){const kj=Number(nut.energy_100g);kcal=Number.isFinite(kj)&&kj>0?kj/4.184:0}
+      return {name:p.product_name,brand:p.brands||'Producto',kcal,p:Number(nut.proteins_100g)||0,c:Number(nut.carbohydrates_100g)||0,f:Number(nut.fat_100g)||0};
+    });
+    products.forEach(p=>cacheFoodProduct(p,false));
+    if(products.length)save({render:false});
+    const merged=[...products],seen=new Set(products.map(p=>p.name.toLocaleLowerCase('es-MX')));
+    localMatches.forEach(p=>{const k=p.name.toLocaleLowerCase('es-MX');if(!seen.has(k)){merged.push(p);seen.add(k)}});
+    renderSearchResults(merged.slice(0,10),box,products.length?'Open Food Facts · también se conservan los últimos productos consultados':'Sin resultados nuevos · coincidencias guardadas localmente');
   }catch(e){
-    box.innerHTML='<div class="empty">No se pudo conectar a Open Food Facts. Puedes registrar manualmente.</div>';
+    if(localMatches.length)renderSearchResults(localMatches,box,'No hay conexión con Open Food Facts · caché local');
+    else {box.replaceChildren();const empty=document.createElement('div');empty.className='empty';empty.textContent='No se pudo conectar y no hay coincidencias en la caché. Puedes registrar el alimento manualmente.';box.append(empty)}
   }
 }
-
-function selectOFFFood(name,values){document.getElementById('foodName').value=name;document.getElementById('foodKcal100').value=fmt(values.kcal);document.getElementById('foodP100').value=fmt(values.p);document.getElementById('foodC100').value=fmt(values.c);document.getElementById('foodF100').value=fmt(values.f);document.getElementById('foodGrams').value=100;document.getElementById('foodSearchResults').classList.add('hide');updateFoodPortion();toast('Valores por 100 g cargados')}
+function selectOFFFood(name,values){
+  document.getElementById('foodName').value=name;document.getElementById('foodKcal100').value=fmt(values.kcal);document.getElementById('foodP100').value=fmt(values.p);document.getElementById('foodC100').value=fmt(values.c);document.getElementById('foodF100').value=fmt(values.f);document.getElementById('foodGrams').value=100;document.getElementById('foodSearchResults').classList.add('hide');
+  cacheFoodProduct({name,brand:values.brand||'',kcal:values.kcal,p:values.p,c:values.c,f:values.f});updateFoodPortion();toast('Valores por 100 g cargados y guardados para uso offline');
+}
 
 function updateFoodPortion(){
   const g=num(document.getElementById('foodGrams').value),factor=g/100,k=factor*num(document.getElementById('foodKcal100').value),p=factor*num(document.getElementById('foodP100').value),c=factor*num(document.getElementById('foodC100').value),f=factor*num(document.getElementById('foodF100').value);
@@ -736,6 +789,7 @@ function addFood(){
   const name=document.getElementById('foodName').value.trim(),portion=updateFoodPortion(),type=document.getElementById('foodType').value;
   if(!name||portion.grams<=0||portion.kcal<0){toast('Completa alimento y porción válida');return}
   currentDay().meals.push({name,kcal:fmt(portion.kcal),p:fmt(portion.p),c:fmt(portion.c),f:fmt(portion.f),grams:portion.grams,type,time:new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'})});
+  if(portion.grams>0)cacheFoodProduct({name,kcal:portion.kcal/(portion.grams/100),p:portion.p/(portion.grams/100),c:portion.c/(portion.grams/100),f:portion.f/(portion.grams/100)},false);
   clearFoodForm();
   save();
   toast('Alimento registrado');
@@ -744,13 +798,103 @@ function addFood(){
 function clearFoodForm(){['foodSearch','foodName','foodKcal100','foodP100','foodC100','foodF100'].forEach(id=>document.getElementById(id).value='');document.getElementById('foodGrams').value=100;document.getElementById('foodSearchResults').classList.add('hide');updateFoodPortion()}
 function deleteFood(i){currentDay().meals.splice(i,1);save();toast('Alimento eliminado')}
 
+function getWeeklyVolumeByGroup(startOffset,endOffset){
+  const from=dateOffset(Math.max(startOffset,endOffset)),to=dateOffset(Math.min(startOffset,endOffset)),groups={};
+  const workouts=data.workouts.filter(w=>w.date>=from&&w.date<=to);
+  workouts.forEach(w=>(w.exercises||[]).forEach(ex=>{
+    const name=ex.name||ex.exercise||'',group=ex.group||EXERCISES[name]?.group||data.customExercises?.[name]?.group||'Otros';
+    const source=Array.isArray(ex.sets)?ex.sets:[];
+    source.filter(set=>set.done!==false&&set.type!=='warmup'&&num(set.weight)>0&&num(set.reps)>0).forEach(set=>{
+      if(!groups[group])groups[group]={volume:0,sets:0,exercises:new Set()};
+      groups[group].volume+=num(set.weight)*num(set.reps);groups[group].sets+=1;groups[group].exercises.add(name||'Ejercicio');
+    });
+  }));
+  Object.values(groups).forEach(g=>{g.volume=Math.round(g.volume);g.exercises=g.exercises.size});
+  return groups;
+}
+function renderMuscleVolumeComparison(){
+  const el=document.getElementById('muscleVolumeComparison');if(!el)return;
+  const current=getWeeklyVolumeByGroup(6,0),previous=getWeeklyVolumeByGroup(13,7),names=[...new Set([...Object.keys(current),...Object.keys(previous)])];
+  if(!names.length){el.innerHTML='<div class="empty">Registra series completadas con peso y repeticiones para comparar las últimas dos semanas.</div>';return}
+  const max=Math.max(1,...names.map(n=>Math.max(current[n]?.volume||0,previous[n]?.volume||0)));
+  names.sort((a,b)=>(current[b]?.volume||0)-(current[a]?.volume||0));
+  const totalCurrent=names.reduce((sum,n)=>sum+(current[n]?.volume||0),0),totalPrevious=names.reduce((sum,n)=>sum+(previous[n]?.volume||0),0);
+  const rows=names.map(name=>{
+    const a=current[name]?.volume||0,b=previous[name]?.volume||0,sets=current[name]?.sets||0;
+    const pct=b>0?((a-b)/b*100):a>0?null:0;
+    const change=pct===null?'Nuevo':`${pct>0?'+':''}${Math.round(pct)}%`;
+    const cls=pct===null?'flat':pct>2?'up':pct< -2?'down':'flat';
+    return `<div class="volume-row"><div class="volume-meta"><strong>${escapeHTML(name)}</strong><span class="volume-change ${cls}">${change}</span></div><div class="volume-track"><span style="width:${Math.max(1,a/max*100)}%"></span></div><div class="volume-meta muted" style="margin-top:5px"><span>${a.toLocaleString('es-MX')} kg·reps · ${sets} series</span><span>Anterior: ${b.toLocaleString('es-MX')}</span></div></div>`;
+  }).join('');
+  el.innerHTML=`<div class="measurement-grid"><div class="measurement"><small>Volumen actual</small><strong>${totalCurrent.toLocaleString('es-MX')}</strong><small>kg·reps · últimos 7 días</small></div><div class="measurement"><small>Semana anterior</small><strong>${totalPrevious.toLocaleString('es-MX')}</strong><small>kg·reps · 7 días previos</small></div></div><p class="tiny" style="margin:10px 0 0">Comparación de carga externa acumulada (peso × repeticiones) por grupo muscular. Sirve para observar tendencias; no equivale por sí sola a estímulo efectivo ni compara perfectamente máquinas y ejercicios distintos.</p>${rows}`;
+}
+function getWeightStats(from,to){
+  const byDate=new Map();
+  data.checks.filter(c=>num(c.weight)>0&&c.date>=from&&c.date<=to).forEach(c=>byDate.set(c.date,num(c.weight)));
+  const values=[...byDate.values()];return {count:values.length,avg:values.length?values.reduce((sum,v)=>sum+v,0)/values.length:null};
+}
+function getLoggedIntakeStats(from,to){
+  const days=[];
+  for(let offset=0;offset<=13;offset++){
+    const date=dateOffset(offset);if(date<from||date>to)continue;
+    const meals=data.days?.[date]?.meals||[],kcal=totals(meals).k;
+    if(kcal>0)days.push({date,kcal});
+  }
+  return {count:days.length,avg:days.length?days.reduce((sum,d)=>sum+d.kcal,0)/days.length:null,days};
+}
+function evaluateTDEECalibration(){
+  const currentFrom=dateOffset(6),currentTo=today(),previousFrom=dateOffset(13),previousTo=dateOffset(7);
+  const current=getWeightStats(currentFrom,currentTo),previous=getWeightStats(previousFrom,previousTo);
+  if(current.count<4||previous.count<4)return {status:'insufficient',reason:`Se necesitan al menos 4 pesajes en cada semana. Llevas ${previous.count}/4 en la anterior y ${current.count}/4 en la actual.`,current,previous};
+  const intakeCurrent=getLoggedIntakeStats(currentFrom,currentTo),intakePrevious=getLoggedIntakeStats(previousFrom,previousTo);
+  if(intakeCurrent.count<5||intakePrevious.count<5)return {status:'insufficient',reason:`Para estimar gasto con más sentido, registra alimentos en al menos 5 días de cada semana. Llevas ${intakePrevious.count}/5 días en la anterior y ${intakeCurrent.count}/5 en la actual.`,current,previous};
+  const delta=current.avg-previous.avg,bodyWeight=current.avg||latestWeight(),goal=data.profile.goalMode||'maintenance';
+  const targetDelta=goal==='loss'?-(bodyWeight*.004):goal==='gain'?bodyWeight*.0015:0;
+  const deviation=delta-targetDelta;
+  const adjustment=deviation>.3?-100:deviation<-.3?100:0;
+  const combinedIntake=(intakeCurrent.days.concat(intakePrevious.days));
+  const avgIntake=combinedIntake.reduce((sum,d)=>sum+d.kcal,0)/combinedIntake.length;
+  const observedTDEE=avgIntake-(delta*7700/7);
+  const periodKey=`${previousFrom}_${currentTo}`;
+  const alreadyApplied=data.profile.lastTDEECalibrationKey===periodKey;
+  const lastAdjustmentDate=data.profile.lastTDEEAdjustmentDate||'';
+  const daysSinceAdjustment=lastAdjustmentDate?Math.floor((new Date(`${today()}T12:00:00`)-new Date(`${lastAdjustmentDate}T12:00:00`))/86400000):Infinity;
+  const cooldown=Number.isFinite(daysSinceAdjustment)&&daysSinceAdjustment<14;
+  const status=alreadyApplied?'applied':cooldown?'cooldown':adjustment?'suggestion':'optimal';
+  return {status,reason:'Calibración basada en dos promedios de siete días y registros de alimentación.',current,previous,delta,targetDelta,deviation,adjustment,avgIntake,observedTDEE,loggedDays:intakeCurrent.count+intakePrevious.count,periodKey,goal,cooldownDays:cooldown?14-daysSinceAdjustment:0};
+}
+function renderTDEECalibrationNotice(){
+  const el=document.getElementById('tdeeNotice');if(!el)return;
+  const r=evaluateTDEECalibration();
+  if(r.status==='insufficient'){el.innerHTML=`<div class="row"><strong>Calibración pendiente</strong><span class="badge orange">Faltan datos</span></div><p class="tiny">${escapeHTML(r.reason)}</p><div class="tiny">Usa pesajes en condiciones similares y registra tu alimentación con la mayor consistencia posible. No se cambiará tu meta con muestras incompletas.</div>`;return}
+  const trend=`${r.delta>0?'+':''}${r.delta.toFixed(2)} kg/semana`,target=`${r.targetDelta>0?'+':''}${r.targetDelta.toFixed(2)} kg/semana`;
+  if(r.status==='applied'){
+    el.innerHTML=`<div class="row"><strong>Calibración aplicada en este periodo</strong><span class="badge green">Aplicada</span></div><div class="tdee-stats"><div class="tdee-stat"><small>TDEE observado estimado</small><b>${Math.round(r.observedTDEE).toLocaleString('es-MX')} kcal</b></div><div class="tdee-stat"><small>Variación de peso</small><b>${trend}</b></div></div><p class="tiny">Ya aplicaste el ajuste correspondiente a estas fechas. Reevalúa cuando exista una nueva ventana completa de datos.</p>`;return;
+  }
+  if(r.status==='cooldown'){
+    el.innerHTML=`<div class="row"><strong>Periodo de observación en curso</strong><span class="badge blue">Sin cambios</span></div><div class="tdee-stats"><div class="tdee-stat"><small>TDEE observado estimado</small><b>${Math.round(r.observedTDEE).toLocaleString('es-MX')} kcal</b></div><div class="tdee-stat"><small>Variación semanal</small><b>${trend}</b></div></div><p class="tiny">Ya se aplicó un ajuste recientemente. Espera ${r.cooldownDays} día(s) antes de volver a calibrar, para evitar reaccionar a ventanas de datos que se superponen.</p>`;return;
+  }
+  if(r.adjustment===0){
+    el.innerHTML=`<div class="row"><strong>Tu tendencia está dentro del margen</strong><span class="badge green">Sin cambios</span></div><div class="tdee-stats"><div class="tdee-stat"><small>TDEE observado estimado</small><b>${Math.round(r.observedTDEE).toLocaleString('es-MX')} kcal</b></div><div class="tdee-stat"><small>Variación semanal</small><b>${trend}</b></div><div class="tdee-stat"><small>Ritmo de referencia</small><b>${target}</b></div><div class="tdee-stat"><small>Promedio registrado</small><b>${Math.round(r.avgIntake).toLocaleString('es-MX')} kcal</b></div></div><p class="tiny">No se recomienda modificar tu meta por ahora. La estimación depende de la consistencia del registro de alimentos y pesajes.</p>`;return;
+  }
+  const direction=r.adjustment>0?'aumentar':'reducir',signed=`${r.adjustment>0?'+':''}${r.adjustment}`;
+  el.innerHTML=`<div class="tdee-callout"><div class="row"><strong>Señal de recalibración detectada</strong><span class="badge orange">Revisar</span></div><p class="tiny">La tendencia observada (${trend}) se aleja más de 0.30 kg/semana del ritmo de referencia (${target}). Puedes ${direction} tu objetivo en 100 kcal/día. Es una sugerencia, no un cambio automático.</p><div class="tdee-stats"><div class="tdee-stat"><small>TDEE observado estimado</small><b>${Math.round(r.observedTDEE).toLocaleString('es-MX')} kcal</b></div><div class="tdee-stat"><small>Promedio ingerido registrado</small><b>${Math.round(r.avgIntake).toLocaleString('es-MX')} kcal/día</b></div></div><button class="btn block" style="margin-top:12px" onclick="applyTDEEAdjustment(${r.adjustment})">Aplicar ${signed} kcal a mi meta</button></div><p class="tiny" style="margin-top:9px">Se requieren al menos 4 pesajes y 5 días de alimentación registrados en cada semana. El TDEE es una estimación de balance energético, no una medición directa; registros incompletos pueden sesgarla.</p>`;
+}
+function applyTDEEAdjustment(delta){
+  const res=evaluateTDEECalibration();
+  if(![-100,100].includes(Number(delta))||res.status!=='suggestion'||res.adjustment!==Number(delta)){toast('La recomendación ya no está disponible; actualiza el informe');return}
+  const current=num(data.profile.calories)||2300,next=Math.max(1200,current+Number(delta));
+  if(next===current){toast('La meta ya está en el límite de seguridad configurado');return}
+  data.profile.calories=next;data.profile.lastTDEECalibrationKey=res.periodKey;data.profile.lastTDEEAdjustmentDate=today();data.profile.lastObservedTDEE=Math.round(res.observedTDEE);data.profile.lastTDEEAdjustment=Number(delta);save();toast(`Meta actualizada a ${next} kcal/día`);
+}
+
 function renderProgress(){
   const avg=get7DayAvgWeight(),rows=get7DayWeights(),waist=data.weeklyLogs.find(w=>w.waist)?.waist||data.waist;
   document.getElementById('progressAvg').textContent=avg===null?'— kg':`${avg.toFixed(1)} kg`;
   document.getElementById('progressWeightCount').textContent=rows.length?`${rows.length} pesaje(s) entre ${dateOffset(6)} y ${today()}`:'Sin registros esta semana';
   document.getElementById('progressWaist').textContent=waist?`${waist} cm`:'— cm';
   document.getElementById('weeklyAvg').value=avg??'';
-  renderWeightChart();renderWeeklyReport();
+  renderWeightChart();renderWeeklyReport();renderTDEECalibrationNotice();renderMuscleVolumeComparison();
   document.getElementById('weeklyHistory').innerHTML=data.weeklyLogs.length?[...data.weeklyLogs].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,10).map((w,idx)=>`<div class="history-row"><div><strong>${escapeHTML(w.date)}</strong><small>Promedio 7d: ${w.weightAvg??'—'} kg · ${escapeHTML(w.notes||'Sin notas')}</small></div><div class="right"><strong>${w.waist?`${w.waist} cm`:'—'}</strong><br><button class="btn danger small" style="margin-top:4px" onclick="deleteWeeklyLog('${w.date||idx}')">Quitar</button></div></div>`).join(''):'<div class="empty">Aún no hay mediciones semanales.</div>';
   const start=dateOffset(6);
   const recent=data.workouts.filter(w=>w.date>=start&&w.date<=today());
@@ -848,6 +992,7 @@ function importData(ev){
       data.workouts=Array.isArray(imported.workouts)?imported.workouts:[];
       data.checks=Array.isArray(imported.checks)?imported.checks:[];
       data.weeklyLogs=Array.isArray(imported.weeklyLogs)?imported.weeklyLogs:[];
+      data.foodCache=Array.isArray(imported.foodCache)?imported.foodCache.slice(0,50):[];
       data.customExercises=imported.customExercises&&typeof imported.customExercises==='object'?imported.customExercises:{};
       data.templates={...structuredClone(TEMPLATES),...(imported.templates||{})};
       active=data.activeWorkout||null;
@@ -861,7 +1006,7 @@ function importData(ev){
 function resetData(){if(!confirm('¿Borrar todos los registros locales? Esta acción no se puede deshacer. Exporta un respaldo antes.'))return;clearInterval(sessionInterval);stopRest();data=structuredClone(DEFAULTS);active=null;selectedSplit='Push';save();startOnboarding();toast('Datos locales borrados; completa tu evaluación inicial')}
 
 
-// ---------------- JOS Fit v1.5 · Evaluación inicial adaptativa ----------------
+// ---------------- JOS Fit v1.6 · Evaluación inicial adaptativa ----------------
 const OB_DAY_ORDER=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
 const OB_STEPS=[
  {label:'TU PUNTO DE PARTIDA',title:'Primero, conozcamos tu cuerpo.',desc:'Estos datos permiten estimar tus necesidades y entender desde dónde empiezas. Las medidas de cintura y grasa corporal son opcionales.',fields:[
@@ -1137,7 +1282,7 @@ function renderProfileAssessment(){
 }
 
 function renderInitial(){if(active){startSessionClock()}renderAll();updateFoodPortion();if(!data.profile.onboardingComplete&&!data.profile.onboardingDismissed)startOnboarding();}
-if('serviceWorker' in navigator&&location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=1.5').catch(err=>console.warn('Service Worker no disponible',err)))}
+if('serviceWorker' in navigator&&location.protocol.startsWith('http')){let swRefreshPending=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(swRefreshPending)return;swRefreshPending=true;window.location.reload()});window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=1.6').then(reg=>{if(navigator.onLine)reg.update().catch(()=>{});}).catch(err=>console.warn('Service Worker no disponible',err)))}
 renderInitial();
 </script>
 </body>

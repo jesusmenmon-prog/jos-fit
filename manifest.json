@@ -1,8 +1,8 @@
 {
   "id": "./index.html",
-  "name": "JOS Fit — Evaluación personal, entrenamiento y nutrición",
+  "name": "JOS Fit — Coach adaptativo de entrenamiento y nutrición",
   "short_name": "JOS Fit",
-  "description": "Perfil personal adaptativo, seguimiento de entrenamiento, nutrición, horarios y recuperación.",
+  "description": "Entrenamiento, nutrición, progreso y calibración energética personalizada.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
