@@ -1,4 +1,30 @@
-# JOS Fit PWA v1.6 — Coach adaptativo
+# JOS Fit PWA v1.8 — Hidratación y recordatorios
+
+## Novedades de v1.8
+1. **Versión** corregida en título, pie y comentarios. Service Worker `josfit-pwa-v1-8`, registro `./sw.js?v=1.8`.
+2. **Descanso editable** en el editor de rutina (campo de segundos junto a las series, 15–600 s). Se guarda en `restPrefs` y el temporizador lo usa; también se ajusta con ±15 s dentro de la sesión.
+3. **Agua**: sección en Hoy con +250 ml, +500 ml, +1 L y *Quitar último*. Meta = 35 ml × peso (o la que fijes en Perfil). Se guarda por día (`days[fecha].waterMl`) y se refleja en el check-in (`waterMl`). Incluido en el respaldo JSON.
+4. **Detalle de ejercicio**: toca el nombre de un ejercicio para ver gráfica de mayor peso (3 meses), récords (mayor peso, mejor 1RM estimado Epley, mejor volumen por serie y por sesión) e historial. Estado vacío sin sesiones.
+5. **Límites al editar sesiones**: peso > 500 kg y repeticiones > 100 se rechazan. Además, un peso mayor a 2,5× tu marca anterior en ese ejercicio pide confirmación (así se atrapa 340 kg en lugar de 34).
+6. **Solo día de deporte**: si el único día disponible es el de fútbol, la app explica que no hay días de gym asignados en vez de mostrar 0.
+7. **Recordatorios**: interruptor en Perfil (el permiso se pide con un toque). Fase 1 local: aviso al terminar el descanso y al cerrar la rutina (frases del banco), más un aviso al abrir la app si falta el peso de la mañana. Fase 2 (push programado con OneSignal): código listo pero **desactivado** hasta que pegues tu App ID en `ONESIGNAL_APP_ID` (index.html).
+
+## Activar OneSignal (fase 2)
+1. Crea la app en OneSignal (Web Push → configuración personalizada), con la URL de tu sitio HTTPS.
+2. Pega el App ID en `const ONESIGNAL_APP_ID=''` dentro de `index.html`.
+3. El worker `sw.js` ya importa el SDK de OneSignal cuando se registra con `&push=1`; así conviven el caché offline y el push en un solo worker.
+4. Prueba en iPhone (iOS 16.4+, app instalada en pantalla de inicio) y Android: envía un push de prueba desde el panel y verifica que al tocarlo abre la app y que el modo offline sigue funcionando.
+5. Los avisos programados se redactan en OneSignal con las frases del banco; la app envía etiquetas (hora de entreno, hora de despertar, día de fútbol, objetivo) para segmentar.
+
+## v1.7 (anterior)
+
+## Novedades de v1.7
+1. **Base mexicana de alimentos genéricos** (≈75 alimentos, valores aproximados por 100 g, disponible sin conexión). Al escribir se busca primero en genéricos (con plurales y sinónimos: «tortillas», «tomate», «pescado»), luego en *Mis alimentos* y *Productos comerciales guardados*. El botón **Marcas** consulta Open Food Facts solo para productos de marca.
+2. **Alimentos editables**: botón *Editar* en cada alimento del día (nombre, comida, gramos y macros por 100 g, con vista previa). Puede guardar los valores corregidos en *Mis alimentos*.
+3. **Descansos por ejercicio**: ±15 s en cada ejercicio, se recuerda para próximas sesiones (`restPrefs`, incluido en el respaldo). El temporizador usa hora real (no se desfasa con la pantalla bloqueada), vibra al terminar y muestra el ejercicio.
+4. **Check-in**: guardar de nuevo ya no borra datos previos del día y el formulario se precarga con lo registrado.
+
+## v1.6 (anterior)
 
 ## Novedades de v1.6
 
