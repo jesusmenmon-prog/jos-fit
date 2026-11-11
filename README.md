@@ -1,45 +1,36 @@
-# JOS Fit PWA v1.4 — Evaluación inicial adaptativa
+# JOS Fit PWA v1.5 — Master de estabilidad y adaptación
 
-## Novedad principal: conoce al usuario antes de proponer un plan
-En el primer ingreso aparece una evaluación guiada de seis apartados:
-1. **Punto de partida corporal:** edad, dato opcional para la ecuación metabólica, estatura, peso, cintura y % de grasa opcional.
-2. **Objetivos:** pérdida gradual, mantenimiento/recomposición o ganancia muscular, prioridad y horizonte.
-3. **Entrenamiento:** experiencia, equipo disponible, preferencia de división, tiempo por sesión, días posibles y hora de entrenamiento.
-4. **Trabajo y actividad:** tipo de trabajo, horario, días laborales, pasos, otros deportes y fútbol.
-5. **Sueño y recuperación:** hora de despertar/dormir, duración habitual y calidad.
-6. **Nutrición y horarios:** comidas por día, patrón alimentario, horarios habituales y restricciones/preferencias.
+## Cambios incluidos
 
-## Qué personaliza
-- Recomienda una frecuencia y una división inicial según experiencia, disponibilidad y preferencia.
-- Si se selecciona entrenamiento en casa o sin equipo, adapta los nombres y plantillas iniciales a variantes de mancuernas/bandas o peso corporal; la persona puede seguir editándolas.
-- El horario de comidas respeta las 2–5 comidas seleccionadas y los horarios preferidos introducidos.
-- Distribuye los días disponibles en una semana y guarda un mapa de división por día (p. ej. Upper/Lower o PPL + UL).
-- Usa el trabajo, pasos y deporte para sugerir un factor de actividad inicial conservador.
-- Propone horarios de comidas basados en despertar, trabajo, horario de comida y entrenamiento.
-- Actualiza el perfil energético cuando hay datos suficientes para Mifflin–St Jeor.
-- Permite repetir la evaluación desde Perfil sin borrar entrenamientos, comidas ni mediciones.
+### P0 · Estabilidad y persistencia
+- `go()` cambia de pestaña y renderiza sin volver a registrar listeners; los cinco botones de navegación se enlazan una sola vez durante la inicialización.
+- `getWorkoutPrevious()` consulta primero el historial real y después `exerciseBaselines`, para mostrar las referencias precargadas cuando aún no hay sesiones locales.
+- `updateSet()`, `toggleSet()` y `addSet()` guardan mediante `save()` con el mismo `try/catch` de persistencia. En las ediciones de campos se omite el render para no perder el foco.
+- La autorregulación de sueño usa únicamente el check-in de la fecha actual; no reutiliza un registro antiguo.
+- Las metas iniciales de carbohidratos y grasas aparecen como `—` antes del primer render dinámico.
 
-## Privacidad y funcionamiento
-- La evaluación y los registros se guardan en localStorage del navegador del dispositivo. No se envían a un servidor ni a un modelo de IA.
-- Los campos opcionales se pueden dejar vacíos. En particular, el dato de sexo de fórmula se usa solo para el coeficiente de la ecuación energética. Sin él no se muestra una cifra energética puntual.
-- La opción “Completar después” permite usar la app sin cerrar la evaluación definitivamente; se puede continuar desde Perfil.
-- La evaluación no es un diagnóstico médico. Los cálculos de IMC, metabolismo basal y mantenimiento son referencias aproximadas. Ajustar la energía requiere observar tendencias reales durante 2–3 semanas.
-- Si se anotan lesiones, dolor o restricciones, la app los conserva como contexto; no prescribe rehabilitación ni sustituye valoración profesional.
+### P1 · Adaptación
+- El detector de estancamiento reúne las últimas tres ejecuciones del ejercicio dentro de la misma división, aunque haya rotación de ejercicios entre sesiones.
+- Excluye entrenamientos marcados `recoveryAdjusted` y prioriza los ejercicios multiarticulares frente a accesorios.
+- Solo muestra una señal cuando el volumen no crece más de 2% entre apariciones y el RIR de la más reciente es ≤1.5. Es una alerta orientativa, no una orden de deload.
+- Si la agenda confirma fútbol o el check-in del día lo confirma, se suman 250 kcal como aproximadamente 62 g extra de carbohidratos. El check-in puede anular la agenda seleccionando “No hubo fútbol hoy”. El objetivo semanal se evalúa con metas específicas por día.
 
-## Recomendación inicial de entrenamiento
-- Principiante: hasta 3 sesiones semanales por defecto, normalmente Full Body.
-- Intermedio: hasta 4 sesiones por defecto, normalmente Upper/Lower.
-- Avanzado: hasta 5 sesiones por defecto, normalmente PPL + Upper/Lower.
-- La selección de rutina es editable y respeta la preferencia del usuario cuando es viable. Esta es una heurística inicial, no una valoración presencial de técnica o capacidad.
+### P2 · Control e interfaz
+- Se puede editar una sesión guardada para corregir kg, repeticiones y RIR sin borrar la sesión completa.
+- El historial conserva la acción de eliminar como alternativa.
+- `Escape` cierra el editor de entrenamientos además del editor de rutinas.
 
 ## Instalación
-1. Extrae el ZIP.
-2. Publica el contenido en un hosting HTTPS.
-3. Abre la URL en Safari (iOS) o Chrome (Android).
-4. En iPhone: Compartir → Añadir a pantalla de inicio. En Android: menú ⋮ → Instalar aplicación.
+1. Extrae todos los archivos del ZIP.
+2. Publica el contenido de esta carpeta en un hosting HTTPS.
+3. Abre la URL en Safari (iPhone) o Chrome (Android).
+4. iPhone: Compartir → Añadir a pantalla de inicio. Android: menú ⋮ → Instalar aplicación.
 
-## Migración desde v1.3
-La clave local de datos se mantiene (`josfit_v01_data`). El perfil se amplía sin borrar comidas, entrenamientos o mediciones. Al primer inicio con v1.4 se abrirá la evaluación para completar las nuevas variables. Antes de migrar de dominio o navegador, exporta un respaldo JSON.
+## Migración desde v1.4
+Se conserva la clave local `josfit_v01_data`, por lo que la actualización en el mismo navegador y dominio mantiene los datos existentes. Si cambias de dominio o navegador, exporta un JSON desde Perfil y vuelve a importarlo. El Service Worker usa un caché nuevo `josfit-pwa-v1-5` y elimina el caché anterior en activación.
 
-## Límites actuales
-No existe sincronización automática con Apple Salud/Watch, Hevy o Fitia; tampoco hay backend ni nube. El buscador de Open Food Facts requiere internet. El factor de actividad, horarios y rutina recomendada son estimaciones ajustables.
+## Límites
+- El ajuste por fútbol es una regla fija configurable de +250 kcal (+62 g aproximados de carbohidratos); no estima el gasto real del partido ni su intensidad.
+- El detector de estancamiento requiere tres apariciones válidas del mismo ejercicio con series completadas y RIR registrado; no sustituye el criterio del usuario.
+- Los datos permanecen localmente en el navegador. No hay sincronización con Hevy, Fitia o Apple Salud ni backend en la nube.
+- La instalación y funcionamiento offline deben probarse en el dominio HTTPS final; no se debe asumir que el archivo abierto como `file://` instala el Service Worker.

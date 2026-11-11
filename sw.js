@@ -1,4 +1,4 @@
-const CACHE_NAME = 'josfit-pwa-v1-4';
+const CACHE_NAME = 'josfit-pwa-v1-5';
 const APP_SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
