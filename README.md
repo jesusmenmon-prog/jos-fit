@@ -1,60 +1,49 @@
-# JOS Fit PWA v1.10 — Documentación y pulido (entrega parcial)
+# JOS Fit PWA v1.11 — Fichas, tutorial y rutina editable
 
-## Qué cambió
-- **Descanso (P0):** tocar «Descanso» en un ejercicio con ese descanso ya corriendo abre la edición del tiempo restante (mm:ss) en vez de reiniciarlo; tocar el cronómetro también. Las series de peso corporal (dominadas, fondos, flexiones, plancha) se marcan hechas con peso vacío (= 0 kg). Botón «Terminar ejercicio» marca las series con repeticiones y arranca el descanso. El descanso sobrevive a recargar/cerrar la app (`josfit_rest_v1`: reanuda o avisa que terminó).
-- **Tiempos:** desde 59:59 se muestran horas (1:05:08); la duración guardada y el historial dicen «1 h 9 min».
-- **Barra de sesión fija** sobre la barra inferior, visible en cualquier pestaña mientras haya sesión activa: tiempo de sesión + descanso (ajustable, colapsable). Al tocarla vuelve a Entrenar.
-- **RIR** como desplegable 0–5, solo si activas «Registrar RIR» en el ejercicio. El peso de la serie 1 se copia a las siguientes series pendientes.
-- **iPhone:** inputs a 16 px (sin auto-zoom).
-- **Convención de peso** en «¿Cómo registro el peso?» (Entrenar).
-- **Migración:** baseline de press inclinado 34 → 68 kg (combinado); descanso de crunch en polea 60 s. Smith y rumano ya estaban en 150 s (dentro de 150–180 s). Tu historial ya registrado no se modifica.
-- **Búsqueda de alimentos:** con texto en el buscador se ocultan «Ingresado recientemente» y «Comidas recientes»; los resultados quedan justo debajo.
-- **Accesibilidad:** los modales atrapan el foco con Tab.
-- **Icono negro.** En iPhone quita la app de la pantalla de inicio y vuelve a añadirla (iOS cachea el icono).
+## Novedades de v1.11
+- **21 fichas de ejercicios:** músculos principales/secundarios, equipo, preparación, pasos técnicos, puntos clave, errores frecuentes y variantes. Incluye esquemas SVG orientativos y un desplegable con historial/PRs cuando hay sesiones registradas.
+- **Tutorial guiado:** seis pasos para Hoy, selección de rutina, registro de series, descanso y edición durante sesión, nutrición, progreso y respaldos. Se abre desde el botón `? Guía`; no interrumpe el primer uso con un popup.
+- **Edición durante la sesión:** añade, quita, restaura y reordena ejercicios; modifica series de trabajo y descanso. Los valores se guardan en el borrador mientras reordenas o añades movimientos y se aplican al pulsar Guardar. Las series ya completadas se conservan al ocultar un ejercicio. Los descansos cambiados solo afectan la sesión actual, salvo que marques la opción para guardar la estructura y preferencias en la plantilla habitual. La sesión debe conservar al menos un ejercicio visible.
+- **Glosario de fuerza:** RIR, RPE, 1RM estimado, volumen externo, serie efectiva, calentamiento, sobrecarga progresiva, deload, tempo y ROM.
+- **Recomendador de rutina:** árbol orientativo por experiencia, días disponibles y duración; incluye una sugerencia de organización del volumen según el tiempo disponible. Al aplicar, actualiza la agenda semanal, no reescribe las plantillas.
+- **Hojas apiladas:** abrir una ficha o glosario desde el editor de rutinas o desde la sesión mantiene la hoja anterior debajo. `Esc` cierra solo la hoja superior y ejecuta el cierre específico (por ejemplo, detener la cámara del lector). Se actualizan `aria-modal` y `aria-hidden` para exponer solo la hoja activa a tecnologías de asistencia.
+- **Desplegables:** técnica, errores, variantes, historial y términos se presentan en secciones plegables para reducir saturación visual.
+- **Fibra SiAgroBD:** se integra `Fibra dietaria total` solo cuando existe para el mismo `conabio_id` (que coincide con `registro_id` del archivo de nutrientes). No se usa `Fibra bruta` como sustituto de fibra dietaria; los registros sin dato permanecen en blanco. La nutrición muestra solo la fibra de alimentos registrados con dato disponible.
 
-## Pendiente de esta versión (no incluido)
-Fichas de 21 ejercicios + glosario + árbol de rutinas (3b, 3e, 3f), tutorial (4), resumen de fin de rutina (5), editar rutina en sesión (8), fibra SiAgroBD (11), ejemplos visuales (12), hojas apiladas (14) y desplegables (16).
+## Conservación de datos
+- Se mantiene la clave local `josfit_v01_data` y el formato de datos anterior.
+- Se conserva el catálogo de alimentos `foods-mx.json` con 250 registros.
+- Antes de actualizar o cambiar de dominio/navegador, exporta un respaldo JSON desde Perfil. Los datos siguen siendo locales: no hay sincronización entre dispositivos.
 
-# JOS Fit PWA v1.9 — Base mexicana
-
-## Contenido
-- `index.html`: aplicación con búsqueda prioritaria de genéricos mexicanos, recientes, favoritos, comidas recientes, pestaña de creados, código de barras, rango calórico ±10%, agua en vasos y desglose ilustrativo de ejercicio + actividad restante.
-- `foods-mx.json`: 250 alimentos genéricos curados de la tabla INCMNSZ / SiAgroBD / CONABIO, con `conabio_id` trazable.
-- `sw.js`: caché `josfit-pwa-v1-9`, shell offline, catálogo y lector `html5-qrcode` 2.3.8.
+## Archivos
+- `index.html`: aplicación y fichas de ejercicios.
+- `foods-mx.json`: catálogo mexicano, con `fiber` y `fiber_type` cuando hay fibra dietaria total documentada.
+- `sw.js`: caché `josfit-pwa-v1-11`, catálogo e iconos offline.
 - `manifest.json`, `icon-192.png`, `icon-512.png`.
 
-## Datos de composición
+## Uso de datos nutricionales
 Fuente: Tabla de composición de alimentos extendida 2019, INCMNSZ, vía SiAgroBD/CONABIO. CONABIO. 2023. Sistema de Información sobre Agrobiodiversidad; Bourges Rodríguez, H. G. N., Camacho Parra, M. A., Morales Guerrero, J. C. 2019. Composición de alimentos mexicanos Base de Datos Extensa. INCMNSZ.
 
-La extracción compartida contiene 3,930 registros de alimentos y 45,619 filas de nutrientes. Aplicando el criterio estricto (energía en kcal + proteína bruta, hidratos de carbono y extracto etéreo en gramos, todos presentes), el conteo reproducible es **2,719 registros completos**. El catálogo incluido selecciona 250 alimentos, incluido aceite de oliva extra virgen con porción doméstica orientativa de 1 cucharada (10 g). Cada genérico conserva `source.conabio_id`, la descripción y procedencia cuando están disponibles.
-
-No se imputan macros ausentes. Fibra y sodio permanecen `null` cuando no constan. El estado crudo/cocido se asigna solo cuando la descripción fuente lo permite; cuando no, se conserva una etiqueta genérica de estado. Las porciones domésticas son aproximaciones para facilitar la captura (por ejemplo, tortilla, huevo, arroz, manzana y aceite de oliva), se muestran en gramos y pueden editarse. Los registros con discrepancia >10% entre energía declarada y fórmula 4/4/9 se marcan en el resultado como dato para revisar, sin corregir valores fuente.
-
-La fuente no declara una licencia abierta de redistribución en el material recibido. Este paquete mantiene atribución para una beta personal; antes de publicarlo o usarlo comercialmente, confirma los términos de reutilización con la fuente.
-
-## Búsqueda y productos comerciales
-Orden de resultados: base mexicana → alimentos frecuentes → alimentos creados → productos comerciales guardados. `Marcas` consulta Open Food Facts. Los productos guardados (hasta 50) conservan código de barras y macros para consulta local posterior. La búsqueda de códigos usa `https://world.openfoodfacts.org/api/v0/product/<código>.json`.
-
-## Escáner de códigos
-El lector usa `html5-qrcode` 2.3.8 (Apache-2.0), fijado por versión y precargado por el Service Worker desde jsDelivr cuando se instala con conexión. Requiere HTTPS y permiso explícito de cámara. La compatibilidad de cámara documentada por el paquete para Safari en iOS es iOS 15.1 o posterior; no se debe asumir que iOS 14.3 está soportado. Si la librería no pudo cachearse durante la instalación, la cámara puede necesitar conexión la primera vez. Escaneo físico en dispositivos reales sigue pendiente de prueba.
-
-## Agua
-1 vaso = 250 ml. El objetivo se mantiene en 35 ml × peso (salvo que el usuario haya definido una meta manual). El total se presenta en ml y vasos.
-
-## Calorías y actividad
-El rango aceptable de calorías se muestra como ±10% del objetivo; el informe semanal cuenta días dentro de ese intervalo. Los otros macros mantienen una meta única.
-
-El desglose de actividad utiliza un estimado de ejercicio de 5 MET con la duración de sesiones registradas durante los últimos 28 días y asigna el residual del factor de actividad a estilo de vida / NEAT. Es un desglose ilustrativo; no modifica el TDEE ni la meta energética y no constituye una medición de gasto individual.
-
-## Datos y privacidad
-La app conserva información en `localStorage` del navegador (`josfit_v01_data`). No hay backend ni sincronización entre dispositivos/evaluadores. Exporta un respaldo JSON antes de cambiar de dispositivo o navegador.
+El archivo SiAgroBD de nutrientes asocia `registro_id` con `conabio_id`. Se prioriza `Fibra dietaria total` (unidad g o g / 100). La `Fibra bruta` no se presenta como fibra dietaria. Si no hay dato explícito, se deja nulo. La fuente no declara una licencia abierta en el material recibido; confirma condiciones de reutilización antes de distribución pública o comercial.
 
 ## Instalación / actualización
-1. Publica el contenido completo de esta carpeta en un dominio HTTPS (por ejemplo, el mismo sitio Netlify).
-2. Abre la URL en Safari (iOS) o Chrome (Android).
-3. En iPhone: Compartir → Agregar a pantalla de inicio. En Android: menú → Instalar aplicación / Agregar a pantalla principal.
-4. Cierra y vuelve a abrir la PWA para que el Service Worker v1.9 tome el control.
-5. Si el navegador conserva assets antiguos, abre la URL una vez con conexión y espera a que el nuevo worker se active.
+1. Exporta un respaldo JSON desde Perfil.
+2. Publica todos los archivos de esta carpeta en el mismo dominio HTTPS de la versión anterior.
+3. Abre la URL en Safari (iPhone) o Chrome (Android), con conexión la primera vez.
+4. Cierra y vuelve a abrir la PWA para que se active el Service Worker `josfit-pwa-v1-11`.
+5. En iPhone, si el icono no cambia, elimina el acceso de pantalla de inicio y vuelve a añadirlo.
 
-## Alcance v1.9
-Incluye únicamente los seis cambios del brief: catálogo mexicano, escáner de código de barras, agua en vasos, recientes/favoritos/comidas, rango calórico ±10% y desglose de actividad. El módulo de recetas, push, deporte/cardio, nuevos ejercicios, animaciones y tarjeta compartible siguen diferidos.
+## Validaciones automatizadas realizadas
+- Sintaxis JavaScript validada con `node --check`.
+- 21 nombres de la biblioteca coinciden con 21 fichas; se verifican secciones de ejecución y errores.
+- Prueba funcional aislada del tutorial de seis pasos, recomendador, fichas desde el editor, apilado de hojas con ARIA y edición de sesión (reordenar, añadir, conservar valores y guardar).
+- Integración de fibra cotejada contra SiAgroBD: se incorporan únicamente 18 valores explícitos de `Fibra dietaria total` en los 250 alimentos; no se sustituye con `Fibra bruta`.
+
+## Pruebas pendientes en dispositivo real
+- Abrir fichas y desplegables en Safari iOS y Chrome Android.
+- Abrir una ficha desde otra hoja y comprobar el apilado/cierre con `Esc` (en teclado).
+- Añadir/reordenar/ocultar/restaurar ejercicios durante sesión y verificar que las series completadas permanecen.
+- Validar tutorial en pantalla pequeña, lector de pantalla y navegación con teclado.
+- Validar cache/offline del Service Worker en Safari y Chrome reales.
+
+Las fichas son material educativo general y no sustituyen supervisión de técnica, evaluación clínica ni indicaciones profesionales. Los esquemas SVG son ilustrativos, no animaciones anatómicas de precisión.

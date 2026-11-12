@@ -1,8 +1,8 @@
 {
   "id": "./index.html",
-  "name": "JOS Fit v1.10 — Documentación y pulido",
+  "name": "JOS Fit v1.11 — Coach personal",
   "short_name": "JOS Fit",
-  "description": "Entrenamiento, nutrición con base mexicana, escaneo de productos, progreso y calibración energética personalizada.",
+  "description": "Entrenamiento con fichas y tutorial, rutinas editables durante la sesión, nutrición con base mexicana y progreso personalizado.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
