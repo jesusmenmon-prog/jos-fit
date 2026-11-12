@@ -1,42 +1,46 @@
-# JOS Fit PWA v1.14.1 — Interfaz, cardio y catálogo
+# JOS Fit PWA v1.14.2 — Atribución nutricional y barra superior fija
 
-**Base:** `JOS_Fit_para_Claude_v1.14.1.zip` (8 archivos originales).  
-**Persistencia:** se conserva `localStorage` con la clave `josfit_v01_data`; no se migran ni modifican datos del usuario.
+**Base:** ZIP original de JOS Fit PWA v1.14.1 (8 archivos).  
+**Persistencia:** se conserva `localStorage` con la clave `josfit_v01_data`; no se migran, borran ni modifican datos del usuario.
 
 ## Cambios implementados
 
-1. **Cardio solo en Entrenar.** El único nodo `#v113Cardio` se movió desde Hoy al final de Entrenar, después del panel de sesión. Se conserva `renderCardioCard()` y toda su lógica; el bono calórico sigue apagado por defecto.
-2. **Separación en Hoy.** Se añadió separación vertical de 12 px a las tarjetas y bloques v1.13 que son hijos directos de Hoy. Los bloques vacíos de suplementos/racha no reservan espacio.
-3. **Perfil sin título duplicado.** Se eliminó el `<h2>` interior de «Tu rutina diaria»; el `summary` queda como único título.
-4. **Hoja de ejercicio.** El fondo ahora es más oscuro y desenfocado; la hoja permite hasta 92vh y tiene un tirador superior visible. El topbar conserva `safe-area-inset-top`; está en el flujo sticky y el contenido principal conserva padding, por lo que no se añadió un desplazamiento artificial a Perfil.
-5. **Desplegables.** El selector de divisiones y rutinas personalizadas de Entrenar queda dentro de `#trainingDivisionDisclosure`, cerrado al inicio; el resumen se actualiza con la división o rutina seleccionada. La rutina seleccionada, últimas sesiones y sesión activa quedan fuera. En Hoy, «Nutrición de hoy» y «Comidas» usan el patrón `tab-disclosure` y empiezan abiertos. «Tu horario de comidas» no se modificó.
-6. **Leyenda muscular condicional.** La leyenda naranja solo aparece cuando el SVG del ejercicio contiene `#ff9b45`. No se editaron los SVG.
-7. **Filtro de racha.** Se excluyen frases con «fallaste» y «falló»; no se tocó el cálculo de racha.
-8. **Avena.** Se añadió «Avena en hojuelas» seca por 100 g desde USDA FoodData Central, SR Legacy 169705: 389 kcal, 16.9 g proteína, 66.3 g carbohidratos, 6.9 g grasa y 10.6 g fibra. La energía estimada por 4P+4C+9G es 395.3 kcal (desviación aproximada 1.6%, dentro del umbral del 10%). No se añadieron registros incompletos de SiAgroBD ni harina de avena.
+1. **Fuente nutricional por alimento.** `renderFoodDetail` ahora prioriza `d.source.name` cuando el alimento trae una fuente. El nombre de fuente SiAgroBD almacenado con barras se presenta con separadores medios (`INCMNSZ · SiAgroBD · CONABIO`) para coincidir con la atribución solicitada, sin alterar el catálogo. Si no existe fuente, conserva el fallback anterior por tipo (`generic`, `commercial` o creado por el usuario). Así, «Avena en hojuelas» atribuye USDA FoodData Central · SR Legacy; los alimentos SiAgroBD conservan INCMNSZ · SiAgroBD · CONABIO; productos comerciales conservan Open Food Facts / etiqueta del producto; y los alimentos personalizados conservan «Alimento creado por ti». No se modificaron valores nutricionales ni el encabezado general de Nutrición.
+2. **Barra superior fija.** El `header.topbar` pasa de `position: sticky` a `position: fixed`, centrado y limitado a 980 px para conservar la alineación de escritorio. Se compensa el espacio en `.main` con una altura basada en el alto de la barra y `env(safe-area-inset-top)`, con ajuste específico para viewports de hasta 420 px. Se mantienen el padding seguro, fondo translúcido y blur existentes. La barra inferior y la barra de sesión no se modificaron.
+3. **Título duplicado de división.** Se eliminó el `<h2>` interior «Selecciona tu división». El `summary` permanece como único título; se conserva la pista «Rutinas editables» y la sección «Mis rutinas» sin cambios.
 
-## Catálogo: chequeo de básicos
+## Fuera de alcance respetado
 
-Se encontraron registros para arroz, huevo, plátano, papa, aceite, jamón, leche, tortilla, frijol y pollo. La búsqueda de «avena» devuelve el nuevo registro USDA.
+- No se persiste `selectedSplit`; la división conserva el comportamiento de sesión existente.
+- No se modificaron catálogo, rutinas, cálculos, notificaciones ni datos nutricionales.
+- No se modificó `localStorage` ni se añadió migración.
 
 ## Versionado
 
-- `index.html` title y pie: v1.14.1.
-- `manifest.json`: nombre v1.14.1.
-- `sw.js`: caché `josfit-pwa-v1-14-1`.
-- Registro: `./sw.js?v=1.14.1` (incluida la ruta de Service Worker de OneSignal).
+- `index.html`: title, pie y comentarios a v1.14.2.
+- `manifest.json`: nombre v1.14.2.
+- `sw.js`: caché `josfit-pwa-v1-14-2`.
+- Registros del Service Worker: `./sw.js?v=1.14.2`, incluida la ruta de OneSignal.
 
-## Verificación realizada
+## Verificación ejecutada
 
-- `node --check` del JavaScript inline: PASS.
-- `node --check sw.js`: PASS.
-- Escaneo de identificadores en modo estricto: sin nombres de aplicación no declarados; los únicos identificadores externos no resueltos son `Html5Qrcode` y `Html5QrcodeSupportedFormats`, provistos por la librería de escaneo de código de barras cargada bajo demanda.
+- JavaScript inline: `node --check` — PASS.
+- `sw.js`: `node --check` — PASS.
+- JavaScript inline parseado también con prefijo `'use strict'` — PASS; revisión estática dirigida de asignaciones `nombre = function` frente a declaraciones existentes — sin nombres faltantes.
 - `manifest.json` y `foods-mx.json`: JSON válido.
-- Conteo de archivos y ZIP: 8 archivos exactos.
-- Verificación estática: un único `#v113Cardio`, ubicado dentro de Entrenar; no aparece en Hoy.
-- Verificación estática: selector de Entrenar sin atributo `open`; las dos secciones de Hoy con `open`.
-- Verificación estática: leyenda naranja condicional, filtro de racha ampliado, `localStorage` sin cambios.
-- Viewport objetivo de aceptación: 390 px. Se revisaron reglas CSS y estructura DOM para ese ancho; no se declara prueba en Safari iOS ni prueba física en iPhone. El intento de navegador automatizado Chromium quedó bloqueado por la política del entorno, por lo que no se reporta como prueba superada.
+- `exercises-visuals.json`: JSON válido.
+- Verificación estática de atribución: usa primero `d.source.name` y mantiene los tres fallbacks por tipo.
+- Verificación estática de la barra: `position: fixed`, centrada, ancho máximo 980 px y compensación responsive de `.main`.
+- Verificación estática del desplegable: `summary` conserva el título; ya no existe el `<h2>` duplicado; «Mis rutinas» permanece.
+- Verificación de persistencia: clave `josfit_v01_data` sin cambios.
+- ZIP: 8 archivos exactos.
 
-## Pendiente de prueba en dispositivo
+## Prueba de aceptación pendiente
 
-Abrir la PWA en Safari iOS a 390 px y confirmar visualmente: separación de tarjetas en Hoy, safe area de Perfil, hoja de ejercicio, apertura/cierre de desplegables, selección de rutina, render del cardio solo en Entrenar y búsqueda de avena. El entorno de construcción valida código y estructura, no sustituye esa prueba de dispositivo.
+El entorno de construcción permite validaciones de código y estructura, pero no confirma el comportamiento visual en Safari iOS. Probar en iPhone con viewport CSS de 390 px:
+1. Abrir detalle de «Avena en hojuelas»: debe mostrar `Fuente: USDA FoodData Central · SR Legacy`.
+2. Abrir detalle de «Tortilla de maíz»: debe mostrar `Fuente: INCMNSZ · SiAgroBD · CONABIO`.
+3. Confirmar los fallbacks de producto comercial y alimento personalizado.
+4. Desplazarse en Perfil y Progreso: la barra JOS FIT debe permanecer fija, respetar el área segura y no tapar títulos.
+5. Abrir/cerrar el selector de división: debe iniciar cerrado, mostrar un solo título y actualizar el `summary` al seleccionar.
+6. Confirmar que navegación inferior, barra de sesión, seis tarjetas de división, agua, búsqueda de alimentos, racha y nivel siguen funcionando.
