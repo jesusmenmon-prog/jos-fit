@@ -1,4 +1,4 @@
-# JOS Fit PWA v1.13 — Coach personal
+# JOS Fit PWA v1.13.1 — Coach personal
 
 ## Cambios incluidos
 - Corrige el desbordamiento horizontal: `html/body` limitan el overflow, los campos `time` y los elementos de grid/flex pueden encogerse, y las hojas modales respetan el ancho disponible. El scroll horizontal intencional de las pestañas se conserva.
@@ -9,7 +9,7 @@
 - Amplía `sportActivities` con intensidad suave/moderada/intensa. La migración conserva el deporte y los días guardados y asigna moderado + 60 min cuando faltan esos datos. La estimación usa `(MET − 1) × kg × horas × 0.80`, tope 500 kcal/día, y redistribuye la energía dentro de la semana. El factor 0.80 es una regla de diseño conservadora; Pádel y “Otro” usan MET operativos estimados.
 - Añade registro de cardio ad hoc con tipo, duración e intensidad. No modifica calorías automáticamente; el usuario puede activar un bono del mismo día con la misma fórmula/factor. Los registros alimentan el resumen de actividad de 28 días.
 - Añade catálogo de nueve suplementos, pila personal en Perfil y registro de un toque en Hoy. Incluye avisos de cafeína a menos de 8.5 h del sueño, nota de agua intracelular durante 21 días tras iniciar creatina y nota de whey para registrar sus macros en Nutrición. Se excluyen sustancias y productos indicados en el brief; no se muestran precios.
-- Actualiza la versión visible, el manifiesto, el registro del Service Worker y la caché a `v1.13`. Se conserva `localStorage` bajo `josfit_v01_data`; no hay backend ni sincronización.
+- Actualiza la versión visible, el manifiesto, el registro del Service Worker y la caché a `v1.13.1`. Se conserva `localStorage` bajo `josfit_v01_data`; no hay backend ni sincronización.
 
 ## Notas de diseño
 - El valor 0.80 de la fórmula MET es una decisión conservadora de producto, no una constante fisiológica. El margen real de error puede rondar ±15–30%.
@@ -32,3 +32,9 @@
 
 ## Pruebas pendientes en dispositivo real
 La validación automatizada en este entorno no sustituyó las tres pruebas finales en iPhone: búsqueda en modo avión, escaneo de un producto físico y cerrar/reabrir la PWA desde la pantalla de inicio. También se recomienda confirmar Safari iOS con las capturas de 390 px.
+
+
+## Corrección v1.13.1
+- Los textos del coach y de Nutrición muestran el aumento MET real del día y su equivalente aproximado en carbohidratos (kcal ÷ 4).
+- La nota de Nutrición identifica el deporte o los deportes programados; no asume que toda actividad es fútbol.
+- No se modifica la fórmula MET, la redistribución semanal ni la clave `localStorage` (`josfit_v01_data`).
