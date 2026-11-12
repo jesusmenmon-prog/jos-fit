@@ -1,8 +1,8 @@
 {
   "id": "./index.html",
-  "name": "JOS Fit v1.11 — Coach personal",
+  "name": "JOS Fit v1.12 — Coach personal",
   "short_name": "JOS Fit",
-  "description": "Entrenamiento con fichas y tutorial, rutinas editables durante la sesión, nutrición con base mexicana y progreso personalizado.",
+  "description": "Coach personal: nutrición, entrenamiento, deporte y sueño adaptados a tu rutina.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

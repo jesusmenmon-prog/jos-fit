@@ -1,49 +1,35 @@
-# JOS Fit PWA v1.11 — Fichas, tutorial y rutina editable
+# JOS Fit PWA v1.12 — Coach personal
 
-## Novedades de v1.11
-- **21 fichas de ejercicios:** músculos principales/secundarios, equipo, preparación, pasos técnicos, puntos clave, errores frecuentes y variantes. Incluye esquemas SVG orientativos y un desplegable con historial/PRs cuando hay sesiones registradas.
-- **Tutorial guiado:** seis pasos para Hoy, selección de rutina, registro de series, descanso y edición durante sesión, nutrición, progreso y respaldos. Se abre desde el botón `? Guía`; no interrumpe el primer uso con un popup.
-- **Edición durante la sesión:** añade, quita, restaura y reordena ejercicios; modifica series de trabajo y descanso. Los valores se guardan en el borrador mientras reordenas o añades movimientos y se aplican al pulsar Guardar. Las series ya completadas se conservan al ocultar un ejercicio. Los descansos cambiados solo afectan la sesión actual, salvo que marques la opción para guardar la estructura y preferencias en la plantilla habitual. La sesión debe conservar al menos un ejercicio visible.
-- **Glosario de fuerza:** RIR, RPE, 1RM estimado, volumen externo, serie efectiva, calentamiento, sobrecarga progresiva, deload, tempo y ROM.
-- **Recomendador de rutina:** árbol orientativo por experiencia, días disponibles y duración; incluye una sugerencia de organización del volumen según el tiempo disponible. Al aplicar, actualiza la agenda semanal, no reescribe las plantillas.
-- **Hojas apiladas:** abrir una ficha o glosario desde el editor de rutinas o desde la sesión mantiene la hoja anterior debajo. `Esc` cierra solo la hoja superior y ejecuta el cierre específico (por ejemplo, detener la cámara del lector). Se actualizan `aria-modal` y `aria-hidden` para exponer solo la hoja activa a tecnologías de asistencia.
-- **Desplegables:** técnica, errores, variantes, historial y términos se presentan en secciones plegables para reducir saturación visual.
-- **Fibra SiAgroBD:** se integra `Fibra dietaria total` solo cuando existe para el mismo `conabio_id` (que coincide con `registro_id` del archivo de nutrientes). No se usa `Fibra bruta` como sustituto de fibra dietaria; los registros sin dato permanecen en blanco. La nutrición muestra solo la fibra de alimentos registrados con dato disponible.
-
-## Conservación de datos
-- Se mantiene la clave local `josfit_v01_data` y el formato de datos anterior.
-- Se conserva el catálogo de alimentos `foods-mx.json` con 250 registros.
-- Antes de actualizar o cambiar de dominio/navegador, exporta un respaldo JSON desde Perfil. Los datos siguen siendo locales: no hay sincronización entre dispositivos.
-
-## Archivos
-- `index.html`: aplicación y fichas de ejercicios.
-- `foods-mx.json`: catálogo mexicano, con `fiber` y `fiber_type` cuando hay fibra dietaria total documentada.
-- `sw.js`: caché `josfit-pwa-v1-11`, catálogo e iconos offline.
-- `manifest.json`, `icon-192.png`, `icon-512.png`.
-
-## Uso de datos nutricionales
-Fuente: Tabla de composición de alimentos extendida 2019, INCMNSZ, vía SiAgroBD/CONABIO. CONABIO. 2023. Sistema de Información sobre Agrobiodiversidad; Bourges Rodríguez, H. G. N., Camacho Parra, M. A., Morales Guerrero, J. C. 2019. Composición de alimentos mexicanos Base de Datos Extensa. INCMNSZ.
-
-El archivo SiAgroBD de nutrientes asocia `registro_id` con `conabio_id`. Se prioriza `Fibra dietaria total` (unidad g o g / 100). La `Fibra bruta` no se presenta como fibra dietaria. Si no hay dato explícito, se deja nulo. La fuente no declara una licencia abierta en el material recibido; confirma condiciones de reutilización antes de distribución pública o comercial.
+## Cambios principales
+- Resumen de fin de rutina y resumen consultable desde el historial: duración, volumen externo, mejores series, PR, grupos musculares y comparación con la sesión anterior del mismo split. Las frases de celebración/progreso proceden de los rubros 8 y 5 del banco proporcionado.
+- Hoja de detalle de alimento apilada sobre el buscador: macros por 100 g, reparto energético, fibra dietaria total y sodio solo si hay dato, porciones, selector de comida y favoritos.
+- Desplegables nativos en Hoy, Nutrición, Progreso y Perfil; el check-in se compacta después de guardar. Entrenar mantiene la lista de ejercicios sin colapsar.
+- Tutorial automático una sola vez al completar onboarding; también se puede reabrir desde Perfil.
+- Las 21 fichas conservan su estructura y suman los textos exactos de “En palabras simples” del dossier de evidencia. Crunch en polea conserva el descanso validado de 60 s.
+- Ajuste de safe-area para la barra superior e inferior en iOS.
+- Deportes múltiples con varios días, hora y duración en horas/minutos; se migran los datos football* y se mantienen los campos antiguos por compatibilidad. El ajuste energético sigue siendo +250 kcal por día de deporte, redistribuido en la semana; el modelo MET queda para una versión posterior.
+- Tarjetas de sueño en Hoy y Perfil, ancladas a la hora de despertar. Se distinguen 7.5 h estándar y 8 h cuando aplica la regla de diseño de JOS Fit (déficit, 5+ sesiones o preferencia de dormir más). Latencia asumida: 15 min; ventana de acostarse ±15 min; desconexión 45 min antes.
+- Check-in de sueño: ≥7 h normal; 6–6.9 h conserva series y sugiere RIR ≥2; <6 h aplica una serie menos por ejercicio (mínimo una), RIR ≥3 y siesta breve; dos noches seguidas <6 h muestran fatiga acumulada.
 
 ## Instalación / actualización
-1. Exporta un respaldo JSON desde Perfil.
-2. Publica todos los archivos de esta carpeta en el mismo dominio HTTPS de la versión anterior.
-3. Abre la URL en Safari (iPhone) o Chrome (Android), con conexión la primera vez.
-4. Cierra y vuelve a abrir la PWA para que se active el Service Worker `josfit-pwa-v1-11`.
-5. En iPhone, si el icono no cambia, elimina el acceso de pantalla de inicio y vuelve a añadirlo.
+1. Exporta un respaldo JSON desde Perfil antes de actualizar.
+2. Descomprime el ZIP y publica los siete archivos en el mismo dominio HTTPS de la versión anterior.
+3. En iPhone, si el icono o la versión no se actualiza, elimina la PWA de la pantalla de inicio y vuelve a añadirla desde Safari.
+4. Los datos viven en `localStorage` bajo `josfit_v01_data`; no hay backend ni sincronización entre dispositivos.
 
-## Validaciones automatizadas realizadas
-- Sintaxis JavaScript validada con `node --check`.
-- 21 nombres de la biblioteca coinciden con 21 fichas; se verifican secciones de ejecución y errores.
-- Prueba funcional aislada del tutorial de seis pasos, recomendador, fichas desde el editor, apilado de hojas con ARIA y edición de sesión (reordenar, añadir, conservar valores y guardar).
-- Integración de fibra cotejada contra SiAgroBD: se incorporan únicamente 18 valores explícitos de `Fibra dietaria total` en los 250 alimentos; no se sustituye con `Fibra bruta`.
+## Comprobaciones
+- Validar resumen al terminar y al abrir sesiones históricas.
+- Abrir un alimento desde la búsqueda, cerrar la hoja y comprobar que la búsqueda permanece debajo.
+- Probar tutorial automático con perfil nuevo y volver a abrirlo desde Perfil.
+- Revisar ejercicio Press inclinado, Peso muerto rumano y Crunch en polea.
+- Configurar fútbol martes/sábado 1 h 30 min y añadir otro deporte en días distintos.
+- Probar sueño con 6.5 h, 5.5 h y dos noches consecutivas bajo 6 h.
+- En iPhone: validar safe-area, búsqueda en modo avión, escaneo físico y cerrar/reabrir desde pantalla de inicio.
 
-## Pruebas pendientes en dispositivo real
-- Abrir fichas y desplegables en Safari iOS y Chrome Android.
-- Abrir una ficha desde otra hoja y comprobar el apilado/cierre con `Esc` (en teclado).
-- Añadir/reordenar/ocultar/restaurar ejercicios durante sesión y verificar que las series completadas permanecen.
-- Validar tutorial en pantalla pequeña, lector de pantalla y navegación con teclado.
-- Validar cache/offline del Service Worker en Safari y Chrome reales.
+## Nota de sueño
+La investigación aportada propone 7–9 horas como rango general para adultos y utiliza una regla de 7.5–8.0 horas para organizar el horario. El extra de 0.5 h en déficit es una **regla de diseño de JOS Fit**, no una prescripción médica. La app no usa ciclos exactos de 90 minutos, ni fases de sueño estimadas por wearables, ni diagnostica trastornos del sueño. Las recomendaciones son orientativas y no sustituyen consejo clínico.
 
-Las fichas son material educativo general y no sustituyen supervisión de técnica, evaluación clínica ni indicaciones profesionales. Los esquemas SVG son ilustrativos, no animaciones anatómicas de precisión.
+## Límites conocidos
+- La validación automatizada no sustituye pruebas reales en Safari iOS/Chrome Android. Cámara, instalación offline y recarga del Service Worker deben probarse en dispositivo.
+- La calibración de recomendaciones depende de la calidad de los registros que introduzca el usuario.
+- Push programado / OneSignal y sincronización en la nube no forman parte de esta versión.

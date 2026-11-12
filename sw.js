@@ -1,6 +1,5 @@
-// JOS Fit PWA v1.11 — Fichas, tutorial, hojas apiladas y rutina editable
-try{if(new URL(self.location.href).searchParams.get('push')==='1')importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js')}catch(e){}
-const CACHE_NAME='josfit-pwa-v1-11';
+// JOS Fit PWA v1.12 — Resumen, alimentos, deporte y sueño
+const CACHE_NAME='josfit-pwa-v1-12';
 const APP_SHELL=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png','./foods-mx.json'];
 const BARCODE_LIB='https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js';
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE_NAME);for(const resource of APP_SHELL){try{await cache.add(resource)}catch(error){console.warn('No se pudo cachear',resource,error)}}try{await cache.add(BARCODE_LIB)}catch(error){console.warn('Lector de código no pudo pre-cachearse; estará disponible al recuperar conexión.',error)}await self.skipWaiting()})())});
