@@ -1,8 +1,8 @@
 {
   "id": "./index.html",
-  "name": "JOS Fit — Coach adaptativo de entrenamiento y nutrición",
+  "name": "JOS Fit v1.9 — Base mexicana",
   "short_name": "JOS Fit",
-  "description": "Entrenamiento, nutrición, progreso y calibración energética personalizada.",
+  "description": "Entrenamiento, nutrición con base mexicana, escaneo de productos, progreso y calibración energética personalizada.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

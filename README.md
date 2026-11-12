@@ -1,77 +1,43 @@
-# JOS Fit PWA v1.8 — Hidratación y recordatorios
+# JOS Fit PWA v1.9 — Base mexicana
 
-## Novedades de v1.8
-1. **Versión** corregida en título, pie y comentarios. Service Worker `josfit-pwa-v1-8`, registro `./sw.js?v=1.8`.
-2. **Descanso editable** en el editor de rutina (campo de segundos junto a las series, 15–600 s). Se guarda en `restPrefs` y el temporizador lo usa; también se ajusta con ±15 s dentro de la sesión.
-3. **Agua**: sección en Hoy con +250 ml, +500 ml, +1 L y *Quitar último*. Meta = 35 ml × peso (o la que fijes en Perfil). Se guarda por día (`days[fecha].waterMl`) y se refleja en el check-in (`waterMl`). Incluido en el respaldo JSON.
-4. **Detalle de ejercicio**: toca el nombre de un ejercicio para ver gráfica de mayor peso (3 meses), récords (mayor peso, mejor 1RM estimado Epley, mejor volumen por serie y por sesión) e historial. Estado vacío sin sesiones.
-5. **Límites al editar sesiones**: peso > 500 kg y repeticiones > 100 se rechazan. Además, un peso mayor a 2,5× tu marca anterior en ese ejercicio pide confirmación (así se atrapa 340 kg en lugar de 34).
-6. **Solo día de deporte**: si el único día disponible es el de fútbol, la app explica que no hay días de gym asignados en vez de mostrar 0.
-7. **Recordatorios**: interruptor en Perfil (el permiso se pide con un toque). Fase 1 local: aviso al terminar el descanso y al cerrar la rutina (frases del banco), más un aviso al abrir la app si falta el peso de la mañana. Fase 2 (push programado con OneSignal): código listo pero **desactivado** hasta que pegues tu App ID en `ONESIGNAL_APP_ID` (index.html).
+## Contenido
+- `index.html`: aplicación con búsqueda prioritaria de genéricos mexicanos, recientes, favoritos, comidas recientes, pestaña de creados, código de barras, rango calórico ±10%, agua en vasos y desglose ilustrativo de ejercicio + actividad restante.
+- `foods-mx.json`: 250 alimentos genéricos curados de la tabla INCMNSZ / SiAgroBD / CONABIO, con `conabio_id` trazable.
+- `sw.js`: caché `josfit-pwa-v1-9`, shell offline, catálogo y lector `html5-qrcode` 2.3.8.
+- `manifest.json`, `icon-192.png`, `icon-512.png`.
 
-## Activar OneSignal (fase 2)
-1. Crea la app en OneSignal (Web Push → configuración personalizada), con la URL de tu sitio HTTPS.
-2. Pega el App ID en `const ONESIGNAL_APP_ID=''` dentro de `index.html`.
-3. El worker `sw.js` ya importa el SDK de OneSignal cuando se registra con `&push=1`; así conviven el caché offline y el push en un solo worker.
-4. Prueba en iPhone (iOS 16.4+, app instalada en pantalla de inicio) y Android: envía un push de prueba desde el panel y verifica que al tocarlo abre la app y que el modo offline sigue funcionando.
-5. Los avisos programados se redactan en OneSignal con las frases del banco; la app envía etiquetas (hora de entreno, hora de despertar, día de fútbol, objetivo) para segmentar.
+## Datos de composición
+Fuente: Tabla de composición de alimentos extendida 2019, INCMNSZ, vía SiAgroBD/CONABIO. CONABIO. 2023. Sistema de Información sobre Agrobiodiversidad; Bourges Rodríguez, H. G. N., Camacho Parra, M. A., Morales Guerrero, J. C. 2019. Composición de alimentos mexicanos Base de Datos Extensa. INCMNSZ.
 
-## v1.7 (anterior)
+La extracción compartida contiene 3,930 registros de alimentos y 45,619 filas de nutrientes. Aplicando el criterio estricto (energía en kcal + proteína bruta, hidratos de carbono y extracto etéreo en gramos, todos presentes), el conteo reproducible es **2,719 registros completos**. El catálogo incluido selecciona 250 alimentos, incluido aceite de oliva extra virgen con porción doméstica orientativa de 1 cucharada (10 g). Cada genérico conserva `source.conabio_id`, la descripción y procedencia cuando están disponibles.
 
-## Novedades de v1.7
-1. **Base mexicana de alimentos genéricos** (≈75 alimentos, valores aproximados por 100 g, disponible sin conexión). Al escribir se busca primero en genéricos (con plurales y sinónimos: «tortillas», «tomate», «pescado»), luego en *Mis alimentos* y *Productos comerciales guardados*. El botón **Marcas** consulta Open Food Facts solo para productos de marca.
-2. **Alimentos editables**: botón *Editar* en cada alimento del día (nombre, comida, gramos y macros por 100 g, con vista previa). Puede guardar los valores corregidos en *Mis alimentos*.
-3. **Descansos por ejercicio**: ±15 s en cada ejercicio, se recuerda para próximas sesiones (`restPrefs`, incluido en el respaldo). El temporizador usa hora real (no se desfasa con la pantalla bloqueada), vibra al terminar y muestra el ejercicio.
-4. **Check-in**: guardar de nuevo ya no borra datos previos del día y el formulario se precarga con lo registrado.
+No se imputan macros ausentes. Fibra y sodio permanecen `null` cuando no constan. El estado crudo/cocido se asigna solo cuando la descripción fuente lo permite; cuando no, se conserva una etiqueta genérica de estado. Las porciones domésticas son aproximaciones para facilitar la captura (por ejemplo, tortilla, huevo, arroz, manzana y aceite de oliva), se muestran en gramos y pueden editarse. Los registros con discrepancia >10% entre energía declarada y fórmula 4/4/9 se marcan en el resultado como dato para revisar, sin corregir valores fuente.
 
-## v1.6 (anterior)
+La fuente no declara una licencia abierta de redistribución en el material recibido. Este paquete mantiene atribución para una beta personal; antes de publicarlo o usarlo comercialmente, confirma los términos de reutilización con la fuente.
 
-## Novedades de v1.6
+## Búsqueda y productos comerciales
+Orden de resultados: base mexicana → alimentos frecuentes → alimentos creados → productos comerciales guardados. `Marcas` consulta Open Food Facts. Los productos guardados (hasta 50) conservan código de barras y macros para consulta local posterior. La búsqueda de códigos usa `https://world.openfoodfacts.org/api/v0/product/<código>.json`.
 
-### 1. Edición dinámica de sesiones históricas
-- En cada ejercicio de una sesión pasada se puede añadir una serie o quitar una existente.
-- Cada ejercicio conserva al menos una serie.
-- Las modificaciones se trabajan en un borrador; Cancelar/Cerrar descarta los cambios y Guardar confirma el conjunto completo.
-- Se mantienen la edición de kg, repeticiones y RIR.
+## Escáner de códigos
+El lector usa `html5-qrcode` 2.3.8 (Apache-2.0), fijado por versión y precargado por el Service Worker desde jsDelivr cuando se instala con conexión. Requiere HTTPS y permiso explícito de cámara. La compatibilidad de cámara documentada por el paquete para Safari en iOS es iOS 15.1 o posterior; no se debe asumir que iOS 14.3 está soportado. Si la librería no pudo cachearse durante la instalación, la cámara puede necesitar conexión la primera vez. Escaneo físico en dispositivos reales sigue pendiente de prueba.
 
-### 2. Caché local de alimentos
-- Se conservan hasta 50 productos consultados o registrados manualmente.
-- La búsqueda consulta primero la memoria local y, con conexión, busca nuevos resultados en Open Food Facts.
-- Si el dispositivo está offline o falla la API, muestra coincidencias guardadas sin conexión.
-- La caché forma parte del respaldo JSON y sobrevive a la actualización en el mismo navegador/origen.
+## Agua
+1 vaso = 250 ml. El objetivo se mantiene en 35 ml × peso (salvo que el usuario haya definido una meta manual). El total se presenta en ml y vasos.
 
-### 3. Analítica semanal por grupo muscular
-- Compara las últimas dos ventanas de siete días.
-- Desglosa carga externa acumulada (kg × repeticiones), número de series y variación porcentual por grupo.
-- Es una métrica descriptiva de carga externa; no equivale por sí sola a estímulo efectivo y no compara perfectamente ejercicios o máquinas diferentes.
+## Calorías y actividad
+El rango aceptable de calorías se muestra como ±10% del objetivo; el informe semanal cuenta días dentro de ese intervalo. Los otros macros mantienen una meta única.
 
-### 4. Calibración energética basada en tendencia
-- Compara el promedio de peso de los últimos 7 días con los 7 días previos.
-- Requiere al menos 4 pesajes distintos por ventana y alimentos registrados en al menos 5 días de cada semana.
-- Estima un TDEE observado a partir del promedio de ingesta registrada y el cambio de peso usando una aproximación de 7,700 kcal/kg.
-- Compara la tendencia con un ritmo de referencia conservador según el objetivo y sugiere un ajuste de ±100 kcal/día solo cuando la desviación supera 0.30 kg/semana.
-- El cambio requiere aprobación explícita y solo puede aplicarse una vez por ventana de 14 días.
-- No cambia el objetivo de forma automática. Los registros incompletos pueden sesgar el TDEE observado.
+El desglose de actividad utiliza un estimado de ejercicio de 5 MET con la duración de sesiones registradas durante los últimos 28 días y asigna el residual del factor de actividad a estilo de vida / NEAT. Es un desglose ilustrativo; no modifica el TDEE ni la meta energética y no constituye una medición de gasto individual.
 
-### Estabilidad PWA
-- El Service Worker usa un nuevo caché `josfit-pwa-v1-6` y elimina cachés anteriores de JOS Fit al activarse.
-- `skipWaiting()` y `clients.claim()` permiten activar la versión nueva sin esperar a cerrar todas las pestañas.
-- La app solicita una actualización del registro al cargar cuando hay conexión; ante un cambio de controlador, recarga una sola vez para cargar el nuevo shell.
+## Datos y privacidad
+La app conserva información en `localStorage` del navegador (`josfit_v01_data`). No hay backend ni sincronización entre dispositivos/evaluadores. Exporta un respaldo JSON antes de cambiar de dispositivo o navegador.
 
-## Instalación
-1. Extrae el ZIP y publica el contenido de esta carpeta en un hosting HTTPS.
-2. Abre la URL en Safari (iPhone) o Chrome (Android).
-3. iPhone: Compartir → Añadir a pantalla de inicio. Android: menú ⋮ → Instalar aplicación.
+## Instalación / actualización
+1. Publica el contenido completo de esta carpeta en un dominio HTTPS (por ejemplo, el mismo sitio Netlify).
+2. Abre la URL en Safari (iOS) o Chrome (Android).
+3. En iPhone: Compartir → Agregar a pantalla de inicio. En Android: menú → Instalar aplicación / Agregar a pantalla principal.
+4. Cierra y vuelve a abrir la PWA para que el Service Worker v1.9 tome el control.
+5. Si el navegador conserva assets antiguos, abre la URL una vez con conexión y espera a que el nuevo worker se active.
 
-## Migración
-- Se conserva la clave local `josfit_v01_data` y se mantiene `foodCache` en los respaldos JSON.
-- Para conservar datos, actualiza en el mismo navegador y dominio.
-- Si cambias de dominio o navegador, exporta un respaldo desde Perfil antes y vuelve a importarlo después.
-
-## Límites y notas
-- El TDEE observado es una estimación basada en el registro de alimentos y la tendencia de peso; no es una medición directa del metabolismo.
-- El umbral de 0.30 kg/semana y el ajuste de 100 kcal son reglas de coaching orientativas y deben revisarse junto con hambre, energía, rendimiento y salud.
-- La comparación kg × repeticiones es tonelaje/carga externa, no una medida completa de volumen efectivo.
-- La caché de alimentos almacena valores consultados; no reemplaza etiquetas ni verifica porciones reales.
-- No existe sincronización con Hevy, Fitia o Apple Salud ni backend en la nube.
-- La instalación/offline real debe probarse en el dominio HTTPS de despliegue; abrir el HTML como `file://` no activa Service Worker.
+## Alcance v1.9
+Incluye únicamente los seis cambios del brief: catálogo mexicano, escáner de código de barras, agua en vasos, recientes/favoritos/comidas, rango calórico ±10% y desglose de actividad. El módulo de recetas, push, deporte/cardio, nuevos ejercicios, animaciones y tarjeta compartible siguen diferidos.
