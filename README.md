@@ -1,3 +1,20 @@
+# JOS Fit PWA v1.10 — Documentación y pulido (entrega parcial)
+
+## Qué cambió
+- **Descanso (P0):** tocar «Descanso» en un ejercicio con ese descanso ya corriendo abre la edición del tiempo restante (mm:ss) en vez de reiniciarlo; tocar el cronómetro también. Las series de peso corporal (dominadas, fondos, flexiones, plancha) se marcan hechas con peso vacío (= 0 kg). Botón «Terminar ejercicio» marca las series con repeticiones y arranca el descanso. El descanso sobrevive a recargar/cerrar la app (`josfit_rest_v1`: reanuda o avisa que terminó).
+- **Tiempos:** desde 59:59 se muestran horas (1:05:08); la duración guardada y el historial dicen «1 h 9 min».
+- **Barra de sesión fija** sobre la barra inferior, visible en cualquier pestaña mientras haya sesión activa: tiempo de sesión + descanso (ajustable, colapsable). Al tocarla vuelve a Entrenar.
+- **RIR** como desplegable 0–5, solo si activas «Registrar RIR» en el ejercicio. El peso de la serie 1 se copia a las siguientes series pendientes.
+- **iPhone:** inputs a 16 px (sin auto-zoom).
+- **Convención de peso** en «¿Cómo registro el peso?» (Entrenar).
+- **Migración:** baseline de press inclinado 34 → 68 kg (combinado); descanso de crunch en polea 60 s. Smith y rumano ya estaban en 150 s (dentro de 150–180 s). Tu historial ya registrado no se modifica.
+- **Búsqueda de alimentos:** con texto en el buscador se ocultan «Ingresado recientemente» y «Comidas recientes»; los resultados quedan justo debajo.
+- **Accesibilidad:** los modales atrapan el foco con Tab.
+- **Icono negro.** En iPhone quita la app de la pantalla de inicio y vuelve a añadirla (iOS cachea el icono).
+
+## Pendiente de esta versión (no incluido)
+Fichas de 21 ejercicios + glosario + árbol de rutinas (3b, 3e, 3f), tutorial (4), resumen de fin de rutina (5), editar rutina en sesión (8), fibra SiAgroBD (11), ejemplos visuales (12), hojas apiladas (14) y desplegables (16).
+
 # JOS Fit PWA v1.9 — Base mexicana
 
 ## Contenido
