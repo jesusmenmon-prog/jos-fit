@@ -1,40 +1,24 @@
-# JOS Fit PWA v1.13.1 — Coach personal
+# JOS Fit PWA v1.13.2
 
-## Cambios incluidos
-- Corrige el desbordamiento horizontal: `html/body` limitan el overflow, los campos `time` y los elementos de grid/flex pueden encogerse, y las hojas modales respetan el ancho disponible. El scroll horizontal intencional de las pestañas se conserva.
-- El mapa muscular del resumen de rutina ahora es un gráfico de barras horizontales, ordenado por series e incluye porcentaje del total.
-- Añade el botón **Ver tutorial** en Perfil y recupera la frase exacta pendiente del rubro 5: “Cada récord empieza con un \"voy a intentarlo\".”
-- Añade racha individual: cuentan sesiones con al menos una serie efectiva y deportes programados/confirmados; tolera hasta dos días inactivos y reinicia tras tres. Guarda el máximo histórico, no un contador diario. Usa frases del rubro 4.
-- Añade niveles individuales basados en el total de e1RM estimados (Epley) de press inclinado con mancuernas, sentadilla Smith y peso muerto rumano, dividido entre el peso corporal. Si faltan datos se informa cuáles; no se inventan marcas.
-- Amplía `sportActivities` con intensidad suave/moderada/intensa. La migración conserva el deporte y los días guardados y asigna moderado + 60 min cuando faltan esos datos. La estimación usa `(MET − 1) × kg × horas × 0.80`, tope 500 kcal/día, y redistribuye la energía dentro de la semana. El factor 0.80 es una regla de diseño conservadora; Pádel y “Otro” usan MET operativos estimados.
-- Añade registro de cardio ad hoc con tipo, duración e intensidad. No modifica calorías automáticamente; el usuario puede activar un bono del mismo día con la misma fórmula/factor. Los registros alimentan el resumen de actividad de 28 días.
-- Añade catálogo de nueve suplementos, pila personal en Perfil y registro de un toque en Hoy. Incluye avisos de cafeína a menos de 8.5 h del sueño, nota de agua intracelular durante 21 días tras iniciar creatina y nota de whey para registrar sus macros en Nutrición. Se excluyen sustancias y productos indicados en el brief; no se muestran precios.
-- Actualiza la versión visible, el manifiesto, el registro del Service Worker y la caché a `v1.13.1`. Se conserva `localStorage` bajo `josfit_v01_data`; no hay backend ni sincronización.
+## Alcance de esta entrega
+- Corrige la ubicación de las tarjetas: racha solo en Hoy; nivel completo y pila de suplementos solo en Perfil; barra compacta de nivel, suplementos de hoy y cardio solo en Hoy; aviso de creatina solo en Progreso. Los contenedores ahora son HTML estático y no se duplican por inyección o espejos.
+- Corrige la frase de racha para evitar números fijos contradictorios y pluraliza correctamente “1 día” / “N días”.
+- Compacta los controles `input[type=time]` a 48 px manteniendo 16 px de fuente y el selector nativo.
+- Open Food Facts admite carbohidratos o grasa ausentes como 0, etiqueta esos resultados con “Revisa etiqueta” y sigue exigiendo kcal y proteína válidas no negativas.
+- Amplía `foods-mx.json` a 500 alimentos, con macros extraídos de SiAgroBD y trazabilidad por `conabio_id`. Incluye quesos lácteos, yogures, carnes y derivados, pan de caja, tortillas de harina y otras categorías. Se excluyen falsos amigos y preparados con queso.
+- Añade rutinas personalizadas: crear, elegir, editar y borrar; se pueden usar en sesiones normales y guardar cambios de sesión en la rutina de origen. El recomendador continúa limitado a las seis plantillas.
+- Elimina la función antigua de ajuste fijo +250 kcal y el catálogo MET de cardio que no era necesario para el cálculo; conserva el modelo MET y su redistribución semanal.
+- Confirma la convención de mancuernas por peso combinado (18 + 18 = 36 kg), conserva la nota de remo a una mano y aclara “remo en polea” para el registro de 73 kg.
 
-## Notas de diseño
-- El valor 0.80 de la fórmula MET es una decisión conservadora de producto, no una constante fisiológica. El margen real de error puede rondar ±15–30%.
-- Pádel y “Otro” son estimaciones operativas, no mediciones del Compendium.
-- El aviso de creatina de 21 días es una salvaguarda de diseño para evitar interpretar el agua intracelular como grasa o estancamiento; no es un algoritmo clínico.
-- La meta semanal se conserva mediante redistribución entera a días sin deporte. Si los siete días tienen deporte programado, no existen días receptores para redistribuir.
-- Los MET de cardio ad hoc usan los niveles operativos de la investigación: suave 4.5, moderado 7.0 e intenso 9.5.
+## Datos y compatibilidad
+- Se conserva la clave `localStorage`: `josfit_v01_data`.
+- `customRoutines` se incorpora como colección nueva; si no existe en datos anteriores, se inicializa como `[]`.
+- El catálogo local se construyó únicamente con los archivos SiAgroBD proporcionados: `registros.json`, `nutrientes.jsonl` y `resumen.json`. Se usan Energía (kcal), Proteína bruta, Hidratos de carbono y Extracto etéreo; fibra solo cuando existe Fibra dietaria total. Los registros con desviación energética mayor a 10% se marcan para revisar energía.
+- Fuente: CONABIO. 2023. Sistema de Información sobre Agrobiodiversidad; Bourges Rodríguez, H. G. N., Camacho Parra, M. A., Morales Guerrero, J. C. 2019. Composición de alimentos mexicanos Base de Datos Extensa. INCMNSZ.
 
-## Cómo verificar
-1. Antes de actualizar, exporta un respaldo JSON desde Perfil. Descomprime el ZIP y publica los siete archivos juntos en el mismo dominio HTTPS.
-2. Revisa los campos de hora y la hoja de resumen a 360, 390 y 430 px; no debe existir scroll horizontal fuera de las pestañas.
-3. Abre el resumen de una sesión Push y comprueba barras musculares, series y porcentajes.
-4. En Perfil, abre el tutorial y revisa el configurador de deportes: intensidad por deporte. Comprueba que un fútbol moderado de 60 min a 71 kg estima ~341 kcal y uno intenso de 90 min se limita a 500 kcal.
-5. Comprueba migración de un deporte existente sin perder día/hora: debe asignar moderado y 60 min si no había intensidad/duración.
-6. Registra cardio ad hoc sin bono (no cambia la meta) y después con bono (solo cambia el día actual).
-7. En Perfil, añade creatina 5 g; en Hoy, tócala para registrar hora. Prueba cafeína cuando falten menos de 8.5 h para dormir; revisa el aviso de creatina y la ficha de whey.
-8. Revisa que no aparezcan productos excluidos y que no se muestren precios.
-9. Valida racha con huecos de 2 y 3 días inactivos, un día de deporte, y un perfil sin básicos. Comprueba niveles con marcas guardadas.
-10. Ejecuta `node --check` sobre el script de `index.html` y `sw.js`; valida `manifest.json`.
-
-## Pruebas pendientes en dispositivo real
-La validación automatizada en este entorno no sustituyó las tres pruebas finales en iPhone: búsqueda en modo avión, escaneo de un producto físico y cerrar/reabrir la PWA desde la pantalla de inicio. También se recomienda confirmar Safari iOS con las capturas de 390 px.
-
-
-## Corrección v1.13.1
-- Los textos del coach y de Nutrición muestran el aumento MET real del día y su equivalente aproximado en carbohidratos (kcal ÷ 4).
-- La nota de Nutrición identifica el deporte o los deportes programados; no asume que toda actividad es fútbol.
-- No se modifica la fórmula MET, la redistribución semanal ni la clave `localStorage` (`josfit_v01_data`).
+## Verificaciones realizadas
+- `node --check` del JavaScript inline y `sw.js`: correcto.
+- `manifest.json`: JSON válido.
+- `foods-mx.json`: 500 registros, IDs únicos, sin discrepancias de macros frente a SiAgroBD; Queso Panela (conabio_id 1626): 237.88 kcal, 23 g proteína, 2.18 g carbohidratos, 15.24 g grasa y 523.1 mg sodio por 100 g.
+- La sintaxis conserva el registro `./sw.js?v=1.13.2`, caché `josfit-pwa-v1-13-2` y el precache de `foods-mx.json`.
+- Pendiente de validación manual en Safari iOS: medidas reales de los campos de hora, modal a 390 px, conteo visual de tarjetas y flujo completo de crear/usar/editar/borrar rutina personalizada. Las comprobaciones estáticas no sustituyen estas pruebas de dispositivo.
