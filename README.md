@@ -1,4 +1,4 @@
-# JOS Fit PWA v1.14.2 — Atribución nutricional y barra superior fija
+# JOS Fit PWA v1.14.3 — Atribución nutricional y barra superior fija
 
 **Base:** ZIP original de JOS Fit PWA v1.14.1 (8 archivos).  
 **Persistencia:** se conserva `localStorage` con la clave `josfit_v01_data`; no se migran, borran ni modifican datos del usuario.
@@ -17,10 +17,10 @@
 
 ## Versionado
 
-- `index.html`: title, pie y comentarios a v1.14.2.
-- `manifest.json`: nombre v1.14.2.
+- `index.html`: title, pie y comentarios a v1.14.3.
+- `manifest.json`: nombre v1.14.3.
 - `sw.js`: caché `josfit-pwa-v1-14-2`.
-- Registros del Service Worker: `./sw.js?v=1.14.2`, incluida la ruta de OneSignal.
+- Registros del Service Worker: `./sw.js?v=1.14.3`, incluida la ruta de OneSignal.
 
 ## Verificación ejecutada
 
@@ -44,3 +44,11 @@ El entorno de construcción permite validaciones de código y estructura, pero n
 4. Desplazarse en Perfil y Progreso: la barra JOS FIT debe permanecer fija, respetar el área segura y no tapar títulos.
 5. Abrir/cerrar el selector de división: debe iniciar cerrado, mostrar un solo título y actualizar el `summary` al seleccionar.
 6. Confirmar que navegación inferior, barra de sesión, seis tarjetas de división, agua, búsqueda de alimentos, racha y nivel siguen funcionando.
+
+
+## v1.14.3 — Ajuste de separación visual
+
+- Se establece un espacio vertical de 16 px entre los bloques del resumen de Hoy en móvil.
+- Se añade separación de 16 px cuando una tarjeta de contenido va seguida directamente por un acordeón, incluyendo medición semanal, volumen de entrenamiento y secciones de Perfil.
+- En pantallas de escritorio se conserva la distribución en dos columnas del resumen de Hoy, con separación uniforme.
+- No se modifican cálculos, datos, catálogo, rutinas ni persistencia.
