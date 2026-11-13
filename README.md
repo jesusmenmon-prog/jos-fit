@@ -36,3 +36,23 @@ No se modificaron cálculos, notificaciones, catálogo previo, persistencia, cla
 ## Pruebas de aceptación pendientes en Safari iOS
 
 No se ejecutó un navegador iOS real en este entorno. En viewport CSS de 390 px comprobar: arrastrar un ejercicio de posición 3 a 1 en editor de división y rutina personalizada; guardar, cerrar y reabrir; confirmar orden en sesión; probar botones ↑/↓; verificar que el tirador no activa checkbox/Ficha/campos ni desplaza la hoja. Probar búsqueda `pescado`, `tilapia`, `huachinango` y `salmón`; confirmar macros y fuente en detalle. Probar racha 1 y 5 y comprobar espacio visible en «1 día activo».
+
+
+## v1.14.5 — 12 nov 2026
+
+### Cambios
+- Corregidas las frases de racha con `{racha}` y `{mejor}` que producían singular/plural incorrecto; se auditó el arreglo completo.
+- Configurado el App ID de OneSignal Web Push: `0a9df6e2-d2a0-4fc9-a74b-802a0a9c8743`. No se enviaron notificaciones de prueba.
+- Simplificado el editor de rutinas: se retiraron tirador y botones ↑/↓; la fila se reordena mediante deslizamiento horizontal, manteniendo el scroll vertical nativo. Los controles interactivos no inician el arrastre.
+- Recuperado `flex:1; min-width:0` en el nombre del ejercicio y compactados los campos para pantallas estrechas.
+- Añadida una indicación de uso en ambos editores de rutina.
+- Actualizados title/footer/manifest/Service Worker a v1.14.5 y caché `josfit-pwa-v1-14-5`.
+- Se conserva `josfit_v01_data`; no se ejecuta migración de datos.
+
+### Verificación
+- `node --check` del JavaScript inline y `sw.js`.
+- JSON de manifest y catálogo parseables.
+- Auditoría de `V113_STREAK_PHRASES` para placeholders numéricos seguidos de unidades plurales fijas.
+- Confirmación estática de que no quedan botones ni tirador de orden en `routineEditorRow`.
+- Confirmación estática de App ID y versión en los archivos.
+- La interacción real en Safari/iPhone y la recepción de push deben validarse en el dispositivo y en el sitio desplegado; no se simulan como pruebas superadas.
