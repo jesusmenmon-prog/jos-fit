@@ -1,54 +1,38 @@
-# JOS Fit PWA v1.14.3 — Atribución nutricional y barra superior fija
+# JOS Fit PWA v1.14.4 — Rutinas ordenables y catálogo de pescados
 
-**Base:** ZIP original de JOS Fit PWA v1.14.1 (8 archivos).  
-**Persistencia:** se conserva `localStorage` con la clave `josfit_v01_data`; no se migran, borran ni modifican datos del usuario.
+**Base:** JOS Fit PWA v1.14.3 (8 archivos). Se conservaron la arquitectura, los recursos visuales y la clave `localStorage` `josfit_v01_data`. No se migran ni modifican datos existentes.
 
-## Cambios implementados
+## Cambios
 
-1. **Fuente nutricional por alimento.** `renderFoodDetail` ahora prioriza `d.source.name` cuando el alimento trae una fuente. El nombre de fuente SiAgroBD almacenado con barras se presenta con separadores medios (`INCMNSZ · SiAgroBD · CONABIO`) para coincidir con la atribución solicitada, sin alterar el catálogo. Si no existe fuente, conserva el fallback anterior por tipo (`generic`, `commercial` o creado por el usuario). Así, «Avena en hojuelas» atribuye USDA FoodData Central · SR Legacy; los alimentos SiAgroBD conservan INCMNSZ · SiAgroBD · CONABIO; productos comerciales conservan Open Food Facts / etiqueta del producto; y los alimentos personalizados conservan «Alimento creado por ti». No se modificaron valores nutricionales ni el encabezado general de Nutrición.
-2. **Barra superior fija.** El `header.topbar` pasa de `position: sticky` a `position: fixed`, centrado y limitado a 980 px para conservar la alineación de escritorio. Se compensa el espacio en `.main` con una altura basada en el alto de la barra y `env(safe-area-inset-top)`, con ajuste específico para viewports de hasta 420 px. Se mantienen el padding seguro, fondo translúcido y blur existentes. La barra inferior y la barra de sesión no se modificaron.
-3. **Título duplicado de división.** Se eliminó el `<h2>` interior «Selecciona tu división». El `summary` permanece como único título; se conserva la pista «Rutinas editables» y la sección «Mis rutinas» sin cambios.
+1. **Frases de racha:** se reescribieron cinco frases con placeholders para evitar plurales fijos incorrectos con valores 1. No se modificaron el filtro ni la matemática de rachas.
+2. **Espacio de métrica:** el número y la unidad de la tarjeta de racha ahora están separados con un espacio no separable; se conserva singular/plural.
+3. **Detalle de alimentos:** inspección del código no encontró ninguna etiqueta `100g` sin espacio; el botón sigue diciendo «Agregar alimento» y las porciones usan «100 g». No se cambió esta área.
+4. **Versionado:** title, pie, comentarios, manifest, caché `josfit-pwa-v1-14-4` y registros `./sw.js?v=1.14.4` actualizados.
+5. **Orden de ejercicios:** ambos editores muestran primero los ejercicios seleccionados en el orden guardado. Añaden tirador Pointer Events apto para touch, feedback visual y controles ↑/↓ accesibles. El guardado sigue leyendo el DOM en orden; no se modificó el recomendador.
+6. **Pescados:** catálogo ampliado de 501 a 510 registros. Se añadieron seis entradas SiAgroBD y tres USDA FDC SR Legacy con sus fuentes y macros especificados. Se añadió el alias «pescado» a pescados nuevos y entradas existentes de atún, sardina y camarón; para la búsqueda «pescado», los resultados de categoría PESCADOS Y MARISCOS se priorizan frente a productos procesados.
 
-## Fuera de alcance respetado
+## Datos añadidos y control energético
 
-- No se persiste `selectedSplit`; la división conserva el comportamiento de sesión existente.
-- No se modificaron catálogo, rutinas, cálculos, notificaciones ni datos nutricionales.
-- No se modificó `localStorage` ni se añadió migración.
+Los nueve alimentos nuevos tienen carbohidratos y fibra en 0 g/100 g. La comprobación `4P + 4C + 9F` contra kcal declaradas da desviaciones absolutas menores al 10% para los nueve registros. No se añadieron jurel toro ni bagre.
 
-## Versionado
+- SiAgroBD / CONABIO: Mojarra, Robalo, Trucha, Pargo, Sierra y Mero crudos.
+- USDA FoodData Central · SR Legacy: Tilapia cruda (FDC 175176), Huachinango crudo / snapper mixed species (FDC 173698) y Salmón del Atlántico de granja crudo (FDC 175167).
 
-- `index.html`: title, pie y comentarios a v1.14.3.
-- `manifest.json`: nombre v1.14.3.
-- `sw.js`: caché `josfit-pwa-v1-14-2`.
-- Registros del Service Worker: `./sw.js?v=1.14.3`, incluida la ruta de OneSignal.
+## Fuera de alcance
+
+No se modificaron cálculos, notificaciones, catálogo previo, persistencia, clave localStorage ni selección temporal de división. No se modificó la lógica del recomendador.
 
 ## Verificación ejecutada
 
-- JavaScript inline: `node --check` — PASS.
+- JavaScript inline extraído: `node --check` — PASS.
+- JavaScript inline con prefijo `'use strict'`: `node --check` — PASS.
 - `sw.js`: `node --check` — PASS.
-- JavaScript inline parseado también con prefijo `'use strict'` — PASS; revisión estática dirigida de asignaciones `nombre = function` frente a declaraciones existentes — sin nombres faltantes.
-- `manifest.json` y `foods-mx.json`: JSON válido.
-- `exercises-visuals.json`: JSON válido.
-- Verificación estática de atribución: usa primero `d.source.name` y mantiene los tres fallbacks por tipo.
-- Verificación estática de la barra: `position: fixed`, centrada, ancho máximo 980 px y compensación responsive de `.main`.
-- Verificación estática del desplegable: `summary` conserva el título; ya no existe el `<h2>` duplicado; «Mis rutinas» permanece.
-- Verificación de persistencia: clave `josfit_v01_data` sin cambios.
-- ZIP: 8 archivos exactos.
+- JSON de manifest, catálogo y visuales: válido.
+- Catálogo: 510 IDs únicos; los nueve alimentos nuevos cumplen ±10% de energía.
+- Búsqueda estática: alias `pescado` y prioridad de categoría para pescado común; tilapia, huachinango y salmón tienen alias directos.
+- Persistencia: `josfit_v01_data` sin cambios.
+- ZIP: 8 archivos exactos, integridad CRC verificada.
 
-## Prueba de aceptación pendiente
+## Pruebas de aceptación pendientes en Safari iOS
 
-El entorno de construcción permite validaciones de código y estructura, pero no confirma el comportamiento visual en Safari iOS. Probar en iPhone con viewport CSS de 390 px:
-1. Abrir detalle de «Avena en hojuelas»: debe mostrar `Fuente: USDA FoodData Central · SR Legacy`.
-2. Abrir detalle de «Tortilla de maíz»: debe mostrar `Fuente: INCMNSZ · SiAgroBD · CONABIO`.
-3. Confirmar los fallbacks de producto comercial y alimento personalizado.
-4. Desplazarse en Perfil y Progreso: la barra JOS FIT debe permanecer fija, respetar el área segura y no tapar títulos.
-5. Abrir/cerrar el selector de división: debe iniciar cerrado, mostrar un solo título y actualizar el `summary` al seleccionar.
-6. Confirmar que navegación inferior, barra de sesión, seis tarjetas de división, agua, búsqueda de alimentos, racha y nivel siguen funcionando.
-
-
-## v1.14.3 — Ajuste de separación visual
-
-- Se establece un espacio vertical de 16 px entre los bloques del resumen de Hoy en móvil.
-- Se añade separación de 16 px cuando una tarjeta de contenido va seguida directamente por un acordeón, incluyendo medición semanal, volumen de entrenamiento y secciones de Perfil.
-- En pantallas de escritorio se conserva la distribución en dos columnas del resumen de Hoy, con separación uniforme.
-- No se modifican cálculos, datos, catálogo, rutinas ni persistencia.
+No se ejecutó un navegador iOS real en este entorno. En viewport CSS de 390 px comprobar: arrastrar un ejercicio de posición 3 a 1 en editor de división y rutina personalizada; guardar, cerrar y reabrir; confirmar orden en sesión; probar botones ↑/↓; verificar que el tirador no activa checkbox/Ficha/campos ni desplaza la hoja. Probar búsqueda `pescado`, `tilapia`, `huachinango` y `salmón`; confirmar macros y fuente en detalle. Probar racha 1 y 5 y comprobar espacio visible en «1 día activo».
