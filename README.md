@@ -1,4 +1,4 @@
-# JOS Fit PWA v1.15 — Descubribilidad
+# JOS Fit PWA v1.15.1 — Descubribilidad
 
 Base: v1.14.5. Misma clave `josfit_v01_data`; no se migró ni se tocó ningún dato. No se borró ninguna declaración de función: los cambios de comportamiento envuelven funciones existentes (`startRest`, `toggleSet`, `updateSet`, `renderHome`, `renderProgress`) al final del script, después de los demás overrides, y llaman a la original.
 
@@ -16,4 +16,24 @@ Chromium sin cabeza (Playwright), viewports 390×844 y 360×844, servido por HTT
 ## No probado
 Safari/iPhone real y vibración (iOS no la soporta). El gesto de pulsación larga se simuló en Chromium: conviene confirmarlo con el dedo en el teléfono.
 
-Versión en todas partes: v1.15 (título, pie, manifest, caché `josfit-pwa-v1-15`, registro `./sw.js?v=1.15`).
+Versión anterior: v1.15.1 (título, pie, manifest, caché `josfit-pwa-v1-15-1`, registro compartido `./sw.js?v=1.15.1`).
+
+
+## Fix v1.15.1 — Fusión OneSignal
+- `sw.js` importa primero el worker oficial v16 de OneSignal con `importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js')`. El SDK importado instala sus propios listeners de push; el worker de JOS Fit conserva sin cambios la caché offline, `install`/`activate`/`fetch` y el `notificationclick` local.
+- La app y OneSignal usan la misma constante `ONESIGNAL_SW_PATH` (`./sw.js?v=1.15.1`) y el mismo scope `./`; se elimina la URL anterior con `&push=1` para evitar registros distintos.
+- Al conceder permiso y activar recordatorios, `ensurePushSubscription()` llama a `OneSignal.User.PushSubscription.optIn()` si el SDK todavía no marca `optedIn`. Solo después de confirmar la suscripción se envían las etiquetas `training_time`, `wake_time`, `football_day` y `goal`. Un evento `change` vuelve a sincronizarlas cuando cambia el estado de suscripción.
+- Al desactivar recordatorios se solicita `optOut()` cuando la suscripción está activa. La clave de almacenamiento `josfit_v01_data` y el modelo de datos no cambian.
+- App ID configurado: `0a9df6e2-d2a0-4fc9-a74b-802a0a9c8743`.
+
+## Cómo verificar OneSignal después del despliegue
+1. Desplegar por HTTPS y abrir JOS Fit. En la tarjeta de recordatorios, activar recordatorios y aceptar el permiso del navegador/sistema.
+2. En la consola del navegador, consultar `OneSignal.User.PushSubscription.id` y `OneSignal.User.PushSubscription.optedIn`. El ID debe tener valor y `optedIn` debe ser `true`.
+3. En el panel de OneSignal, comprobar que la suscripción aparece y enviar un push de prueba.
+4. Verificar también el aviso local de prueba, el fin de descanso y el fin de rutina; activar modo avión y confirmar que la app y el catálogo siguen abriendo desde caché.
+
+## Validación de construcción v1.15.1
+`node --check` se ejecutó sobre el JavaScript inline y `sw.js`; los JSON se parsearon correctamente. Se verificó que `sw.js` importa el SDK v16 antes de registrar los listeners de JOS Fit, que el handler local conserva el filtro `data.josLocal`, que ambas inicializaciones usan la misma URL de worker y que se mantiene `josfit_v01_data`. Los archivos de catálogo, visuales e iconos se conservaron byte por byte respecto a v1.15.
+
+## No probado en el entorno de construcción
+No se concedió permiso en un dispositivo real, no se confirmó una suscripción en el panel de OneSignal ni se recibió un push remoto en iPhone. Esas comprobaciones requieren desplegar el ZIP en el dominio HTTPS configurado y aceptar el permiso en el dispositivo. Tampoco se afirma haber probado Safari/iOS ni el modo avión físico en esta construcción.
