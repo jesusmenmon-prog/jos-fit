@@ -1,58 +1,19 @@
-# JOS Fit PWA v1.14.4 — Rutinas ordenables y catálogo de pescados
+# JOS Fit PWA v1.15 — Descubribilidad
 
-**Base:** JOS Fit PWA v1.14.3 (8 archivos). Se conservaron la arquitectura, los recursos visuales y la clave `localStorage` `josfit_v01_data`. No se migran ni modifican datos existentes.
+Base: v1.14.5. Misma clave `josfit_v01_data`; no se migró ni se tocó ningún dato. No se borró ninguna declaración de función: los cambios de comportamiento envuelven funciones existentes (`startRest`, `toggleSet`, `updateSet`, `renderHome`, `renderProgress`) al final del script, después de los demás overrides, y llaman a la original.
 
 ## Cambios
+1. **Inicio simplificado (Hoy).** Arriba: «PLAN DE HOY» + botón grande **Empezar entrenamiento de hoy** (inicia la rutina del día; si ya hay sesión activa dice «Continuar sesión en curso» y lleva a Entrenar; si hoy no hay rutina asignada abre Entrenar con un aviso). Todo lo demás está agrupado en 3 secciones plegables, cerradas, con el patrón `tab-disclosure` existente: *Cuerpo y hábitos* (peso, check-in, agua), *Nutrición y comidas* (las 3 secciones que ya existían) y *Coach, racha y nivel* (coach, racha, nivel, suplementos). Ninguna tarjeta se eliminó; conservan sus ids. **Guía de primer uso** («Empieza en 3 pasos»): tarjeta con ✕, solo si no hay sesiones registradas. Nota: la sección de nutrición ahora empieza cerrada (antes abierta); así lo pide este brief.
+2. **Descanso visible.** Tras marcar una serie de trabajo aparece en la tarjeta un botón grande «⏱ Descanso m:ss» (reutiliza `startRestFor`). Al iniciar cualquier descanso, la barra de sesión se despliega y queda visible con el temporizador. La lógica del temporizador, los tiempos por ejercicio y `josfit_rest_v1` no cambiaron.
+3. **Récord personal en vivo.** Al completar una serie de trabajo que supera el mejor peso o el mejor 1RM estimado anterior (misma regla que `countRecords`, sin la sesión en curso), sale «¡Nuevo récord!» en la tarjeta, una ★ en la serie, un aviso corto y vibración. Si se edita la serie, el badge se actualiza. El calentamiento no cuenta. El resumen al terminar no cambió.
+4. **Progresión de fuerza.** Progreso → «Progresión de fuerza»: volumen total por semana de las últimas 12 semanas (calculado desde `data.workouts` con `statsForWorkout`, misma gráfica del detalle de ejercicio). Con menos de 2 semanas: «Registra al menos 2 semanas para ver tu tendencia». En cada tarjeta de ejercicio de la sesión, «Ver mi progresión» abre el mismo detalle que la ⓘ.
+5. **Reordenar con pulsación larga** (reemplaza la activación horizontal). En táctil: mantener ~250 ms levanta la fila (vibración si el dispositivo la soporta); después el arrastre es libre y la fila sigue al dedo mientras las demás se reacomodan; con el mouse el arrastre inicia a los 5 px y un movimiento corto a la fila adyacente ya intercambia. Los controles (checkbox, botones, campos) no inician el arrastre; moverse >10 px antes de los 250 ms cancela (es scroll); un toque rápido no hace nada; el menú contextual está suprimido en la fila. Texto del modal: «Mantén presionada una fila para reordenar». Mismo renderizador para divisiones y «Mis rutinas».
+6. **Menú ⋮ por ejercicio en la sesión.** Subir / Bajar, Reemplazar (sin los ya presentes en la sesión; primero el mismo grupo muscular) y Eliminar. Reutiliza `moveSessionExercise`, `toggleSessionExercise`, `addExerciseToSession` del editor de sesión: con series completadas pide confirmación y el ejercicio queda oculto con sus series conservadas. Sin superserie. El editor de sesión sigue igual.
 
-1. **Frases de racha:** se reescribieron cinco frases con placeholders para evitar plurales fijos incorrectos con valores 1. No se modificaron el filtro ni la matemática de rachas.
-2. **Espacio de métrica:** el número y la unidad de la tarjeta de racha ahora están separados con un espacio no separable; se conserva singular/plural.
-3. **Detalle de alimentos:** inspección del código no encontró ninguna etiqueta `100g` sin espacio; el botón sigue diciendo «Agregar alimento» y las porciones usan «100 g». No se cambió esta área.
-4. **Versionado:** title, pie, comentarios, manifest, caché `josfit-pwa-v1-14-4` y registros `./sw.js?v=1.14.4` actualizados.
-5. **Orden de ejercicios:** ambos editores muestran primero los ejercicios seleccionados en el orden guardado. Añaden tirador Pointer Events apto para touch, feedback visual y controles ↑/↓ accesibles. El guardado sigue leyendo el DOM en orden; no se modificó el recomendador.
-6. **Pescados:** catálogo ampliado de 501 a 510 registros. Se añadieron seis entradas SiAgroBD y tres USDA FDC SR Legacy con sus fuentes y macros especificados. Se añadió el alias «pescado» a pescados nuevos y entradas existentes de atún, sardina y camarón; para la búsqueda «pescado», los resultados de categoría PESCADOS Y MARISCOS se priorizan frente a productos procesados.
+## Cómo se probó
+Chromium sin cabeza (Playwright), viewports 390×844 y 360×844, servido por HTTP. Táctil simulado con eventos `Input.dispatchTouchEvent` (CDP): toque rápido, deslizamiento vertical rápido (no levanta), pulsación larga de 380 ms + arrastre de la fila 3 a la 1, guardar y reabrir (el orden se conserva), mouse con arrastre corto, y contextmenu prevenido. Editor de rutinas sin desbordamiento horizontal a 390 y 360 px (el campo de descanso queda dentro de la pantalla). Las 5 pestañas cargan sin errores de consola; `node --check` OK en el JS inline y en `sw.js`; escaneo de asignaciones a nombres no declarados limpio; `getMacroTargets` sigue declarada como `function`.
 
-## Datos añadidos y control energético
+## No probado
+Safari/iPhone real y vibración (iOS no la soporta). El gesto de pulsación larga se simuló en Chromium: conviene confirmarlo con el dedo en el teléfono.
 
-Los nueve alimentos nuevos tienen carbohidratos y fibra en 0 g/100 g. La comprobación `4P + 4C + 9F` contra kcal declaradas da desviaciones absolutas menores al 10% para los nueve registros. No se añadieron jurel toro ni bagre.
-
-- SiAgroBD / CONABIO: Mojarra, Robalo, Trucha, Pargo, Sierra y Mero crudos.
-- USDA FoodData Central · SR Legacy: Tilapia cruda (FDC 175176), Huachinango crudo / snapper mixed species (FDC 173698) y Salmón del Atlántico de granja crudo (FDC 175167).
-
-## Fuera de alcance
-
-No se modificaron cálculos, notificaciones, catálogo previo, persistencia, clave localStorage ni selección temporal de división. No se modificó la lógica del recomendador.
-
-## Verificación ejecutada
-
-- JavaScript inline extraído: `node --check` — PASS.
-- JavaScript inline con prefijo `'use strict'`: `node --check` — PASS.
-- `sw.js`: `node --check` — PASS.
-- JSON de manifest, catálogo y visuales: válido.
-- Catálogo: 510 IDs únicos; los nueve alimentos nuevos cumplen ±10% de energía.
-- Búsqueda estática: alias `pescado` y prioridad de categoría para pescado común; tilapia, huachinango y salmón tienen alias directos.
-- Persistencia: `josfit_v01_data` sin cambios.
-- ZIP: 8 archivos exactos, integridad CRC verificada.
-
-## Pruebas de aceptación pendientes en Safari iOS
-
-No se ejecutó un navegador iOS real en este entorno. En viewport CSS de 390 px comprobar: arrastrar un ejercicio de posición 3 a 1 en editor de división y rutina personalizada; guardar, cerrar y reabrir; confirmar orden en sesión; probar botones ↑/↓; verificar que el tirador no activa checkbox/Ficha/campos ni desplaza la hoja. Probar búsqueda `pescado`, `tilapia`, `huachinango` y `salmón`; confirmar macros y fuente en detalle. Probar racha 1 y 5 y comprobar espacio visible en «1 día activo».
-
-
-## v1.14.5 — 12 nov 2026
-
-### Cambios
-- Corregidas las frases de racha con `{racha}` y `{mejor}` que producían singular/plural incorrecto; se auditó el arreglo completo.
-- Configurado el App ID de OneSignal Web Push: `0a9df6e2-d2a0-4fc9-a74b-802a0a9c8743`. No se enviaron notificaciones de prueba.
-- Simplificado el editor de rutinas: se retiraron tirador y botones ↑/↓; la fila se reordena mediante deslizamiento horizontal, manteniendo el scroll vertical nativo. Los controles interactivos no inician el arrastre.
-- Recuperado `flex:1; min-width:0` en el nombre del ejercicio y compactados los campos para pantallas estrechas.
-- Añadida una indicación de uso en ambos editores de rutina.
-- Actualizados title/footer/manifest/Service Worker a v1.14.5 y caché `josfit-pwa-v1-14-5`.
-- Se conserva `josfit_v01_data`; no se ejecuta migración de datos.
-
-### Verificación
-- `node --check` del JavaScript inline y `sw.js`.
-- JSON de manifest y catálogo parseables.
-- Auditoría de `V113_STREAK_PHRASES` para placeholders numéricos seguidos de unidades plurales fijas.
-- Confirmación estática de que no quedan botones ni tirador de orden en `routineEditorRow`.
-- Confirmación estática de App ID y versión en los archivos.
-- La interacción real en Safari/iPhone y la recepción de push deben validarse en el dispositivo y en el sitio desplegado; no se simulan como pruebas superadas.
+Versión en todas partes: v1.15 (título, pie, manifest, caché `josfit-pwa-v1-15`, registro `./sw.js?v=1.15`).
