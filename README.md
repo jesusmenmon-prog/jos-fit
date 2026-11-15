@@ -89,3 +89,5 @@ El arreglo mantiene un único worker de entrada en la raíz: `OneSignalSDKWorker
 ## Archivos incluidos
 
 `index.html`, `manifest.json`, `sw.js`, `OneSignalSDKWorker.js`, `foods-mx.json`, `exercises-visuals.json`, `icon-192.png`, `icon-512.png` y este README.
+
+- v1.17: restauradas las secciones «Ingresado recientemente» y «Comidas recientes · repetir en un toque» en Nutrición, manteniendo «Tus frecuentes».

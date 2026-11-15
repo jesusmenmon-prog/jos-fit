@@ -1139,17 +1139,7 @@ function findFoods(q){
 function foodIsFavorite(p){return (data.foodFavorites||[]).includes(foodKey(p));}
 function toggleFoodFavorite(p){if(!Array.isArray(data.foodFavorites))data.foodFavorites=[];const key=foodKey(p),i=data.foodFavorites.indexOf(key);if(i>=0)data.foodFavorites.splice(i,1);else data.foodFavorites.unshift(key);save({render:false});renderFoodBrowser();toast(i>=0?'Quitado de favoritos':'Añadido a favoritos');}
 function setFoodTab(tab){foodTab=tab;['database','favorites','created'].forEach(k=>document.getElementById('foodTab'+k[0].toUpperCase()+k.slice(1))?.classList.toggle('active',k===tab));renderFoodBrowser();}
-function renderFoodQuickAccess(){
-  const el=document.getElementById('foodQuickAccess');if(!el)return;el.replaceChildren();
-  if(foodTab!=='database')return;
-  const recent=recentFoods(6),meals=recentMealGroups(4);
-  if(recent.length){const title=document.createElement('div');title.className='food-quick-title';title.textContent='Ingresado recientemente';el.append(title);recent.forEach(e=>{
-    const row=document.createElement('div');row.className='food-mini-row';const b=document.createElement('button');b.type='button';const strong=document.createElement('strong');strong.textContent=e.product.name;const small=document.createElement('small');small.textContent=`${e.grams} g · ${Math.round(num(e.meal.kcal))} kcal · ${e.meal.type||'Comida'}`;b.append(strong,small);b.addEventListener('click',()=>openFoodDetail(e.product,e.grams));row.append(b);el.append(row);
-  });}
-  if(meals.length){const title=document.createElement('div');title.className='food-quick-title';title.textContent='Comidas recientes · repetir en un toque';el.append(title);meals.forEach(g=>{
-    const row=document.createElement('div');row.className='food-recent-meal';const left=document.createElement('div'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=`${g.type} · ${new Date(g.date+'T12:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'short'})}`;small.textContent=`${g.items.length} alimentos · ${Math.round(g.kcal).toLocaleString('es-MX')} kcal`;left.append(strong,small);const btn=document.createElement('button');btn.className='btn secondary small';btn.textContent='Repetir';btn.addEventListener('click',()=>repeatMeal(g.date,g.type));row.append(left,btn);el.append(row);
-  });}
-}
+
 function repeatMeal(date,type){const src=data.days?.[date]?.meals?.filter(m=>(m.type||'Comida')===type)||[];if(!src.length){toast('Esta comida ya no está disponible');return;}const dest=currentDay();src.forEach(m=>dest.meals.push({...structuredClone(m),time:new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'})}));save();toast(`${type} repetido · ${src.length} alimentos`);}
 function renderFoodGroups(box,groups,note){
   box.replaceChildren();
@@ -2921,17 +2911,29 @@ function exploreAppFirstV117(){
 }
 function renderFoodQuickAccess(){
   const el=document.getElementById('foodQuickAccess');if(!el)return;el.replaceChildren();
+  if(foodTab!=='database')return;
+
   const frequent=frequentFoods().slice(0,5);
-  const title=document.createElement('div');title.className='cache-label';title.textContent='Tus frecuentes';el.append(title);
-  if(!frequent.length){const empty=document.createElement('div');empty.className='tiny';empty.textContent='Tus cinco alimentos más usados aparecerán aquí cuando registres comidas.';el.append(empty);return}
-  const row=document.createElement('div');row.className='food-frequent-row';
-  frequent.forEach(product=>{
-    const button=document.createElement('button');button.type='button';button.className='food-frequent-chip';
-    const name=document.createElement('strong'),detail=document.createElement('small');
-    name.textContent=product.name;detail.textContent=`${Math.round(num(product.kcal))} kcal / 100 g`;
-    button.append(name,detail);button.addEventListener('click',()=>openFoodDetail(product,100));row.append(button);
-  });
-  el.append(row);
+  const frequentTitle=document.createElement('div');frequentTitle.className='cache-label';frequentTitle.textContent='Tus frecuentes';el.append(frequentTitle);
+  if(!frequent.length){const empty=document.createElement('div');empty.className='tiny';empty.textContent='Tus cinco alimentos más usados aparecerán aquí cuando registres comidas.';el.append(empty);}
+  else{
+    const row=document.createElement('div');row.className='food-frequent-row';
+    frequent.forEach(product=>{
+      const button=document.createElement('button');button.type='button';button.className='food-frequent-chip';
+      const name=document.createElement('strong'),detail=document.createElement('small');
+      name.textContent=product.name;detail.textContent=`${Math.round(num(product.kcal))} kcal / 100 g`;
+      button.append(name,detail);button.addEventListener('click',()=>openFoodDetail(product,100));row.append(button);
+    });
+    el.append(row);
+  }
+
+  const recent=recentFoods(6),meals=recentMealGroups(4);
+  if(recent.length){const title=document.createElement('div');title.className='food-quick-title';title.textContent='Ingresado recientemente';el.append(title);recent.forEach(e=>{
+    const row=document.createElement('div');row.className='food-mini-row';const b=document.createElement('button');b.type='button';const strong=document.createElement('strong');strong.textContent=e.product.name;const small=document.createElement('small');small.textContent=`${e.grams} g · ${Math.round(num(e.meal.kcal))} kcal · ${e.meal.type||'Comida'}`;b.append(strong,small);b.addEventListener('click',()=>openFoodDetail(e.product,e.grams));row.append(b);el.append(row);
+  });}
+  if(meals.length){const title=document.createElement('div');title.className='food-quick-title';title.textContent='Comidas recientes · repetir en un toque';el.append(title);meals.forEach(g=>{
+    const row=document.createElement('div');row.className='food-recent-meal';const left=document.createElement('div'),strong=document.createElement('strong'),small=document.createElement('small');strong.textContent=`${g.type} · ${new Date(g.date+'T12:00:00').toLocaleDateString('es-MX',{day:'numeric',month:'short'})}`;small.textContent=`${g.items.length} alimentos · ${Math.round(g.kcal).toLocaleString('es-MX')} kcal`;left.append(strong,small);const btn=document.createElement('button');btn.className='btn secondary small';btn.textContent='Repetir';btn.addEventListener('click',()=>repeatMeal(g.date,g.type));row.append(left,btn);el.append(row);
+  });}
 }
 function renderFoodDetail(p,grams=100){
   const d=foodDetailsData(p),portion=Math.max(1,num(grams)||100),mealOptions=['Desayuno','Comida','Cena','Snack'],mealDefault='Comida';
