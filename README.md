@@ -1,6 +1,6 @@
-# JOS Fit PWA v1.15.1 — Descubribilidad
+# JOS Fit PWA v1.16 — Comidas, readiness y mapa muscular
 
-Base: v1.14.5. Misma clave `josfit_v01_data`; no se migró ni se tocó ningún dato. No se borró ninguna declaración de función: los cambios de comportamiento envuelven funciones existentes (`startRest`, `toggleSet`, `updateSet`, `renderHome`, `renderProgress`) al final del script, después de los demás overrides, y llaman a la original.
+Base: v1.15.1. Misma clave `josfit_v01_data`; no se migró ni se tocó ningún dato. No se borró ninguna declaración de función: los cambios de comportamiento envuelven funciones existentes (`startRest`, `toggleSet`, `updateSet`, `renderHome`, `renderProgress`) al final del script, después de los demás overrides, y llaman a la original.
 
 ## Cambios
 1. **Inicio simplificado (Hoy).** Arriba: «PLAN DE HOY» + botón grande **Empezar entrenamiento de hoy** (inicia la rutina del día; si ya hay sesión activa dice «Continuar sesión en curso» y lleva a Entrenar; si hoy no hay rutina asignada abre Entrenar con un aviso). Todo lo demás está agrupado en 3 secciones plegables, cerradas, con el patrón `tab-disclosure` existente: *Cuerpo y hábitos* (peso, check-in, agua), *Nutrición y comidas* (las 3 secciones que ya existían) y *Coach, racha y nivel* (coach, racha, nivel, suplementos). Ninguna tarjeta se eliminó; conservan sus ids. **Guía de primer uso** («Empieza en 3 pasos»): tarjeta con ✕, solo si no hay sesiones registradas. Nota: la sección de nutrición ahora empieza cerrada (antes abierta); así lo pide este brief.
@@ -16,7 +16,7 @@ Chromium sin cabeza (Playwright), viewports 390×844 y 360×844, servido por HTT
 ## No probado
 Safari/iPhone real y vibración (iOS no la soporta). El gesto de pulsación larga se simuló en Chromium: conviene confirmarlo con el dedo en el teléfono.
 
-Versión anterior: v1.15.1 (título, pie, manifest, caché `josfit-pwa-v1-15-1`, registro compartido `./sw.js?v=1.15.1`).
+Versión de esta entrega: v1.16 (título, pie, manifest, caché `josfit-pwa-v1-16`, registro compartido `./sw.js?v=1.16`).
 
 
 ## Fix v1.15.1 — Fusión OneSignal
@@ -37,3 +37,22 @@ Versión anterior: v1.15.1 (título, pie, manifest, caché `josfit-pwa-v1-15-1`,
 
 ## No probado en el entorno de construcción
 No se concedió permiso en un dispositivo real, no se confirmó una suscripción en el panel de OneSignal ni se recibió un push remoto en iPhone. Esas comprobaciones requieren desplegar el ZIP en el dominio HTTPS configurado y aceptar el permiso en el dispositivo. Tampoco se afirma haber probado Safari/iOS ni el modo avión físico en esta construcción.
+
+
+## v1.16 — Cambios
+1. **Comidas por tipo:** Hoy y Nutrición muestran Desayuno, Comida, Cena y Snack en bloques plegables. Los bloques con alimentos empiezan abiertos; los vacíos empiezan cerrados. Cada bloque resume kcal y P/C/G y ofrece su propio botón +. El formulario conserva `#foodType` y `addFood()`; no se modificó el objeto guardado ni el modelo de datos.
+2. **Energía / readiness:** tarjeta compacta en Hoy basada únicamente en el check-in de hoy. Alta requiere sueño ≥7.5 h y recuperación Buena/Muy buena; Recuperación se activa con sueño <6 h o recuperación Baja; el resto es Moderada. Sin sueño ni recuperación se muestra el estado vacío y un acceso al check-in. El ajuste de una serie menos se menciona como activo solo cuando la lógica existente de sueño lo activa.
+3. **Mapa muscular:** SVG inline frontal y posterior que usa `getWeeklyVolumeByGroup(6,0)` y las series completadas. La intensidad azul es proporcional al grupo más entrenado; “Otros” no se dibuja. La gráfica existente se conserva.
+4. **Colores de macros:** barras de proteína azul, carbohidratos verde y grasas ámbar en Hoy y Nutrición. La app no modifica valores ni metas.
+5. **Diagnóstico push:** dentro de Recordatorios en Perfil muestra estado del SDK, permiso, suscripción e ID, controlador del worker y último error capturado de `O.init()` / `optIn()`. No agrega botones ni cambia el flujo de suscripción.
+
+## Validación de construcción
+- `node --check` aplicado al JavaScript inline y a `sw.js`, también con el script inline precedido por `'use strict'`.
+- Escaneo estático de identificadores no resueltos con TypeScript; los únicos globales permitidos son `Html5Qrcode` y `Html5QrcodeSupportedFormats`, cargados en tiempo de ejecución por la biblioteca del escáner.
+- JSON parseados correctamente; `getMacroTargets` sigue declarada como `function`.
+- Service Worker conserva el `importScripts` de OneSignal v16 como primera instrucción y mantiene el resto de la lógica offline / `notificationclick` local; solo cambia el nombre de caché a `josfit-pwa-v1-16`.
+- OneSignal y el registro propio comparten `ONESIGNAL_SW_PATH='./sw.js?v=1.16'`.
+- Catálogo, visuales e iconos se mantienen byte por byte respecto a v1.15.1.
+
+## Pruebas de interfaz y límites
+Se validó estáticamente el contenido y la estructura responsiva. Se intentó iniciar Chromium headless para 390×844 y 360×844, pero el entorno no pudo crear un proceso GPU y la segunda ejecución quedó bloqueada; por eso no se considera completada la prueba visual ni se afirma que las cinco pestañas se hayan probado en navegador. Tampoco se pudo probar Safari/iPhone, vibración, gesto táctil, entrega de push remoto ni modo avión físico. Estas pruebas deben completarse después del despliegue; la suscripción y entrega de push requieren el dominio HTTPS y el dispositivo real.
