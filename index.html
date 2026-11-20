@@ -10,7 +10,7 @@
 <meta content="JOS Fit" name="apple-mobile-web-app-title"/>
 <link href="manifest.json" rel="manifest"/>
 <link href="icon-192.png" rel="apple-touch-icon"/>
-<title>JOS Fit v1.18 — Navegación estable y correcciones</title>
+<title>JOS Fit v1.20 — Navegación estable y correcciones</title>
 <style>
 :root{color-scheme:dark;--bg:#080a0f;--surface:#12151c;--surface2:#1a1e27;--surface3:#222834;--line:#2b313d;--text:#f5f7fb;--muted:#9299a6;--blue:#168cff;--blue2:#0879e8;--green:#32d583;--orange:#ff9b45;--red:#ff647c;--yellow:#ffd166;--radius:22px;--shadow:0 12px 36px #0005}*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{margin:0;overflow-x:hidden;min-width:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.45}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{width:100%;min-width:0;max-width:980px;margin:0 auto;min-height:100vh;padding-bottom:106px}.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#080a0fee;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10}.brand{display:flex;align-items:center;gap:11px}.brandmark{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#42a5ff,#0875e4);display:grid;place-items:center;font-weight:950;font-size:18px;box-shadow:0 6px 18px #168cff33}.brandname{font-weight:900;letter-spacing:.08em}.brandname span{color:var(--blue)}.brandmeta{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}.offline{font-size:10px;color:#b8c0cc;border:1px solid var(--line);padding:6px 9px;border-radius:99px;white-space:nowrap}.top-actions{display:flex;align-items:center;gap:8px;min-width:0}.brandmeta{letter-spacing:.06em}.topbar{gap:10px;padding-left:14px;padding-right:14px}.brand{min-width:0}.brandmeta{font-size:9px;white-space:nowrap;text-transform:none}@media(max-width:390px){.topbar{padding-left:10px;padding-right:10px}.brand{gap:8px}.brandmark{width:36px;height:36px}.brandmeta{font-size:8.5px;letter-spacing:.02em}.offline{padding:5px 7px;font-size:9px}.top-actions .btn{padding:7px 8px;font-size:10px}}.main{padding:20px}.page{display:none;animation:fade .18s ease}.page.active{display:block}@keyframes fade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}.eyebrow{color:var(--blue);font-size:10px;font-weight:850;letter-spacing:.18em;text-transform:uppercase}.heading{font-size:clamp(27px,5vw,37px);font-weight:850;letter-spacing:-.045em;line-height:1.12;margin:7px 0}.sub{color:var(--muted);margin:5px 0 18px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:25px 0 12px}.section-title h2{font-size:19px;letter-spacing:-.025em;margin:0}.section-title .hint{font-size:11px;color:var(--muted)}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:17px;box-shadow:var(--shadow)}.card+.card{margin-top:12px}.grid{display:grid;gap:12px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr));margin:17px 0}.metric-label{color:var(--muted);font-size:11px}.metric{font-size:clamp(24px,5vw,31px);font-weight:850;letter-spacing:-.05em;margin:4px 0}.metric small{font-size:12px;color:var(--muted);font-weight:650;letter-spacing:0}.progress{height:7px;background:#303641;border-radius:99px;overflow:hidden;margin-top:10px}.progress span{height:100%;display:block;background:var(--blue);border-radius:99px}.macro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.macro{background:#0c0f15;border:1px solid #282e39;border-radius:15px;padding:11px}.macro-name{color:var(--muted);font-size:10px}.macro-value{font-size:19px;font-weight:800;margin-top:3px}.macro-track{height:5px;background:#303641;border-radius:99px;margin-top:8px;overflow:hidden}.macro-track span{display:block;height:100%;border-radius:99px;background:var(--blue)}
 .macro-protein .macro-track span{background:var(--blue)}
@@ -168,6 +168,41 @@ input[type="time"]::-webkit-date-and-time-value{min-height:1.2em;line-height:nor
 .ex-link-prog{background:none;border:0;color:#6bbaff;font-size:13px;padding:6px 0;cursor:pointer;text-decoration:underline dotted}
 .routine-editor-row{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}.routine-editor-row input,.routine-editor-row select{user-select:text;-webkit-user-select:text}
 .routine-editor-row.is-dragging{position:relative;z-index:6;pointer-events:none}.routine-editor-list-active{touch-action:none}
+
+/* JOS Fit v1.20 — visual refresh */
+.onboarding-layer{background:#fff!important;color:#080a0f!important;padding:max(14px,env(safe-area-inset-top)) 18px max(20px,env(safe-area-inset-bottom))!important}
+.onboarding-wrap{width:min(720px,100%)!important;margin:0 auto!important}
+.ob-brand{margin:4px 2px 16px!important}
+.ob-progress-card{background:#fff!important;color:#080a0f!important;border:0!important;border-radius:28px!important;box-shadow:none!important;padding:clamp(18px,4vw,30px)!important}
+.ob-topline{color:#687080!important}
+.ob-progress{background:#eceef2!important;margin:15px 0 28px!important;height:7px!important}
+.ob-progress span{background:#168cff!important}
+.ob-title{font-size:clamp(30px,7vw,44px)!important;line-height:1.13!important;letter-spacing:-.04em!important;color:#080a0f!important;margin:12px 0 12px!important}
+.ob-desc{font-size:15px!important;color:#737b89!important;line-height:1.5!important;margin-bottom:24px!important}
+.ob-grid{grid-template-columns:1fr!important;gap:16px!important}
+.ob-field label{font-size:14px!important;color:#161a22!important}
+.ob-field input,.ob-field select,.ob-field textarea{background:#f1f2f5!important;color:#111!important;border:1px solid transparent!important;border-radius:18px!important;padding:17px!important;font-size:16px!important;min-height:56px}
+.ob-days{gap:8px!important}
+.ob-check{background:#f1f2f5!important;color:#161a22!important;border:1px solid #e6e8ed!important;border-radius:15px!important;padding:12px!important}
+.ob-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ob-choice{position:relative;text-align:left;display:flex;flex-direction:column;gap:7px;min-height:92px;padding:18px 42px 18px 17px;border:2px solid transparent;border-radius:22px;background:#f1f2f5;color:#101319;font:inherit;cursor:pointer;transition:border-color .15s,background .15s}
+.ob-choice.selected{border-color:#168cff;background:#eef7ff;box-shadow:0 0 0 1px #168cff inset}
+.ob-choice-title{font-weight:800;font-size:16px;line-height:1.2}
+.ob-choice-desc{font-size:12px;color:#737b89;line-height:1.35}
+.ob-choice-check{position:absolute;right:15px;top:15px;width:23px;height:23px;border:1.5px solid #c8ced8;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:900}
+.ob-choice.selected .ob-choice-check{background:#168cff;border-color:#168cff;color:#fff}
+.ob-actions{position:sticky;bottom:0;background:linear-gradient(transparent,#fff 22%);padding:24px 0 max(6px,env(safe-area-inset-bottom));margin-top:18px}
+#obNext{background:#168cff!important;color:white!important;border-radius:18px!important;min-height:58px!important;font-weight:800!important}
+#obBack{border-radius:16px!important}
+.exercise-card{border-radius:20px!important}
+.set-table{gap:7px!important}
+.set-input{min-height:48px!important;border-radius:13px!important;font-size:16px!important}
+.set-kind{border-radius:12px!important}
+#josRestPicker>div{border-radius:28px 28px 0 0!important;padding-top:28px!important}
+#josRestPicker .rest-wheel{gap:18px!important}
+#josRestPicker .rest-value{font-variant-numeric:tabular-nums;font-size:34px!important}
+#josRestPicker input[type=range]{width:100%;accent-color:#168cff}
+@media(max-width:420px){.ob-choice-grid{grid-template-columns:1fr}.ob-choice{min-height:76px}.ob-progress-card{padding:16px!important}}
 </style>
 </head>
 <body>
@@ -312,7 +347,7 @@ input[type="time"]::-webkit-date-and-time-value{min-height:1.2em;line-height:nor
 <div id="v113Strength"></div>
 <div id="v113SuppProfile"></div>
 <div class="card" style="margin-top:12px"><button class="btn secondary block" onclick="reopenTutorial()">Ver tutorial</button></div>
-<div class="footnote">JOS Fit PWA v1.18 · Navegación estable, sesión y correcciones.</div>
+<div class="footnote">JOS Fit PWA v1.20 · Navegación estable, sesión y correcciones.</div>
 </section>
 </main>
 <div class="session-bar hide" id="sessionBar"><div class="sb-row"><div onclick="go('training')" style="flex:1"><span class="tiny">SESIÓN EN CURSO</span> <strong id="barSession">00:00</strong></div><button aria-label="Contraer o expandir" class="btn ghost small" onclick="toggleSessionBar()">▾</button></div><div class="rest-banner hide" id="restBanner"><div><div class="tiny" id="restLabel">DESCANSO</div><strong id="restTimer" onclick="editRestTime()" title="Toca para ajustar el tiempo">01:30</strong></div><div class="actions" style="margin:0"><button class="btn secondary small" onclick="adjustRest(-15)">−15s</button><button class="btn secondary small" onclick="adjustRest(15)">+15s</button><button class="btn small" onclick="stopRest()">Omitir</button></div></div></div>
@@ -1543,17 +1578,20 @@ const OB_STEPS=[
  {label:'TU PUNTO DE PARTIDA',title:'Primero, conozcamos tu cuerpo.',desc:'Estos datos permiten estimar tus necesidades y entender desde dónde empiezas. Las medidas de cintura y grasa corporal son opcionales.',fields:[
   {key:'nickname',label:'¿Cómo te llamamos? (opcional)',type:'text',placeholder:'Tu nombre o apodo'},
   {key:'age',label:'Edad',type:'number',min:18,max:100,placeholder:'Ej. 24',required:true},
-  {key:'sex',label:'Dato para la ecuación metabólica',type:'select',options:[['','Prefiero no indicarlo'],['male','Hombre'],['female','Mujer']],help:'Se usa únicamente para el coeficiente de Mifflin–St Jeor. Si lo omites, no se mostrará una estimación energética puntual.'},
+  {key:'genderIdentity',label:'¿Con qué identidad te identificas?',type:'cards',options:[['woman','Mujer',''],['man','Hombre',''],['other','Otro',''],['skip','Prefiero no indicarlo','']]},
+  {key:'sex',label:'Dato fisiológico para la ecuación metabólica (opcional)',type:'select',options:[['','Prefiero no indicarlo'],['male','Masculino'],['female','Femenino']],help:'Este dato se usa únicamente para la estimación metabólica. Es independiente de tu identidad.'},
   {key:'heightCm',label:'Estatura (cm)',type:'number',min:120,max:230,step:0.1,placeholder:'Ej. 170',required:true},
   {key:'weight',label:'Peso actual (kg)',type:'number',min:30,max:300,step:0.1,placeholder:'Ej. 70.5',required:true},
   {key:'waistCm',label:'Cintura (cm) · opcional',type:'number',min:30,max:200,step:0.1,placeholder:'Ej. 82'},
   {key:'bodyFatPct',label:'Grasa corporal (%) · opcional',type:'number',min:3,max:60,step:0.1,placeholder:'Solo si tienes medición fiable',help:'No es necesario estimarla a ojo.'}
  ]},
  {label:'TU OBJETIVO',title:'¿Qué quieres conseguir?',desc:'Elegimos un objetivo principal y una prioridad secundaria. JOS Fit evitará cambios agresivos y revisará la tendencia antes de ajustar el plan.',fields:[
-  {key:'goalMode',label:'Objetivo principal',type:'select',options:[['loss','Pérdida gradual de grasa'],['maintain','Mantener peso y mejorar composición'],['gain','Ganancia muscular gradual']]},
+  {key:'goalMode',label:'Objetivo principal',type:'cards',options:[['loss','Pérdida de peso','Pérdida gradual de grasa'],['gain','Ganar músculo','Aumentar masa muscular gradualmente'],['maintain','Mantener y mejorar','Composición corporal y salud']]},
   {key:'goalPriority',label:'¿Qué te importa más ahora?',type:'select',options:[['general','Salud y constancia'],['strength','Aumentar fuerza'],['muscle','Ganar masa muscular'],['conditioning','Condición física / rendimiento'],['fatloss','Reducir cintura y grasa']]},
   {key:'goalWeight',label:'Peso objetivo (kg) · opcional',type:'number',min:30,max:300,step:0.1,placeholder:'Ej. 67'},
   {key:'goalHorizon',label:'Horizonte que tienes en mente',type:'select',options:[['flexible','Sin fecha: prefiero hacerlo sostenible'],['8-12','8–12 semanas'],['3-6','3–6 meses'],['6+','Más de 6 meses']]},
+  {key:'obstacles',label:'¿Qué te dificulta alcanzar tu objetivo?',type:'multicards',options:[['consistency','Falta de constancia'],['plateau','Estancamiento del progreso'],['expectations','Expectativas poco realistas'],['knowledge','Falta de conocimientos sobre fitness'],['responsibility','Falta de responsabilidad'],['stress','Estrés y otros factores de la vida'],['health','Problemas de salud']]},
+  {key:'coachStyle',label:'Elige tu estilo de entrenador',type:'cards',options:[['john','John','Directo y exigente'],['jennifer','Jennifer','Cálido y comprensivo'],['sarah','Sarah','Humor y motivación'],['chris','Chris','Profesional y eficiente']]},
   {key:'limitations',label:'¿Hay lesiones, dolor o limitaciones que debamos tener presentes? (opcional)',type:'textarea',placeholder:'Describe solo lo que quieras que la app tenga en cuenta…',full:true,help:'JOS Fit puede recordarlo y sugerir precaución, pero no diagnostica ni sustituye una valoración profesional.'}
  ]},
  {label:'TU ENTRENAMIENTO',title:'Busquemos una rutina que sí encaje contigo.',desc:'La recomendación considera tu experiencia, días disponibles, tiempo por sesión, equipo y preferencias. Siempre podrás editarla.',fields:[
@@ -1603,7 +1641,7 @@ function onboardingBase(){
  const hasDayHistory=Object.values(data.days||{}).some(day=>(day?.meals||[]).length>0||!!day?.check);
  const hasProfile=!!(hasSavedProfileRecord||p.onboardingComplete||data.workouts.length||data.checks.length||hasDayHistory);
  return {
-  nickname:p.nickname||'',age:hasProfile?(p.age??''):'',sex:hasProfile?(p.sex||''):'',heightCm:hasProfile?(p.heightCm??''):'',weight:hasProfile?(latestWeight()||p.weight||''):'',waistCm:hasProfile?(p.waistCm??''):'',bodyFatPct:hasProfile?(p.bodyFatPct??''):'',
+  nickname:p.nickname||'',genderIdentity:p.genderIdentity||'skip',obstacles:p.obstacles||[],coachStyle:p.coachStyle||'chris',age:hasProfile?(p.age??''):'',sex:hasProfile?(p.sex||''):'',heightCm:hasProfile?(p.heightCm??''):'',weight:hasProfile?(latestWeight()||p.weight||''):'',waistCm:hasProfile?(p.waistCm??''):'',bodyFatPct:hasProfile?(p.bodyFatPct??''):'',
   goalMode:hasProfile?(p.goalMode||'maintain'):'maintain',goalPriority:hasProfile?(p.goalPriority||'general'):'general',goalWeight:hasProfile?(p.goalWeight??''):'',goalHorizon:p.goalHorizon||'flexible',limitations:p.limitations||'',
   trainingExperience:p.onboardingComplete?(p.trainingExperience||'beginner'):'',trainingEnvironment:p.onboardingComplete?(p.trainingEnvironment||'gym'):'',trainingPreference:p.trainingPreference||'auto',sessionMinutes:String(p.sessionMinutes||60),trainingDaysAvailable:p.trainingDaysAvailable?.length?p.trainingDaysAvailable:(hasProfile?(p.trainingDays||[]):[]),trainingTime:hasProfile?(p.trainingTime||''):'',limitationsTraining:p.limitationsTraining||'',
   workType:p.onboardingComplete?(p.workType||'desk'):'',workStart:hasProfile?(p.workStart||''):'',workEnd:hasProfile?(p.workEnd||''):'',workDays:hasProfile?(p.workDays||OB_DAY_ORDER.slice(0,5)):[],stepsBand:hasProfile?(p.stepsBand||'unknown'):'unknown',sports:p.sports||'',footballDay:p.footballDay||'none',footballMinutes:p.footballMinutes??0,footballTime:hasProfile?(p.footballTime||''):'',otherActivityDays:p.otherActivityDays??0,otherActivityMinutes:p.otherActivityMinutes??0,
@@ -1614,6 +1652,14 @@ function onboardingBase(){
 function obEscape(v){return escapeHTML(v===undefined||v===null?'':String(v))}
 function obField(f){
  const value=onboardingDraft[f.key]??'';const full=f.full?' full':'';
+ if(f.type==='cards'||f.type==='multicards'){
+  const multi=f.type==='multicards';
+  const selected=multi?(Array.isArray(value)?value.map(String):[]):[String(value)];
+  return `<div class="ob-field${full}"><label>${obEscape(f.label)}</label><div class="ob-choice-grid" role="group" aria-label="${obEscape(f.label)}">${f.options.map(opt=>{
+   const [v,label,desc='']=opt;const isSelected=selected.includes(String(v));
+   return `<button type="button" class="ob-choice${isSelected?' selected':''}" data-ob-choice="${obEscape(f.key)}" data-ob-value="${obEscape(v)}" aria-pressed="${isSelected?'true':'false'}"><span class="ob-choice-title">${obEscape(label)}</span>${desc?`<span class="ob-choice-desc">${obEscape(desc)}</span>`:''}<span class="ob-choice-check" aria-hidden="true">${isSelected?'✓':''}</span></button>`;
+  }).join('')}</div>${f.help?`<div class="ob-help">${obEscape(f.help)}</div>`:''}</div>`;
+ }
  if(f.type==='days'){
   const picked=Array.isArray(value)?value:[];
   return `<div class="ob-field${full}"><label>${f.label}</label><div class="ob-days">${f.options.map(day=>`<label class="ob-check"><input type="checkbox" data-ob-key="${f.key}" value="${day}" ${picked.includes(day)?'checked':''}>${day.slice(0,3)}</label>`).join('')}</div>${f.help?`<div class="ob-help">${f.help}</div>`:''}</div>`;
@@ -1628,6 +1674,12 @@ function obField(f){
  return `<div class="ob-field${full}"><label for="ob-${f.key}">${f.label}</label><input id="ob-${f.key}" data-ob-key="${f.key}" type="${type}" value="${obEscape(value)}" placeholder="${obEscape(f.placeholder||'')}" ${f.min!==undefined?`min="${f.min}"`:''} ${f.max!==undefined?`max="${f.max}"`:''} ${f.step!==undefined?`step="${f.step}"`:''} ${f.required?'required':''}>${f.help?`<div class="ob-help">${f.help}</div>`:''}</div>`;
 }
 function captureOnboardingStep(){
+ const choiceGroups=[...document.querySelectorAll('#onboardingContent [data-ob-choice]')].reduce((a,el)=>{(a[el.dataset.obChoice]??=[]).push(el);return a},{});
+ Object.entries(choiceGroups).forEach(([k,els])=>{
+  const field=OB_STEPS.flatMap(x=>x.fields).find(x=>x.key===k);
+  if(field?.type==='multicards')onboardingDraft[k]=els.filter(el=>el.classList.contains('selected')).map(el=>el.dataset.obValue);
+  else{const selected=els.find(el=>el.classList.contains('selected'));if(selected)onboardingDraft[k]=selected.dataset.obValue;}
+ });
  document.querySelectorAll('#onboardingContent [data-ob-key]').forEach(el=>{
   const k=el.dataset.obKey;
   if(el.type==='checkbox'){
@@ -1637,6 +1689,12 @@ function captureOnboardingStep(){
   }else onboardingDraft[k]=el.value;
  });
 }
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-ob-choice]');if(!b)return;
+ const key=b.dataset.obChoice,field=OB_STEPS.flatMap(x=>x.fields).find(x=>x.key===key);
+ if(field?.type==='multicards'){b.classList.toggle('selected');b.setAttribute('aria-pressed',b.classList.contains('selected')?'true':'false');const mark=b.querySelector('.ob-choice-check');if(mark)mark.textContent=b.classList.contains('selected')?'✓':'';}
+ else{document.querySelectorAll(`[data-ob-choice="${key}"]`).forEach(x=>{x.classList.remove('selected');x.setAttribute('aria-pressed','false');const mark=x.querySelector('.ob-choice-check');if(mark)mark.textContent=''});b.classList.add('selected');b.setAttribute('aria-pressed','true');const mark=b.querySelector('.ob-choice-check');if(mark)mark.textContent='✓';}
+});
 function persistOnboardingDraft(){
  data.profile.onboardingDraft=structuredClone(onboardingDraft);data.profile.onboardingStep=onboardingStep;
  try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){console.warn('No se pudo guardar temporalmente la evaluación',e)}
@@ -1661,11 +1719,6 @@ function onboardingBack(){captureOnboardingStep();if(onboardingStep>0)onboarding
 function onboardingNext(){
  captureOnboardingStep();
  if(onboardingStep===0){const a=num(onboardingDraft.age),h=num(onboardingDraft.heightCm),w=num(onboardingDraft.weight);if(a<18||a>100){toast('Ingresa una edad válida (18–100 años)');return}if(h<120||h>230){toast('Ingresa una estatura válida (120–230 cm)');return}if(w<30||w>300){toast('Ingresa un peso válido (30–300 kg)');return}}
- if(onboardingStep===2&&(!onboardingDraft.trainingExperience||!onboardingDraft.trainingEnvironment||!onboardingDraft.trainingTime)){toast('Selecciona tu experiencia, equipo y hora para entrenar');return}
- if(onboardingStep===2&&(!Array.isArray(onboardingDraft.trainingDaysAvailable)||!onboardingDraft.trainingDaysAvailable.length)){toast('Selecciona al menos un día disponible');return}
- if(onboardingStep===3&&(!onboardingDraft.workType||!onboardingDraft.stepsBand)){toast('Completa el tipo de actividad y tus pasos habituales');return}
- if(onboardingStep===4){const sl=num(onboardingDraft.averageSleep);if(!onboardingDraft.wakeTime||!onboardingDraft.bedTime||sl<2||sl>14){toast('Completa tus horarios y horas habituales de sueño');return}}
- if(onboardingStep===5&&(!onboardingDraft.mealCount||!onboardingDraft.dietaryPattern)){toast('Selecciona cuántas comidas te acomodan y tu estilo de alimentación');return}
  if(onboardingStep<OB_STEPS.length-1){onboardingStep++;persistOnboardingDraft();renderOnboardingStep();return}
  completeOnboarding();
 }
@@ -1786,14 +1839,14 @@ function applyEquipmentAdaptations(environment){
 function completeOnboarding(){
  const d=onboardingDraft,plan=recommendTraining(d),activity=inferActivityFactor({...d,trainingDaysAvailable:plan.days});
  const p=data.profile;
- p.nickname=(d.nickname||'').trim();p.age=num(d.age);p.sex=d.sex||'';p.heightCm=num(d.heightCm);p.weight=num(d.weight);p.waistCm=num(d.waistCm)||null;p.bodyFatPct=num(d.bodyFatPct)||null;
+ p.nickname=(d.nickname||'').trim();p.genderIdentity=d.genderIdentity||'skip';p.obstacles=Array.isArray(d.obstacles)?d.obstacles:[];p.coachStyle=d.coachStyle||'chris';p.age=num(d.age);p.sex=d.sex||'';p.heightCm=num(d.heightCm);p.weight=num(d.weight);p.waistCm=num(d.waistCm)||null;p.bodyFatPct=num(d.bodyFatPct)||null;
  p.goalMode=d.goalMode||'loss';p.goalPriority=d.goalPriority||'general';p.goalWeight=num(d.goalWeight)||null;p.goalHorizon=d.goalHorizon||'flexible';p.limitations=(d.limitations||'').trim();p.limitationsTraining=(d.limitationsTraining||'').trim();
  p.trainingExperience=d.trainingExperience;p.trainingPreference=d.trainingPreference;p.trainingEnvironment=d.trainingEnvironment;p.sessionMinutes=num(d.sessionMinutes)||60;p.trainingDaysAvailable=plan.available;p.trainingDays=plan.days;p.weeklyPlanMap=plan.weeklyPlanMap;p.recommendedSessions=plan.count;p.trainingTime=d.trainingTime||'18:30';p.routine=plan.count?`${plan.label} · ${plan.count} días`:'Sin días de gym asignados';p.trainingRecommendation=plan.rationale;
  const todaySplit=plan.weeklyPlanMap[DAY_NAMES[new Date().getDay()]];selectedSplit=todaySplit||plan.pattern[0]||'Full';
  p.workType=d.workType;p.workStart=d.workStart||'';p.workEnd=d.workEnd||'';p.workDays=Array.isArray(d.workDays)?d.workDays:[];p.stepsBand=d.stepsBand;p.footballDay=d.footballDay||'none';p.footballMinutes=num(d.footballMinutes)||0;p.footballTime=d.footballTime||'';p.sports=(d.sports||'').trim();p.otherActivityDays=num(d.otherActivityDays)||0;p.otherActivityMinutes=num(d.otherActivityMinutes)||0;p.steps=d.stepsBand==='under5k'?4000:d.stepsBand==='5-8k'?6500:d.stepsBand==='8-12k'?10000:d.stepsBand==='over12k'?13000:7000;p.activityFactor=activity;
  p.wakeTime=d.wakeTime||'06:30';p.bedTime=d.bedTime||'23:00';p.averageSleep=num(d.averageSleep)||7;p.sleep=p.averageSleep;p.sleepQuality=d.sleepQuality;p.sleepGoal=d.sleepGoal;
  p.mealCount=num(d.mealCount)||4;p.dietaryPattern=d.dietaryPattern;p.breakfastTime=d.breakfastTime||'';p.lunchTime=d.lunchTime||'';p.dinnerTime=d.dinnerTime||'';p.workBreakTime=d.workBreakTime||'';p.foodRestrictions=(d.foodRestrictions||'').trim();p.mealPrep=d.mealPrep;
- p.onboardingComplete=true;p.onboardingDismissed=false;p.onboardingVersion='1.13';p.onboardingDraft=null;p.onboardingStep=0;
+ p.onboardingComplete=true;p.onboardingDismissed=false;p.onboardingVersion='1.20';p.onboardingDraft=null;p.onboardingStep=0;
  applyEquipmentAdaptations(p.trainingEnvironment);
  const energy=estimateEnergy({age:p.age,height:p.heightCm,weight:p.weight,sex:p.sex,activity:p.activityFactor,goal:p.goalMode,waist:p.waistCm||0});
  if(energy){p.calories=energy.target;p.protein=energy.protein;p.recommendedFat=energy.fat;p.recommendedCarbs=energy.carbs;}
@@ -2125,14 +2178,7 @@ function clearRestStore(){try{localStorage.removeItem(REST_KEY)}catch(e){}}
 function resumeRest(){try{const r=JSON.parse(localStorage.getItem(REST_KEY)||'null');if(!r||!active){clearRestStore();return}
   if(r.end>Date.now()){restEnd=r.end;restLabel=r.label||'';restTotal=r.total||0;restRemaining=Math.ceil((restEnd-Date.now())/1000);showRestBanner();restInterval=setInterval(restTick,500)}
   else{clearRestStore();toast('Tu descanso ya terminó')}}catch(e){}}
-function editRestTime(){
-  if(!restInterval)return;
-  const v=prompt('Tiempo restante del descanso (mm:ss)',timeText(restRemaining));if(v===null)return;
-  const t=String(v).trim(),m=t.match(/^(\d+):([0-5]?\d)$/)||t.match(/^(\d+)$/);
-  const sec=m?(m[2]!==undefined?(+m[1])*60+(+m[2]):+m[1]):0;
-  if(sec<1||sec>3600){toast('Usa el formato mm:ss, por ejemplo 1:30');return}
-  restEnd=Date.now()+sec*1000;restRemaining=sec;persistRest();restTick();toast('Descanso ajustado');
-}
+function editRestTime(){if(typeof openRestPickerV119==='function')openRestPickerV119();}
 const isBodyweight=n=>/dominad|fondos|flexion|plancha/i.test(n||'');
 function toggleRir(i,on){const ex=active?.exercises[i];if(!ex)return;ex.useRir=on;data.activeWorkout=active;save({render:false});renderActiveWorkout()}
 function finishExercise(i){
@@ -3009,6 +3055,146 @@ renderAll=function renderAll(){
   syncRecoveryButtonsV117();syncWeightLastV117();
   renderHomeEnergyV117();renderNutritionRemainingV117();
 };
+
+
+/* ==================== JOS Fit v1.20 ==================== */
+(function(){
+  // Fast, non-blocking brand splash.
+  const splash=document.createElement('div');
+  splash.id='josSplash';
+  splash.innerHTML='<div class="jos-splash-mark">JOS <span>FIT</span></div><div class="jos-splash-caption">TU PROGRESO, A TU RITMO</div>';
+  document.body.appendChild(splash);
+  const hideSplash=()=>{splash.classList.add('done');setTimeout(()=>splash.remove(),450)};
+  window.addEventListener('load',()=>setTimeout(hideSplash,80),{once:true});
+  setTimeout(hideSplash,1800);
+
+  // Touch-first option cards; keep the original data-ob-key values intact.
+  const _renderOnboarding_v119=renderOnboardingStep;
+  renderOnboardingStep=function(){
+    _renderOnboarding_v119();
+    const root=document.getElementById('onboardingContent');
+    if(!root)return;
+    root.querySelectorAll('select[data-ob-key]').forEach(sel=>{
+      const key=sel.dataset.obKey, opts=[...sel.options].filter(o=>o.value!=='');
+      if(opts.length<2)return;
+      const wrap=document.createElement('div');
+      wrap.className='ob-choice-grid';
+      opts.forEach(opt=>{
+        const b=document.createElement('button');
+        b.type='button';b.className='ob-choice'+(sel.value===opt.value?' selected':'');
+        b.textContent=opt.textContent;
+        b.setAttribute('aria-pressed',sel.value===opt.value?'true':'false');
+        b.addEventListener('click',()=>{
+          sel.value=opt.value;
+          wrap.querySelectorAll('.ob-choice').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',x===b?'true':'false')});
+          sel.dispatchEvent(new Event('change',{bubbles:true}));
+        });
+        wrap.appendChild(b);
+      });
+      sel.hidden=true;sel.insertAdjacentElement('afterend',wrap);
+    });
+    // Time fields get 30-minute shortcuts plus an exact-time input.
+    root.querySelectorAll('input[type="time"][data-ob-key]').forEach(inp=>{
+      const wrap=document.createElement('div');wrap.className='ob-time-shortcuts';
+      const vals=['05:30','06:00','06:30','07:00','07:30','08:00','22:00','22:30','23:00','23:30'];
+      vals.forEach(v=>{
+        const b=document.createElement('button');b.type='button';b.className='ob-time-chip';b.textContent=v;
+        b.addEventListener('click',()=>{inp.value=v;inp.dispatchEvent(new Event('input',{bubbles:true}));inp.dispatchEvent(new Event('change',{bubbles:true}));wrap.querySelectorAll('button').forEach(x=>x.classList.toggle('selected',x===b))});
+        wrap.appendChild(b);
+      });
+      inp.insertAdjacentElement('afterend',wrap);
+    });
+  };
+
+  // Optional-first onboarding: retain validation only for genuinely essential body metrics,
+  // and supply safe defaults for recommendation inputs when skipped.
+  onboardingNext=function(){
+    captureOnboardingStep();
+    if(onboardingStep===0){
+      const a=num(onboardingDraft.age),h=num(onboardingDraft.heightCm),w=num(onboardingDraft.weight);
+      if(onboardingDraft.age!==''&&(a<18||a>100)){toast('La edad debe estar entre 18 y 100 años');return}
+      if(onboardingDraft.heightCm!==''&&(h<120||h>230)){toast('La estatura debe estar entre 120 y 230 cm');return}
+      if(onboardingDraft.weight!==''&&(w<30||w>300)){toast('El peso debe estar entre 30 y 300 kg');return}
+    }
+    if(onboardingStep<OB_STEPS.length-1){onboardingStep++;persistOnboardingDraft();renderOnboardingStep();return}
+    onboardingDraft.age=onboardingDraft.age||String(data.profile.age||'');
+    onboardingDraft.heightCm=onboardingDraft.heightCm||String(data.profile.heightCm||'');
+    onboardingDraft.weight=onboardingDraft.weight||String(latestWeight()||data.profile.weight||'');
+    onboardingDraft.trainingExperience=onboardingDraft.trainingExperience||'beginner';
+    onboardingDraft.trainingEnvironment=onboardingDraft.trainingEnvironment||'gym';
+    onboardingDraft.trainingTime=onboardingDraft.trainingTime||'18:30';
+    onboardingDraft.trainingDaysAvailable=Array.isArray(onboardingDraft.trainingDaysAvailable)&&onboardingDraft.trainingDaysAvailable.length?onboardingDraft.trainingDaysAvailable:['Lunes','Miércoles','Viernes'];
+    onboardingDraft.workType=onboardingDraft.workType||'desk';
+    onboardingDraft.stepsBand=onboardingDraft.stepsBand||'unknown';
+    onboardingDraft.averageSleep=onboardingDraft.averageSleep||'7';
+    onboardingDraft.wakeTime=onboardingDraft.wakeTime||'06:30';
+    onboardingDraft.bedTime=onboardingDraft.bedTime||'23:00';
+    onboardingDraft.sleepQuality=onboardingDraft.sleepQuality||'normal';
+    onboardingDraft.sleepGoal=onboardingDraft.sleepGoal||'schedule';
+    onboardingDraft.mealCount=onboardingDraft.mealCount||'4';
+    onboardingDraft.dietaryPattern=onboardingDraft.dietaryPattern||'other';
+    completeOnboarding();
+  };
+
+  // Ensure onboarding completion is saved before tutorial launch; never reopen after dismissal.
+  const _completeOnboarding_v119=completeOnboarding;
+  completeOnboarding=function(){
+    _completeOnboarding_v119();
+    data.profile.onboardingComplete=true;
+    data.profile.tutorialVersion='1.20';
+    data.profile.tutorialSeen=false;
+    data.profile.autoTutorialPending=true;
+    save({render:false});
+    setTimeout(()=>{if(data.profile.onboardingComplete&&!data.profile.tutorialSeen&&data.profile.autoTutorialPending)openTutorial()},250);
+  };
+  const _closeTutorial_v119=closeTutorial;
+  closeTutorial=function(completed=false){
+    data.profile.tutorialSeen=true;data.profile.autoTutorialPending=false;data.profile.tutorialVersion='1.20';
+    save({render:false});closeSheet('tutorialModal');
+  };
+
+  // Hevy-like rest editor, 15 s–5 min in 5-second increments.
+  const restStyle=document.createElement('style');
+  restStyle.textContent=`
+  #josSplash{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#1769d2,#7b3f91 58%,#d64b58);color:white;transition:opacity .35s}
+  #josSplash.done{opacity:0;pointer-events:none}.jos-splash-mark{font-size:42px;font-weight:900;letter-spacing:3px}.jos-splash-mark span{font-weight:300}.jos-splash-caption{font-size:10px;letter-spacing:3px;margin-top:9px;opacity:.8}
+  .ob-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:10px 0 16px}.ob-choice{min-height:58px;padding:14px;border:1px solid var(--border,#ddd);border-radius:14px;background:var(--card,#fff);color:var(--text,inherit);font:inherit;text-align:left}.ob-choice.selected,.ob-time-chip.selected{border-color:var(--accent,#3978d5);background:rgba(55,120,210,.12);box-shadow:inset 0 0 0 1px var(--accent,#3978d5)}
+  .ob-time-shortcuts{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 12px}.ob-time-chip{padding:8px 11px;border:1px solid var(--border,#ddd);border-radius:20px;background:var(--card,#fff);color:inherit}
+  #josRestPicker .rest-wheel{display:flex;align-items:center;justify-content:center;gap:14px;margin:18px 0}#josRestPicker button{padding:10px 15px;border-radius:12px}#josRestPicker .rest-value{font-size:30px;font-weight:800;min-width:100px;text-align:center}
+  @media(max-width:420px){.ob-choice-grid{grid-template-columns:1fr}.ob-time-chip{padding:7px 9px}}
+  `;
+  document.head.appendChild(restStyle);
+  window.openRestPickerV119=function(){
+    if(!restInterval)return;
+    const old=document.getElementById('josRestPicker');if(old)old.remove();
+    let seconds=Math.max(15,Math.min(300,Math.round(restRemaining/5)*5));
+    const modal=document.createElement('div');modal.id='josRestPicker';modal.className='modal-backdrop open';
+    modal.style.cssText='position:fixed;inset:0;z-index:10050;display:flex;align-items:flex-end;background:rgba(0,0,0,.48)';
+    modal.innerHTML=`<div style="width:100%;padding:24px 20px calc(24px + env(safe-area-inset-bottom));border-radius:24px 24px 0 0;background:var(--panel,var(--card,#fff));color:var(--text,inherit)"><div style="font-weight:800;font-size:18px">Editar descanso</div><div style="color:var(--muted,#888);font-size:13px;margin-top:4px">Ajusta en intervalos de 5 segundos</div><div class="rest-wheel"><button type="button" id="restMinus">−</button><div class="rest-value" id="restValue"></div><button type="button" id="restPlus">+</button></div><input id="restRange" type="range" min="15" max="300" step="5" style="width:100%;accent-color:#168cff" aria-label="Duración del descanso"><button type="button" id="restDone" class="btn" style="width:100%">Listo</button></div>`;
+    document.body.appendChild(modal);
+    const fmt=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+    const update=()=>{modal.querySelector('#restValue').textContent=fmt(seconds);modal.querySelector('#restRange').value=seconds};
+    modal.querySelector('#restRange').oninput=e=>{seconds=Number(e.target.value);update()};
+    modal.querySelector('#restMinus').onclick=()=>{seconds=Math.max(15,seconds-5);update()};
+    modal.querySelector('#restPlus').onclick=()=>{seconds=Math.min(300,seconds+5);update()};
+    modal.querySelector('#restDone').onclick=()=>{restEnd=Date.now()+seconds*1000;restRemaining=seconds;persistRest();restTick();modal.remove()};
+    modal.addEventListener('click',e=>{if(e.target===modal)modal.remove()});update();
+  };
+  editRestTime=function(){openRestPickerV119()};
+  // Update tutorial copy and persisted version without changing the existing access points.
+  if(Array.isArray(TUTORIAL_STEPS)){
+    TUTORIAL_STEPS.splice(0,TUTORIAL_STEPS.length,
+      {kicker:'01 · TU DÍA',title:'Tu punto de partida',copy:'En Hoy encuentras calorías, macros, comidas, check-in, hidratación y tu consejo diario. Todo se guarda localmente.',visual:'Registra lo que haces; el coach trabaja con tus datos reales.'},
+      {kicker:'02 · ENTRENA',title:'Rutinas y recomendaciones',copy:'Elige tu división, edita ejercicios y usa Recomendarme rutina para adaptar el plan a tu disponibilidad y equipo.',visual:'Push · Pull · Legs · Upper · Lower · Full Body'},
+      {kicker:'03 · REGISTRA FUERZA',title:'Series, peso y RIR',copy:'Registra kg y repeticiones. RIR indica cuántas repeticiones podrías hacer todavía con buena técnica.',visual:'Mancuernas: peso combinado · Barra: incluye 20 kg · Smith: solo discos'},
+      {kicker:'04 · DESCANSA',title:'Temporizador flexible',copy:'El descanso aparece al completar series. Toca editar para ajustar en pasos de 5 segundos desde 15 s hasta 5 min.',visual:'El tiempo continúa aunque cambies de pestaña.'},
+      {kicker:'05 · NUTRICIÓN',title:'Alimentos y suplementos',copy:'Busca en el catálogo mexicano, registra porciones y consulta Mi pila de suplementos para llevar un registro de lo que utilizas.',visual:'Favoritos, recientes y alimentos guardados reducen los toques.'},
+      {kicker:'06 · RECUPERACIÓN',title:'Sueño y horarios',copy:'Registra sueño, horarios y check-in. La regularidad y la recuperación ayudan a interpretar tu progreso.',visual:'El glosario explica fuerza, sueño y términos de entrenamiento.'},
+      {kicker:'07 · RECORDATORIOS',title:'Notificaciones y privacidad',copy:'Activa recordatorios y consulta Estado del push si necesitas revisar los permisos. Tus datos de entrenamiento siguen guardados en este dispositivo.',visual:'JOS Fit no requiere cuenta ni sincronización.'},
+      {kicker:'08 · PROGRESO',title:'Revisa tu evolución',copy:'Consulta gráficas, registros y récords personales. Puedes volver a abrir esta guía desde el botón Guía cuando quieras.',visual:'Tu historial es la referencia para comparar contigo mismo.'}
+    );
+  }
+})();
 
 initPush();
 if('serviceWorker' in navigator&&location.protocol.startsWith('http')){const appWorkerPath=`${ONESIGNAL_SW_PATH}?appId=${ONESIGNAL_APP_ID}&sdkVersion=160801`;window.addEventListener('load',()=>navigator.serviceWorker.register(appWorkerPath,{scope:'./'}).catch(err=>console.warn('Service Worker no disponible',err)))}
