@@ -10,7 +10,7 @@
 <meta content="JOS Fit" name="apple-mobile-web-app-title"/>
 <link href="manifest.json" rel="manifest"/>
 <link href="icon-192.png" rel="apple-touch-icon"/>
-<title>JOS Fit v1.20 — Navegación estable y correcciones</title>
+<title>JOS Fit v1.21 — Navegación estable y correcciones</title>
 <style>
 :root{color-scheme:dark;--bg:#080a0f;--surface:#12151c;--surface2:#1a1e27;--surface3:#222834;--line:#2b313d;--text:#f5f7fb;--muted:#9299a6;--blue:#168cff;--blue2:#0879e8;--green:#32d583;--orange:#ff9b45;--red:#ff647c;--yellow:#ffd166;--radius:22px;--shadow:0 12px 36px #0005}*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{margin:0;overflow-x:hidden;min-width:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:15px;line-height:1.45}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{width:100%;min-width:0;max-width:980px;margin:0 auto;min-height:100vh;padding-bottom:106px}.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#080a0fee;backdrop-filter:blur(18px);border-bottom:1px solid #ffffff10}.brand{display:flex;align-items:center;gap:11px}.brandmark{width:40px;height:40px;border-radius:13px;background:linear-gradient(145deg,#42a5ff,#0875e4);display:grid;place-items:center;font-weight:950;font-size:18px;box-shadow:0 6px 18px #168cff33}.brandname{font-weight:900;letter-spacing:.08em}.brandname span{color:var(--blue)}.brandmeta{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}.offline{font-size:10px;color:#b8c0cc;border:1px solid var(--line);padding:6px 9px;border-radius:99px;white-space:nowrap}.top-actions{display:flex;align-items:center;gap:8px;min-width:0}.brandmeta{letter-spacing:.06em}.topbar{gap:10px;padding-left:14px;padding-right:14px}.brand{min-width:0}.brandmeta{font-size:9px;white-space:nowrap;text-transform:none}@media(max-width:390px){.topbar{padding-left:10px;padding-right:10px}.brand{gap:8px}.brandmark{width:36px;height:36px}.brandmeta{font-size:8.5px;letter-spacing:.02em}.offline{padding:5px 7px;font-size:9px}.top-actions .btn{padding:7px 8px;font-size:10px}}.main{padding:20px}.page{display:none;animation:fade .18s ease}.page.active{display:block}@keyframes fade{from{opacity:.35;transform:translateY(4px)}to{opacity:1;transform:none}}.eyebrow{color:var(--blue);font-size:10px;font-weight:850;letter-spacing:.18em;text-transform:uppercase}.heading{font-size:clamp(27px,5vw,37px);font-weight:850;letter-spacing:-.045em;line-height:1.12;margin:7px 0}.sub{color:var(--muted);margin:5px 0 18px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:25px 0 12px}.section-title h2{font-size:19px;letter-spacing:-.025em;margin:0}.section-title .hint{font-size:11px;color:var(--muted)}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:17px;box-shadow:var(--shadow)}.card+.card{margin-top:12px}.grid{display:grid;gap:12px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr));margin:17px 0}.metric-label{color:var(--muted);font-size:11px}.metric{font-size:clamp(24px,5vw,31px);font-weight:850;letter-spacing:-.05em;margin:4px 0}.metric small{font-size:12px;color:var(--muted);font-weight:650;letter-spacing:0}.progress{height:7px;background:#303641;border-radius:99px;overflow:hidden;margin-top:10px}.progress span{height:100%;display:block;background:var(--blue);border-radius:99px}.macro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.macro{background:#0c0f15;border:1px solid #282e39;border-radius:15px;padding:11px}.macro-name{color:var(--muted);font-size:10px}.macro-value{font-size:19px;font-weight:800;margin-top:3px}.macro-track{height:5px;background:#303641;border-radius:99px;margin-top:8px;overflow:hidden}.macro-track span{display:block;height:100%;border-radius:99px;background:var(--blue)}
 .macro-protein .macro-track span{background:var(--blue)}
@@ -169,31 +169,34 @@ input[type="time"]::-webkit-date-and-time-value{min-height:1.2em;line-height:nor
 .routine-editor-row{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}.routine-editor-row input,.routine-editor-row select{user-select:text;-webkit-user-select:text}
 .routine-editor-row.is-dragging{position:relative;z-index:6;pointer-events:none}.routine-editor-list-active{touch-action:none}
 
-/* JOS Fit v1.20 — visual refresh */
-.onboarding-layer{background:#fff!important;color:#080a0f!important;padding:max(14px,env(safe-area-inset-top)) 18px max(20px,env(safe-area-inset-bottom))!important}
-.onboarding-wrap{width:min(720px,100%)!important;margin:0 auto!important}
-.ob-brand{margin:4px 2px 16px!important}
-.ob-progress-card{background:#fff!important;color:#080a0f!important;border:0!important;border-radius:28px!important;box-shadow:none!important;padding:clamp(18px,4vw,30px)!important}
-.ob-topline{color:#687080!important}
-.ob-progress{background:#eceef2!important;margin:15px 0 28px!important;height:7px!important}
-.ob-progress span{background:#168cff!important}
-.ob-title{font-size:clamp(30px,7vw,44px)!important;line-height:1.13!important;letter-spacing:-.04em!important;color:#080a0f!important;margin:12px 0 12px!important}
-.ob-desc{font-size:15px!important;color:#737b89!important;line-height:1.5!important;margin-bottom:24px!important}
-.ob-grid{grid-template-columns:1fr!important;gap:16px!important}
-.ob-field label{font-size:14px!important;color:#161a22!important}
-.ob-field input,.ob-field select,.ob-field textarea{background:#f1f2f5!important;color:#111!important;border:1px solid transparent!important;border-radius:18px!important;padding:17px!important;font-size:16px!important;min-height:56px}
+/* JOS Fit v1.21 — onboarding aligned with the app's existing dark visual system */
+.onboarding-layer{background:radial-gradient(circle at 85% 5%,#12385a 0,#0b111c 34%,#080a0f 72%)!important;color:var(--text)!important;padding:max(16px,env(safe-area-inset-top)) 14px max(18px,env(safe-area-inset-bottom))!important}
+.onboarding-wrap{width:min(760px,100%)!important;margin:auto!important}
+.ob-brand{margin:5px 4px 18px!important}
+.ob-progress-card{background:#111722d9!important;color:var(--text)!important;border:1px solid #2b3d52!important;border-radius:24px!important;box-shadow:0 18px 55px #0007!important;padding:clamp(18px,4vw,30px)!important}
+.ob-topline{color:#c5ccd7!important}
+.ob-progress{background:#2b3543!important;margin:13px 0 22px!important;height:7px!important}
+.ob-progress span{background:linear-gradient(90deg,var(--blue),#55b8ff)!important}
+.ob-title{font-size:clamp(27px,5vw,37px)!important;line-height:1.12!important;letter-spacing:-.045em!important;color:var(--text)!important;margin:7px 0 8px!important}
+.ob-desc{font-size:13px!important;color:var(--muted)!important;line-height:1.55!important;margin:0 0 18px!important}
+.ob-grid{grid-template-columns:1fr!important;gap:14px!important}
+.ob-field label{font-size:12px!important;color:#c5ccd7!important}
+.ob-field input,.ob-field select,.ob-field textarea{background:#0b0e14!important;color:var(--text)!important;border:1px solid #343b47!important;border-radius:13px!important;padding:13px!important;font-size:16px!important;min-height:52px}
+.ob-field input::placeholder,.ob-field textarea::placeholder{color:#737d8c!important;opacity:1}
+.ob-field input:focus,.ob-field select:focus,.ob-field textarea:focus{border-color:var(--blue)!important;box-shadow:0 0 0 3px #168cff20!important}
 .ob-days{gap:8px!important}
-.ob-check{background:#f1f2f5!important;color:#161a22!important;border:1px solid #e6e8ed!important;border-radius:15px!important;padding:12px!important}
-.ob-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.ob-choice{position:relative;text-align:left;display:flex;flex-direction:column;gap:7px;min-height:92px;padding:18px 42px 18px 17px;border:2px solid transparent;border-radius:22px;background:#f1f2f5;color:#101319;font:inherit;cursor:pointer;transition:border-color .15s,background .15s}
-.ob-choice.selected{border-color:#168cff;background:#eef7ff;box-shadow:0 0 0 1px #168cff inset}
-.ob-choice-title{font-weight:800;font-size:16px;line-height:1.2}
-.ob-choice-desc{font-size:12px;color:#737b89;line-height:1.35}
-.ob-choice-check{position:absolute;right:15px;top:15px;width:23px;height:23px;border:1.5px solid #c8ced8;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:900}
-.ob-choice.selected .ob-choice-check{background:#168cff;border-color:#168cff;color:#fff}
-.ob-actions{position:sticky;bottom:0;background:linear-gradient(transparent,#fff 22%);padding:24px 0 max(6px,env(safe-area-inset-bottom));margin-top:18px}
-#obNext{background:#168cff!important;color:white!important;border-radius:18px!important;min-height:58px!important;font-weight:800!important}
-#obBack{border-radius:16px!important}
+.ob-check{background:#0b111a!important;color:#d7e0eb!important;border:1px solid #354152!important;border-radius:12px!important;padding:12px!important}
+.ob-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px!important}
+.ob-choice{position:relative;text-align:left;display:flex;flex-direction:column;gap:7px;min-height:76px;padding:16px 42px 16px 15px;border:1px solid var(--line)!important;border-radius:17px!important;background:var(--surface2)!important;color:var(--text)!important;font:inherit;cursor:pointer;transition:border-color .15s,background .15s}
+.ob-choice.selected{border:1px solid var(--blue)!important;background:#0c2137!important;box-shadow:inset 0 0 0 1px #168cff35!important}
+.ob-choice-title{font-weight:800;font-size:15px;line-height:1.25;color:var(--text)!important}
+.ob-choice-desc{font-size:12px;color:var(--muted)!important;line-height:1.35}
+.ob-choice-check{position:absolute;right:13px;top:13px;width:23px;height:23px;border:1.5px solid #566174;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:900;color:#fff}
+.ob-choice.selected .ob-choice-check{background:var(--blue);border-color:var(--blue);color:#fff}
+.ob-help{font-size:10px!important;color:var(--muted)!important}
+.ob-actions{position:sticky;bottom:0;background:linear-gradient(transparent,#080a0f 22%)!important;padding:24px 0 max(6px,env(safe-area-inset-bottom));margin-top:18px}
+#obNext{background:var(--blue)!important;color:white!important;border-radius:14px!important;min-height:52px!important;font-weight:800!important}
+#obBack{border-radius:14px!important;background:transparent!important;color:var(--text)!important;border-color:var(--line)!important}
 .exercise-card{border-radius:20px!important}
 .set-table{gap:7px!important}
 .set-input{min-height:48px!important;border-radius:13px!important;font-size:16px!important}
@@ -201,8 +204,8 @@ input[type="time"]::-webkit-date-and-time-value{min-height:1.2em;line-height:nor
 #josRestPicker>div{border-radius:28px 28px 0 0!important;padding-top:28px!important}
 #josRestPicker .rest-wheel{gap:18px!important}
 #josRestPicker .rest-value{font-variant-numeric:tabular-nums;font-size:34px!important}
-#josRestPicker input[type=range]{width:100%;accent-color:#168cff}
-@media(max-width:420px){.ob-choice-grid{grid-template-columns:1fr}.ob-choice{min-height:76px}.ob-progress-card{padding:16px!important}}
+#josRestPicker input[type=range]{width:100%;accent-color:var(--blue)}
+@media(max-width:420px){.ob-choice-grid{grid-template-columns:1fr}.ob-choice{min-height:68px}.ob-progress-card{padding:16px!important}}
 </style>
 </head>
 <body>
@@ -347,7 +350,7 @@ input[type="time"]::-webkit-date-and-time-value{min-height:1.2em;line-height:nor
 <div id="v113Strength"></div>
 <div id="v113SuppProfile"></div>
 <div class="card" style="margin-top:12px"><button class="btn secondary block" onclick="reopenTutorial()">Ver tutorial</button></div>
-<div class="footnote">JOS Fit PWA v1.20 · Navegación estable, sesión y correcciones.</div>
+<div class="footnote">JOS Fit PWA v1.21 · Navegación estable, sesión y correcciones.</div>
 </section>
 </main>
 <div class="session-bar hide" id="sessionBar"><div class="sb-row"><div onclick="go('training')" style="flex:1"><span class="tiny">SESIÓN EN CURSO</span> <strong id="barSession">00:00</strong></div><button aria-label="Contraer o expandir" class="btn ghost small" onclick="toggleSessionBar()">▾</button></div><div class="rest-banner hide" id="restBanner"><div><div class="tiny" id="restLabel">DESCANSO</div><strong id="restTimer" onclick="editRestTime()" title="Toca para ajustar el tiempo">01:30</strong></div><div class="actions" style="margin:0"><button class="btn secondary small" onclick="adjustRest(-15)">−15s</button><button class="btn secondary small" onclick="adjustRest(15)">+15s</button><button class="btn small" onclick="stopRest()">Omitir</button></div></div></div>
@@ -1846,7 +1849,7 @@ function completeOnboarding(){
  p.workType=d.workType;p.workStart=d.workStart||'';p.workEnd=d.workEnd||'';p.workDays=Array.isArray(d.workDays)?d.workDays:[];p.stepsBand=d.stepsBand;p.footballDay=d.footballDay||'none';p.footballMinutes=num(d.footballMinutes)||0;p.footballTime=d.footballTime||'';p.sports=(d.sports||'').trim();p.otherActivityDays=num(d.otherActivityDays)||0;p.otherActivityMinutes=num(d.otherActivityMinutes)||0;p.steps=d.stepsBand==='under5k'?4000:d.stepsBand==='5-8k'?6500:d.stepsBand==='8-12k'?10000:d.stepsBand==='over12k'?13000:7000;p.activityFactor=activity;
  p.wakeTime=d.wakeTime||'06:30';p.bedTime=d.bedTime||'23:00';p.averageSleep=num(d.averageSleep)||7;p.sleep=p.averageSleep;p.sleepQuality=d.sleepQuality;p.sleepGoal=d.sleepGoal;
  p.mealCount=num(d.mealCount)||4;p.dietaryPattern=d.dietaryPattern;p.breakfastTime=d.breakfastTime||'';p.lunchTime=d.lunchTime||'';p.dinnerTime=d.dinnerTime||'';p.workBreakTime=d.workBreakTime||'';p.foodRestrictions=(d.foodRestrictions||'').trim();p.mealPrep=d.mealPrep;
- p.onboardingComplete=true;p.onboardingDismissed=false;p.onboardingVersion='1.20';p.onboardingDraft=null;p.onboardingStep=0;
+ p.onboardingComplete=true;p.onboardingDismissed=false;p.onboardingVersion='1.21';p.onboardingDraft=null;p.onboardingStep=0;
  applyEquipmentAdaptations(p.trainingEnvironment);
  const energy=estimateEnergy({age:p.age,height:p.heightCm,weight:p.weight,sex:p.sex,activity:p.activityFactor,goal:p.goalMode,waist:p.waistCm||0});
  if(energy){p.calories=energy.target;p.protein=energy.protein;p.recommendedFat=energy.fat;p.recommendedCarbs=energy.carbs;}
@@ -3057,7 +3060,7 @@ renderAll=function renderAll(){
 };
 
 
-/* ==================== JOS Fit v1.20 ==================== */
+/* ==================== JOS Fit v1.21 ==================== */
 (function(){
   // Fast, non-blocking brand splash.
   const splash=document.createElement('div');
@@ -3141,7 +3144,7 @@ renderAll=function renderAll(){
   completeOnboarding=function(){
     _completeOnboarding_v119();
     data.profile.onboardingComplete=true;
-    data.profile.tutorialVersion='1.20';
+    data.profile.tutorialVersion='1.21';
     data.profile.tutorialSeen=false;
     data.profile.autoTutorialPending=true;
     save({render:false});
@@ -3149,7 +3152,7 @@ renderAll=function renderAll(){
   };
   const _closeTutorial_v119=closeTutorial;
   closeTutorial=function(completed=false){
-    data.profile.tutorialSeen=true;data.profile.autoTutorialPending=false;data.profile.tutorialVersion='1.20';
+    data.profile.tutorialSeen=true;data.profile.autoTutorialPending=false;data.profile.tutorialVersion='1.21';
     save({render:false});closeSheet('tutorialModal');
   };
 

@@ -1,4 +1,4 @@
-# JOS Fit PWA v1.20 — Rediseño de experiencia y entrenamiento
+# JOS Fit PWA v1.21 — Rediseño de experiencia y entrenamiento
 
 ## Base y compatibilidad
 - Base obligatoria: JOS Fit PWA v1.18.
@@ -15,7 +15,7 @@
 6. Se eliminan validaciones bloqueantes de experiencia, días, trabajo, sueño y alimentación; edad, estatura y peso mantienen validación mínima para crear estimaciones coherentes.
 7. Temporizador: se conserva la hoja inferior y se agrega control deslizante de 5 segundos, manteniendo persistencia por marca temporal.
 8. Mejoras de jerarquía visual para tarjetas y controles de series sin cambiar el modelo de entrenamiento.
-9. Versión PWA, caché y tutorial actualizados a v1.20.
+9. Versión PWA, caché y tutorial actualizados a v1.21.
 
 ## Persistencia
 - La clave `josfit_v01_data` no cambia.
@@ -28,3 +28,10 @@
 - Conteo de funciones declaradas: 350 en base y 350 en entrega; no se perdió ninguna declaración. Los IDs generados dinámicamente requieren revisión visual adicional.
 - Pruebas reales en Safari iOS: pendientes (onboarding, navegación, teclado, sesión y temporizador).
 - Push/OneSignal: no modificado ni probado en vivo.
+
+## Ajuste visual posterior — coherencia de tema
+- Se retiró el tema blanco aislado del onboarding.
+- El onboarding vuelve a usar el fondo oscuro, superficies, texto, bordes y azul de acción definidos por el sistema visual global de JOS Fit.
+- Las tarjetas `.ob-choice` mantienen su interacción táctil y ahora tienen contraste explícito en estado normal y seleccionado.
+- Los campos, etiquetas, ayudas, progreso y botones también usan los colores del tema oscuro.
+- No se modificaron datos, fórmulas, lógica de onboarding, ni configuración de OneSignal.
